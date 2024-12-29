@@ -8,8 +8,10 @@ function initApi() {
         'apiKey': apiKey,
         'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4']
     }).then(() => {
-        // Google Sheets API aufrufen
+        // Nach erfolgreicher Initialisierung die Daten abrufen
         getSheetData();
+    }).catch((error) => {
+        console.error('Fehler bei der Initialisierung der API:', error);
     });
 }
 
@@ -40,7 +42,7 @@ function getSheetData() {
         } else {
             console.log('Keine Daten gefunden.');
         }
-    }, (error) => {
+    }).catch((error) => {
         console.error('Fehler beim Abrufen der Daten:', error);
     });
 }
@@ -92,5 +94,5 @@ function loadApi() {
     gapi.load('client', initApi);
 }
 
-// Starte das Laden der API
-loadApi();
+// Starte das Laden der API, wenn die Seite vollständig geladen ist
+document.addEventListener('DOMContentLoaded', loadApi);

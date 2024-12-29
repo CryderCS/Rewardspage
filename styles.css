@@ -15,6 +15,7 @@ body {
     justify-content: flex-start;
     height: 100vh;
     overflow: hidden; /* Scrollbalken verhindern */
+    margin-bottom: 60px; /* Verhindert, dass der Footer den Inhalt überlappt */
 }
 
 html {
@@ -39,18 +40,28 @@ nav ul {
 
 nav ul li {
     margin: 0 15px;
+    display: flex;
+    align-items: center; /* Vertikale Ausrichtung von Text und Bild */
 }
 
 nav ul li a {
     text-decoration: none;
     color: #ffffffd0;
-    font-size: 18px;
+    font-size: 24px;
+    display: flex;          /* Macht den Link zu einem flex-Container */
+    align-items: center;    /* Vertikale Zentrierung von Text und Bild */
     transition: color 0.3s;
+}
+
+nav ul li a .nav-icon {
+    width: auto;  /* Setzt die Breite des Bildes */
+    height: 24px; /* Setzt die Höhe des Bildes */
+    margin-right: 8px;  /* Abstand zwischen Bild und Text */
 }
 
 nav ul li a:hover {
     color: #ffffff;
-    transform: translateY(-2px); /* Leichter Anstieg beim Hover */
+    transform: scale(1.1); /* Leichter Anstieg beim Hover */
 }
 
 h1, p {
@@ -72,7 +83,7 @@ h1, p {
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    background-color: rgba(144, 238, 255, 0.459);
+    background-color: #3d5872c4;
     padding: 80px;
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -92,7 +103,7 @@ h1, p {
     display: flex;
     justify-content: center; /* Zentriert den Text horizontal */
     align-items: center;     /* Zentriert den Text vertikal */
-    color: #003366;
+    color: #000000;
     font-size: 24px;
     font-weight: bold;
     width: 100%;              /* Stellt sicher, dass das <span> die gesamte Breite der Box einnimmt */
@@ -101,7 +112,8 @@ h1, p {
 }
 
 .box:hover {
-    transform: translateY(-10px);
+    background-color: #3d5872e1;
+    transform: scale(1.05);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
@@ -115,7 +127,8 @@ h1, p {
   
 /* Stil für die Tabelle */
 table {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     border-collapse: collapse;
     font-family: "Oswald", sans-serif;  /* Optional: Schriftart auf die Tabelle anwenden */
     font-size: 16px; /* Standard-Schriftgröße für die gesamte Tabelle */
@@ -125,7 +138,8 @@ table {
 /* Stil für Tabellenkopf (th) */
 th {
     padding: 8px;
-    text-align: left;
+    text-align: center;    /* Zentriert den Text im Tabellenkopf */
+    vertical-align: middle; /* Vertikale Zentrierung im Tabellenkopf */
     border: 1px solid #ddd;
     background-color: #3d5872c4;
     color: #b4b4b4; /* Schriftfarbe für die Kopfzeile */
@@ -135,11 +149,24 @@ th {
 /* Stil für Tabellenzellen (td) */
 td {
     padding: 8px;
-    text-align: left;
+    text-align: center;    /* Zentriert den Text im Tabellenkopf */
+    vertical-align: middle; /* Vertikale Zentrierung im Tabellenkopf */
     border: 1px solid #ddd;
     color: #ffffff; /* Schriftfarbe für die Zellen */
     font-size: 16px; /* Schriftgröße für die Zellen */
 }
+tr {
+    transition: transform 0.3s ease; /* Fügt eine Übergangsanimation hinzu */
+}
+
+/* Stil für die Tabellenzeilen beim Hover */
+tbody tr:hover {
+    background-color: #3d587291;/* Hintergrundfarbe beim Hover */
+    cursor: pointer;  /* Zeigt den Mauszeiger als Hand an */
+    transform: scale(1.05);  /* Vergrößert die Zeile um 5% */
+    
+}
+
 /* Fliegende Bilder */
 .flying-image {
     position: absolute;
@@ -166,4 +193,46 @@ td {
     background-image: url('images/weapon_knife_karambit_am_marble_fade_light_large.e5d0f471cc4aad8ddd6ede429afe8cd2d80c1cf2.png'); /* Dein Bild */
     animation-delay: 0s;
 }
+footer {
+    position: fixed;
+    bottom: 0;    /* Positioniert den Footer immer am unteren Rand */
+    left: 0;      /* Stellt sicher, dass der Footer über die gesamte Breite geht */
+    width: 100%;  /* Sorgt dafür, dass der Footer die gesamte Breite der Seite abdeckt */
+    background-color: transparent; /* Setzt den Hintergrund des Footers transparent */
+    padding: 20px;
+    text-align: center;
+    z-index: 1000; /* Stellt sicher, dass der Footer über allen anderen Inhalten bleibt */
+}
 
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links li {
+    display: inline;
+}
+
+.social-links a {
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+
+.social-links img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+}
+
+.social-links img:hover {
+    transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
+}
