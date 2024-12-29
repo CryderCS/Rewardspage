@@ -105,6 +105,7 @@ h1, p {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
+/* Stil für den Container */
 #table-container {
     margin-top: 20px;
     padding: 10px;
@@ -112,21 +113,33 @@ h1, p {
     border-radius: 5px;
 }
   
+/* Stil für die Tabelle */
 table {
     width: 100%;
     border-collapse: collapse;
+    font-family: "Oswald", sans-serif;  /* Optional: Schriftart auf die Tabelle anwenden */
+    font-size: 16px; /* Standard-Schriftgröße für die gesamte Tabelle */
+    color: #ffffff; /* Schriftfarbe für den gesamten Text in der Tabelle */
 }
   
-th, td {
+/* Stil für Tabellenkopf (th) */
+th {
     padding: 8px;
     text-align: left;
     border: 1px solid #ddd;
+    background-color: #3d5872c4;
+    color: #b4b4b4; /* Schriftfarbe für die Kopfzeile */
+    font-size: 18px; /* Schriftgröße für den Tabellenkopf */
 }
   
-th {
-    background-color: #f2f2f2;
+/* Stil für Tabellenzellen (td) */
+td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    color: #ffffff; /* Schriftfarbe für die Zellen */
+    font-size: 16px; /* Schriftgröße für die Zellen */
 }
-
 /* Fliegende Bilder */
 .flying-image {
     position: absolute;
