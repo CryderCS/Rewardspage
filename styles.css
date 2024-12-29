@@ -1,5 +1,7 @@
+/* Bestehende Stile beibehalten */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto; /* Optional, falls du es nutzen möchtest */
     background-image: url('images/Background.png');
     background-size: cover;
     background-position: center;
@@ -12,6 +14,12 @@ body {
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
+    overflow: hidden; /* Scrollbalken verhindern */
+}
+
+html {
+    height: 100%; /* Sicherstellen, dass die Höhe des HTML-Elements 100% beträgt */
+    overflow: hidden; /* Verhindern von Scrollbalken */
 }
 
 nav {
@@ -102,20 +110,47 @@ h1, p {
     padding: 10px;
     background-color: #040a3bcc;
     border-radius: 5px;
-  }
+}
   
-  table {
+table {
     width: 100%;
     border-collapse: collapse;
-  }
+}
   
-  th, td {
+th, td {
     padding: 8px;
     text-align: left;
     border: 1px solid #ddd;
-  }
+}
   
-  th {
+th {
     background-color: #f2f2f2;
-  }
- 
+}
+
+/* Fliegende Bilder */
+.flying-image {
+    position: absolute;
+    width: 300px; /* Feste Breite für das Bild */
+    height: 300px; /* Höhe für das Bild */
+    background-size: contain; /* Bildgröße anpassen, damit es im Container bleibt */
+    background-repeat: no-repeat; /* Verhindern, dass das Bild wiederholt wird */
+    animation: flyAcross 25s linear infinite; /* Animation */
+    z-index: -1; /* Bilder hinter anderen Elementen platzieren */
+}
+
+/* Die Animation, die das Bild über den Bildschirm fliegen lässt */
+@keyframes flyAcross {
+    0% {
+        transform: translateX(-100vw) translateY(60vh); /* Startposition weiter unten */
+    }
+    100% {
+        transform: translateX(100vw) translateY(-50px); /* Endposition rechts */
+    }
+}
+
+/* Optional: Verschiedene Bilder mit zufälligen Startpositionen und Verzögerungen */
+.flying-image:nth-child(2) {
+    background-image: url('images/weapon_knife_karambit_am_marble_fade_light_large.e5d0f471cc4aad8ddd6ede429afe8cd2d80c1cf2.png'); /* Dein Bild */
+    animation-delay: 0s;
+}
+
