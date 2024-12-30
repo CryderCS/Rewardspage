@@ -33,10 +33,10 @@ function getSheetData() {
             ]);
 
             // Spaltenüberschriften in die Tabelle einfügen
-            displayHeaders(headers);
             
             // Gefilterte Daten in die Tabelle einfügen
-            displayDataInTable(filteredData);
+            displayTopThreeInBoxes(filteredData.slice(0, 3));
+            displayAllParticipants(filteredData.slice(3))
         } else {
             console.log('Keine Daten gefunden.');
         }
@@ -46,38 +46,58 @@ function getSheetData() {
 }
 
 // Spaltenüberschriften in die HTML-Tabelle einfügen
-function displayHeaders(headers) {
-    const tableHead = document.querySelector('#sheet-table thead');
-    tableHead.innerHTML = ''; // Vorherige Überschriften löschen
+// Die ersten drei Teilnehmer in Kacheln anzeigen
+function displayTopThreeInBoxes(topThree) {
+    const container = document.getElementById('top-three-container');
+    container.innerHTML = ''; // Vorherige Inhalte löschen
 
-    const tr = document.createElement('tr');
-    headers.forEach((header, index) => {
-        // Wir filtern nur die Spalten A, B, C und D
-        if (index === 0 || index === 1 || index === 2 || index === 3) {
-            const th = document.createElement('th');
-            th.textContent = header;
-            tr.appendChild(th);
+    topThree.forEach((row, index) => {
+        const box = document.createElement('div');
+        box.classList.add('participant-box-roll');
+
+        // HTML-Inhalt für die Box erstellen
+        box.innerHTML = `
+            <h3>#${row[1]}</h3>
+            <img src="/images/CSGOROLL_Logo.png" alt="ProfilePic" style="width: auto; height: 50px">
+            <p class="participant-name"><strong>${row[0]}</strong></p>
+            <p>Prize:</p>
+            <p><img src="/images/RollCoin.png" alt="Rollcoin" style="width: 17px; height: 17px"><strong> ${row[2]}</strong> </p>
+            <p>Deposited:</p>
+            <p><strong>${row[3]}</strong> </p>
+        `;
+
+        // Boxen positionieren
+        if (index === 0) {
+            box.classList.add('top-box');  // Erste Box oben in der Mitte
+        } else if (index === 1) {
+            box.classList.add('left-box');  // Zweite Box links und leicht unterhalb
+        } else if (index === 2) {
+            box.classList.add('right-box');  // Dritte Box rechts und leicht unterhalb
         }
+
+        container.appendChild(box);
     });
-    tableHead.appendChild(tr);
 }
+function displayAllParticipants(participants) {
+    const tbody = document.getElementById('sheet-table').getElementsByTagName('tbody')[0];
+    tbody.innerHTML = ''; // Vorherige Inhalte löschen
 
-// Daten in die HTML-Tabelle einfügen
-function displayDataInTable(data) {
-    const tableBody = document.querySelector('#sheet-table tbody');
-    tableBody.innerHTML = ''; // Vorherige Daten löschen
-
-    data.forEach(row => {
+    participants.forEach((row, index) => {
         const tr = document.createElement('tr');
-        row.forEach(cell => {
-            const td = document.createElement('td');
-            td.textContent = cell;
-            tr.appendChild(td);
-        });
-        tableBody.appendChild(tr);
+
+        // Eine Zeile mit den jeweiligen Daten
+        tr.innerHTML = `
+            <td>Place: ${row[1]}</td> <!-- Prize -->
+            <td>${row[0]}</td> <!-- Username -->
+            <td><img src="/images/RollCoin.png" alt="Rollcoin" style="width: 17px; height: 17px"> ${row[2]}</td> <!-- Wagered -->
+            <td>${row[3]}</td> <!-- Username -->
+            
+            `//<td><img src="${row[4]}" alt="Avatar" class="participant-avatar" style="width: 50px; height: 50px; border-radius: 50%;"></td> <!-- Avatar -->
+        ;
+
+        tbody.appendChild(tr);
     });
 }
-
 // API laden und initialisieren
 function loadApi() {
     gapi.load('client', initApi);

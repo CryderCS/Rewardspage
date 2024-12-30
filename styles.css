@@ -5,22 +5,25 @@ body {
     background-image: url('images/Background.png');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    color: #a3b2c0;
+    background-repeat: repeat;
+    color: #f5f5f5;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 100vh;
-    overflow: hidden; /* Scrollbalken verhindern */
+    height: 100%;
     margin-bottom: 60px; /* Verhindert, dass der Footer den Inhalt überlappt */
+}
+.main-content {
+    flex: 1;   /* Füllt den verfügbaren Raum und ermöglicht das Scrollen */
+    padding-bottom: 60px;  /* Schafft Platz für den Footer */
+    width:100%
 }
 
 html {
     height: 100%; /* Sicherstellen, dass die Höhe des HTML-Elements 100% beträgt */
-    overflow: hidden; /* Verhindern von Scrollbalken */
 }
 
 nav {
@@ -75,7 +78,9 @@ h1, p {
     justify-content: center;
     align-items: flex-start;
     flex-grow: 1;
+    flex-wrap: wrap;
     position: relative;
+    padding-bottom: 60px;  /* Ein kleiner Abstand zum Footer */
 }
 
 .box {
@@ -83,7 +88,7 @@ h1, p {
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    background-color: #3d5872c4;
+    background: linear-gradient(#000d29ee,#0283fcb9) ;
     padding: 80px;
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -123,6 +128,7 @@ h1, p {
     padding: 10px;
     background-color: #040a3bcc;
     border-radius: 5px;
+    justify-self: center;
 }
   
 /* Stil für die Tabelle */
@@ -133,6 +139,7 @@ table {
     font-family: "Oswald", sans-serif;  /* Optional: Schriftart auf die Tabelle anwenden */
     font-size: 16px; /* Standard-Schriftgröße für die gesamte Tabelle */
     color: #ffffff; /* Schriftfarbe für den gesamten Text in der Tabelle */
+    
 }
   
 /* Stil für Tabellenkopf (th) */
@@ -154,6 +161,7 @@ td {
     border: 1px solid #ddd;
     color: #ffffff; /* Schriftfarbe für die Zellen */
     font-size: 16px; /* Schriftgröße für die Zellen */
+    
 }
 tr {
     transition: transform 0.3s ease; /* Fügt eine Übergangsanimation hinzu */
@@ -166,33 +174,18 @@ tbody tr:hover {
     transform: scale(1.05);  /* Vergrößert die Zeile um 5% */
     
 }
+#sheet-table {
+    max-width: 80%;
+    min-width: auto;
+    border-collapse: collapse;
+    margin-top: 50px; /* Abstand nach oben (zwischen Kacheln und Tabelle) */
 
-/* Fliegende Bilder */
-.flying-image {
-    position: absolute;
-    width: 300px; /* Feste Breite für das Bild */
-    height: 300px; /* Höhe für das Bild */
-    background-size: contain; /* Bildgröße anpassen, damit es im Container bleibt */
-    background-repeat: no-repeat; /* Verhindern, dass das Bild wiederholt wird */
-    animation: flyAcross 25s linear infinite; /* Animation */
-    z-index: -1; /* Bilder hinter anderen Elementen platzieren */
 }
 
-/* Die Animation, die das Bild über den Bildschirm fliegen lässt */
-@keyframes flyAcross {
-    0% {
-        transform: translateX(-100vw) translateY(60vh); /* Startposition weiter unten */
-    }
-    100% {
-        transform: translateX(100vw) translateY(-50px); /* Endposition rechts */
-    }
+#sheet-table th {
+    background-color: #f4f4f4;
 }
 
-/* Optional: Verschiedene Bilder mit zufälligen Startpositionen und Verzögerungen */
-.flying-image:nth-child(2) {
-    background-image: url('images/weapon_knife_karambit_am_marble_fade_light_large.e5d0f471cc4aad8ddd6ede429afe8cd2d80c1cf2.png'); /* Dein Bild */
-    animation-delay: 0s;
-}
 footer {
     position: fixed;
     bottom: 0;    /* Positioniert den Footer immer am unteren Rand */
@@ -206,6 +199,7 @@ footer {
 
 .footer-container {
     max-width: 1200px;
+    min-height: 150px;
     margin: 0 auto;
 }
 
@@ -235,4 +229,116 @@ footer {
 
 .social-links img:hover {
     transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
+}
+
+#top-three-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Drei gleich breite Spalten */
+    gap: 5px;  /* Abstand zwischen den Boxen */
+    justify-items: center; /* Zentriert die Boxen horizontal */
+    align-items: center; /* Zentriert die Boxen vertikal */
+    position: relative;
+    margin-top: 5%; /* Optionaler Abstand nach oben */
+    width: 80%;  /* Damit das Grid die volle Breite einnimmt */
+}
+
+/* Die Boxen selbst */
+.participant-box {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(#00b7ffde, #010e13);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
+    max-width: 250px; /* Maximale Breite der Box */
+    min-width: 150px; /* Minimale Breite der Box */
+    height: auto;  /* Höhe passt sich dem Inhalt an */
+    overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
+    transition: all 0.3s ease;
+}
+.participant-box-roll {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(#ff3c01,#420404cc) ;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
+    max-width: 250px; /* Maximale Breite der Box */
+    min-width: 150px; /* Minimale Breite der Box */
+    height: auto;  /* Höhe passt sich dem Inhalt an */
+    overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
+    transition: all 0.3s ease;
+}
+
+
+.participant-box:hover {
+    transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
+    color: #ffffff;
+    background-color:#00b7ff6b ;
+}
+.participant-box-roll:hover {
+    transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
+    color: #ffffff;
+    background-color:#ff3c017a ;
+}
+
+.participant-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 5px solid #010e13;
+}
+
+/* Platzierung des ersten Platzes (oben in der Mitte) */
+.top-box {
+    grid-column: 2;  /* Der erste Platz kommt in die mittlere Spalte */
+    grid-row: 1; /* Erste Reihe */
+    margin-bottom: 60px;
+}
+
+/* Platzierung des zweiten Platzes (links knapp unterhalb) */
+.left-box {
+    grid-column: 1; /* Der zweite Platz kommt in die erste Spalte */
+    grid-row: 1; /* Erste Reihe */
+    margin-top: 60px; /* Verschieben nach unten */
+}
+
+/* Platzierung des dritten Platzes (rechts knapp unterhalb) */
+.right-box {
+    grid-column: 3; /* Der dritte Platz kommt in die dritte Spalte */
+    grid-row: 1; /* Erste Reihe */
+    margin-top: 60px; /* Verschieben nach unten */
+}
+
+.participant-name {
+    color: #ffffff;
+    font-size: 24px;
+    text-align: center;
+
+}
+@media (max-width: 768px) {
+    #top-three-container {
+        grid-template-columns: repeat(2, 1fr); /* Zwei Spalten für kleinere Bildschirme */
+    }
+
+    .participant-box {
+        width: 90%; /* Boxen nehmen 90% der Spaltenbreite ein */
+        max-width: 220px; /* Maximale Breite der Boxen */
+        min-width: 130px; /* Minimale Breite */
+    }
+}
+
+/* Media Query für sehr kleine Bildschirme (Handy im Hochformat) */
+@media (max-width: 480px) {
+    #top-three-container {
+        grid-template-columns: 1fr; /* Eine Spalte auf kleinen Bildschirmen */
+    }
+
+    .participant-box {
+        width: 80%; /* Boxen nehmen 80% der Bildschirmbreite */
+        max-width: 200px; /* Maximale Breite */
+        min-width: 120px; /* Minimale Breite */
+    }
 }
