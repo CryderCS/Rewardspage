@@ -17,31 +17,35 @@ function initApi() {
 
 // Laden der Google Sheets-Daten
 function getSheetData() {
-    gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: spreadsheetId,
-        range: range
-    }).then((response) => {
-        const data = response.result.values;
-        if (data.length > 0) {
-            // Nur die Spalten C (2), D (3), F (5) und G (6) extrahieren, ab der zweiten Zeile
-            const filteredData = data.slice(1).map(row => [
-                row[2],  // Spalte C
-                row[3],  // Spalte D
-                formatNumber(row[5]),  // Spalte F mit Formatierung
-                row[6],   // Spalte G
-                row[7]
-            ]);
+    // Warte 2 Sekunden bevor du die Daten abruft
+    setTimeout(() => {
+        gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: spreadsheetId,
+            range: range
+        }).then((response) => {
+            const data = response.result.values;
+            if (data.length > 0) {
+                // Nur die Spalten C (2), D (3), F (5) und G (6) extrahieren, ab der zweiten Zeile
+                const filteredData = data.slice(1).map(row => [
+                    row[2],  // Spalte C
+                    row[3],  // Spalte D
+                    formatNumber(row[5]),  // Spalte F mit Formatierung
+                    row[6],   // Spalte G
+                    row[7]
+                ]);
 
-            // Die ersten drei Ergebnisse in Kacheln anzeigen
-            displayTopThreeInBoxes(filteredData.slice(0, 3));
-            displayAllParticipants(filteredData.slice(3));
-        } else {
-            console.log('Keine Daten gefunden.');
-        }
-    }).catch((error) => {
-        console.error('Fehler beim Abrufen der Daten:', error);
-    });
+                // Die ersten drei Ergebnisse in Kacheln anzeigen
+                displayTopThreeInBoxes(filteredData.slice(0, 3));
+                displayAllParticipants(filteredData.slice(3));
+            } else {
+                console.log('Keine Daten gefunden.');
+            }
+        }).catch((error) => {
+            console.error('Fehler beim Abrufen der Daten:', error);
+        });
+    }, 100); // 2000 Millisekunden (2 Sekunden) Wartezeit
 }
+
 
 // Die ersten drei Teilnehmer in Kacheln anzeigen
 function displayTopThreeInBoxes(topThree) {

@@ -189,7 +189,6 @@ tbody tr:hover {
 footer {
     position: fixed;
     bottom: 0;    /* Positioniert den Footer immer am unteren Rand */
-    left: 0;      /* Stellt sicher, dass der Footer über die gesamte Breite geht */
     width: 100%;  /* Sorgt dafür, dass der Footer die gesamte Breite der Seite abdeckt */
     background-color: transparent; /* Setzt den Hintergrund des Footers transparent */
     padding: 20px;
@@ -198,8 +197,7 @@ footer {
 }
 
 .footer-container {
-    max-width: 1200px;
-    min-height: 150px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
