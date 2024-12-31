@@ -87,10 +87,11 @@ function displayAllParticipants(participants) {
 
         // Eine Zeile mit den jeweiligen Daten
         tr.innerHTML = `
-            <td>Place: ${row[1]}</td> <!-- Prize -->
+            <td>${row[1]}</td> <!-- Prize -->
             <td>${row[0]}</td> <!-- Username -->
-            <td><img src="/images/RollCoin.png" alt="Rollcoin" style="width: 17px; height: 17px"> ${row[2]}</td> <!-- Wagered -->
             <td>${row[3]}</td> <!-- Username -->
+            <td><img src="/images/RollCoin.png" alt="Rollcoin" style="width: 17px; height: 17px"> ${row[2]}</td> <!-- Wagered -->
+            
             
             `//<td><img src="${row[4]}" alt="Avatar" class="participant-avatar" style="width: 50px; height: 50px; border-radius: 50%;"></td> <!-- Avatar -->
         ;

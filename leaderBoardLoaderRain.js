@@ -27,11 +27,11 @@ function getSheetData() {
             if (data.length > 0) {
                 // Nur die Spalten C (2), D (3), F (5) und G (6) extrahieren, ab der zweiten Zeile
                 const filteredData = data.slice(1).map(row => [
-                    row[2],  // Spalte C
-                    row[3],  // Spalte D
-                    formatNumber(row[5]),  // Spalte F mit Formatierung
-                    row[6],   // Spalte G
-                    row[7]
+                    row[2],  // Spalte C Name
+                    row[3],  // Spalte D Rang
+                    formatNumber(row[5]),  // Spalte F mit Formatierung Price
+                    row[6],   // Spalte G wagered
+                    row[7]     //Avatar
                 ]);
 
                 // Die ersten drei Ergebnisse in Kacheln anzeigen
@@ -88,14 +88,20 @@ function displayAllParticipants(participants) {
 
         // Eine Zeile mit den jeweiligen Daten
         tr.innerHTML = `
-            <td>${index + 1}</td> <!-- Position (ab 1. Platz) -->
-            <td>${row[0]}</td> <!-- Username -->
-            <td>${row[1]}</td> <!-- Prize -->
-            <td><img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px">${row[2]}</td> <!-- Wagered -->
-            <td><img src="${row[4]}" alt="Avatar" class="participant-avatar" style="width: 50px; height: 50px; border-radius: 50%;"></td> <!-- Avatar -->
-        `;
+        <td>${row[1]}</td> <!-- Position (ab 1. Platz) -->
+        <td>
+            <img src="${row[4]}" alt="Avatar" style="width: 19px; height: 19px; border-radius: 50%; margin-right: 5px;">
+            ${row[0]}
+        </td> <!-- Username -->
+        <td>${row[3]}</td> <!-- Prize -->
+        <td>
+            <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px; margin-right: 5px;">
+            ${row[2]}
+        </td> <!-- Wagered -->
+`;
 
-        tbody.appendChild(tr);
+tbody.appendChild(tr);
+
     });
 }
 // Funktion zum Formatieren der Zahlen (z.B. 14000 zu 140.00)
