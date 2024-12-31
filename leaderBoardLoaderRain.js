@@ -8,10 +8,26 @@ function initApi() {
         'apiKey': apiKey,
         'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4']
     }).then(() => {
-        // Nach erfolgreicher Initialisierung die Daten abrufen
-        getSheetData();
+        // Nach erfolgreicher Initialisierung das Sheet anpingen und dann Daten abrufen
+        pingSheetBeforeFetching();
     }).catch((error) => {
         console.error('Fehler bei der Initialisierung der API:', error);
+    });
+}
+
+// Funktion zum Anpingen des Sheets
+function pingSheetBeforeFetching() {
+    // Anpingen des Sheets, um sicherzustellen, dass es bereit ist
+    gapi.client.sheets.spreadsheets.get({
+        spreadsheetId: spreadsheetId
+    }).then(() => {
+        // Wartezeit einfügen, um sicherzustellen, dass das Sheet bereit ist
+        setTimeout(() => {
+            // Daten abrufen, nachdem das Sheet bereit ist
+            getSheetData();
+        }, 1000); // 2000 Millisekunden (2 Sekunden) Wartezeit
+    }).catch((error) => {
+        console.error('Fehler beim Anpingen des Sheets:', error);
     });
 }
 
