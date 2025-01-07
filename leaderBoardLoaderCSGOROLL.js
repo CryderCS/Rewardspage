@@ -29,7 +29,6 @@ function getSheetData() {
                 row[0],  // Spalte A
                 row[1],  // Spalte B
                 row[2],  // Spalte C
-                row[3]   // Spalte D
             ]);
 
             // Spaltenüberschriften in die Tabelle einfügen
@@ -60,10 +59,8 @@ function displayTopThreeInBoxes(topThree) {
             <h3>#${row[1]}</h3>
             <img src="/images/CSGOROLL_Logo.png" alt="ProfilePic" style="width: auto; height: 50px">
             <p class="participant-name"><strong>${row[0]}</strong></p>
-            <p>Prize:</p>
-            <p><img src="/images/RollCoin.png" alt="Rollcoin" style="width: 17px; height: 17px"><strong> ${row[2]}</strong> </p>
-            <p>Deposited:</p>
-            <p><strong>${row[3]}</strong> </p>
+            <p>Tickets:</p>
+            <p><strong>${row[2]}</strong> </p>
         `;
 
         // Boxen positionieren
@@ -87,12 +84,9 @@ function displayAllParticipants(participants) {
 
         // Eine Zeile mit den jeweiligen Daten
         tr.innerHTML = `
-            <td>${row[1]}</td> <!-- Prize -->
-            <td>${row[0]}</td> <!-- Username -->
-            <td>${row[3]}</td> <!-- Username -->
-            <td><img src="/images/RollCoin.png" alt="Rollcoin" style="width: 17px; height: 17px"> ${row[2]}</td> <!-- Wagered -->
-            
-            
+            <td>${row[1]}</td> 
+            <td>${row[0]}</td> 
+            <td>Tickets: <strong>${row[2]}</strong></td>
             `//<td><img src="${row[4]}" alt="Avatar" class="participant-avatar" style="width: 50px; height: 50px; border-radius: 50%;"></td> <!-- Avatar -->
         ;
 

@@ -18,7 +18,17 @@ body {
 .body-roll {
     font-family: "Oswald", sans-serif; 
     font-optical-sizing: auto;
-    background-image: linear-gradient(to bottom, rgba(124, 0, 0, 0.959) 40%, rgb(255, 115, 0) 250%);
+    background-image: linear-gradient(to bottom, rgba(124, 0, 0, 0.959) 40%, rgba(255, 140, 45, 0.801) 250%);
+    background-position: top; 
+    background-repeat: no-repeat; 
+    color: #f5f5f5; 
+    display: flex; 
+    flex-direction: column; 
+}
+.body-skinrave {
+    font-family: "Oswald", sans-serif; 
+    font-optical-sizing: auto;
+    background-image: linear-gradient(to bottom, rgb(4, 131, 0) 40%, rgba(77, 77, 77, 0.76) 250%);
     background-position: top; 
     background-repeat: no-repeat; 
     color: #f5f5f5; 
@@ -37,6 +47,7 @@ main {
     padding: 20px;
     width: 100%;
     overflow-x: hidden;
+    padding-top: 1cm;
 }
 
 footer {
@@ -280,7 +291,19 @@ tbody tr:hover {
     overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
     transition: all 0.3s ease;
 }
-
+.participant-box-skinrave {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(#48ff00d3,#042b00c9) ;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
+    max-width: 250px; /* Maximale Breite der Box */
+    min-width: 150px; /* Minimale Breite der Box */
+    height: auto;  /* Höhe passt sich dem Inhalt an */
+    overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
+    transition: all 0.3s ease;
+}
 
 .participant-box:hover {
     transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
@@ -291,6 +314,11 @@ tbody tr:hover {
     transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
     color: #ffffff;
     background-color:#ff3c017a ;
+}
+.participant-box-skinrave:hover {
+    transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
+    color: #ffffff;
+    background-color:#58ff61b6 ;
 }
 
 .participant-avatar {
