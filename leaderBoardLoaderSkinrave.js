@@ -111,7 +111,7 @@ function displayAllParticipants(participants) {
         </td> <!-- Username -->
         <td>${row[3]}</td> <!-- Prize -->
         <td>
-            <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px; margin-right: 5px;">
+            <img src="/images/ravecoin.png" alt="Rollcoin" style="width: 19px; height: 19px; margin-right: 5px;">
             ${row[2]}
         </td> <!-- Wagered -->
 `;
