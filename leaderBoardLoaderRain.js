@@ -42,7 +42,7 @@ function getSheetData() {
             const data = response.result.values;
             if (data.length > 0) {
                 // Nur die Spalten C (2), D (3), F (5) und G (6) extrahieren, ab der zweiten Zeile 
-                const filteredData = data.slice(2).map(row => [
+                const filteredData = data.slice(1).map(row => [
                     row[2],  // Spalte C Name
                     row[3],  // Spalte D Rang
                     formatNumber(row[5]),  // Spalte F mit Formatierung Price
