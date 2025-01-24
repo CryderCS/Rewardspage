@@ -168,5 +168,5 @@ function startCountdown(targetDate) {
     }
 
     updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
+    const interval = setInterval(updateCountdown, 100);
 }
