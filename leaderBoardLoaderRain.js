@@ -1,6 +1,6 @@
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI'; // Dein API-Schlüssel
 const spreadsheetId = '1R9R6QH6A_mrwbR2RnpaOTSnjLKOzaMiPaVXiHxU_Z70'; // Dein Spreadsheet-ID (ersetze dies)
-const range = 'Sheet1!A1:H100'; // Bereich in deinem Google Sheet
+const range = 'Sheet1!A1:J100'; // Bereich in deinem Google Sheet
 
 // Google API initialisieren
 function initApi() {
@@ -47,12 +47,20 @@ function getSheetData() {
                     row[3],  // Spalte D Rang
                     formatNumber(row[5]),  // Spalte F mit Formatierung Price
                     row[6],   // Spalte G wagered
-                    row[7]     //Avatar
+                    row[7],     //Avatar
+                    row[9]      //Enddatum
                 ]);
 
                 // Die ersten drei Ergebnisse in Kacheln anzeigen
                 displayTopThreeInBoxes(filteredData.slice(0, 3));
                 displayAllParticipants(filteredData.slice(3));
+                // Hier den Countdown mit dem Enddatum starten
+            if (filteredData.length > 0 && filteredData[0][5]) {
+                console.log("Gefundenes Enddatum:", filteredData[0][5]); // Debugging
+                startCountdown(filteredData[0][5]);  // Das Enddatum von Platz 1 verwenden
+            } else {
+                console.error("Kein gültiges Enddatum gefunden.");
+            }
             } else {
                 console.log('Keine Daten gefunden.');
             }
@@ -135,3 +143,30 @@ function loadApi() {
 
 // Starte das Laden der API, wenn die Seite vollständig geladen ist
 document.addEventListener('DOMContentLoaded', loadApi);
+
+//Timer 
+function startCountdown(targetDate) {
+    const countdownElement = document.getElementById("countdown");
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const targetTime = new Date(targetDate).getTime();
+        const timeRemaining = targetTime - now;
+
+        if (timeRemaining <= 0) {
+            countdownElement.innerHTML = "Zeit abgelaufen!";
+            clearInterval(interval);
+            return;
+        }
+
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+}

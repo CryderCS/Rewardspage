@@ -29,6 +29,7 @@ function getSheetData() {
                 row[0],  // Spalte A
                 row[1],  // Spalte B
                 row[2],  // Spalte C
+                row[3]   // Spalte D Datum
             ]);
 
             // Spaltenüberschriften in die Tabelle einfügen
@@ -36,6 +37,13 @@ function getSheetData() {
             // Gefilterte Daten in die Tabelle einfügen
             displayTopThreeInBoxes(filteredData.slice(0, 3));
             displayAllParticipants(filteredData.slice(3))
+            // Hier den Countdown mit dem Enddatum starten
+            if (filteredData.length > 0 && filteredData[0][3]) {
+                console.log("Gefundenes Enddatum:", filteredData[0][3]); // Debugging
+                startCountdown(filteredData[0][3]);  // Das Enddatum von Platz 1 verwenden
+            } else {
+                console.error("Kein gültiges Enddatum gefunden.");
+            }
         } else {
             console.log('Keine Daten gefunden.');
         }
@@ -100,3 +108,29 @@ function loadApi() {
 
 // Starte das Laden der API
 loadApi();
+//Timer 
+function startCountdown(targetDate) {
+    const countdownElement = document.getElementById("countdown");
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const targetTime = new Date(targetDate).getTime();
+        const timeRemaining = targetTime - now;
+
+        if (timeRemaining <= 0) {
+            countdownElement.innerHTML = "Zeit abgelaufen!";
+            clearInterval(interval);
+            return;
+        }
+
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+}

@@ -381,3 +381,20 @@ tbody tr:hover {
         min-width: 120px; /* Minimale Breite */
     }
 }
+
+#countdown {
+    font-size: clamp(1.5rem, 5vw, 3rem); /* Passt die Größe an den Bildschirm an */
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(180deg, #161616de, #818181);
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+#countdown:hover {
+    box-shadow: 0 0 15px rgba(0, 183, 255, 0.8);
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
