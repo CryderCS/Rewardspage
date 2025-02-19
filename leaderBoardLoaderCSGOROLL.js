@@ -1,6 +1,6 @@
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';  // Dein API-Schlüssel
 const spreadsheetId = '1Jn95fuSVCESmd2riDKIGofFoqYCmd3KdQd-BYSn28-A';  // Deine Spreadsheet-ID
-const range = 'Sheet1!A1:D10';  // Bereich A1 bis D10 (nur Spalten A, B, C, D)
+const range = 'Sheet1!A1:D100';  // Bereich A1 bis D100 (nur Spalten A, B, C, D)sdasdasdasdasda
 
 // Google API initialisieren
 function initApi() {
