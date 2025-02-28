@@ -5,6 +5,15 @@ html, body {
     margin: 0;
     overflow-x: hidden;
 }
+.responsive-heading {
+    font-size: clamp(1rem, 10vw, 5rem); /* Mindestgröße: 1rem, wächst mit der Viewport-Breite, Maximalgröße: 2.5rem */
+}
+.responsive-heading-2 {
+    font-size: clamp(1rem, 8vw, 5rem); /* Mindestgröße: 1rem, wächst mit der Viewport-Breite, Maximalgröße: 2.5rem */
+}
+.responsive-heading-2 {
+    font-size: clamp(1rem, 9vw, 5rem); /* Mindestgröße: 1rem, wächst mit der Viewport-Breite, Maximalgröße: 2.5rem */
+}
 body { 
     font-family: "Oswald", sans-serif; 
     font-optical-sizing: auto;
