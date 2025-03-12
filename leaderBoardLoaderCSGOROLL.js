@@ -1,15 +1,16 @@
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';  // Dein API-Schlüssel
 const spreadsheetId = '1Jn95fuSVCESmd2riDKIGofFoqYCmd3KdQd-BYSn28-A';  // Deine Spreadsheet-ID
-const range = 'Sheet1!A1:D100';  // Bereich A1 bis D100 (nur Spalten A, B, C, D)sdasdasdasdasda
-
+const range = 'NewLeaderboard!A1:G100';  // Bereich
+//Endatum übergeben
+const spreadsheetIdDate = '1Jn95fuSVCESmd2riDKIGofFoqYCmd3KdQd-BYSn28-A';  // Deine Spreadsheet-ID
+const rangeDate = 'EndDate!A1:A1';  // Bereich
 // Google API initialisieren
 function initApi() {
     gapi.client.init({
         'apiKey': apiKey,
         'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4']
     }).then(() => {
-        // Google Sheets API aufrufen
-        getSheetData();
+        getSheetData();  // Google Sheets API abrufen
     });
 }
 
@@ -21,30 +22,70 @@ function getSheetData() {
     }).then((response) => {
         const data = response.result.values;
         if (data.length > 0) {
-            // Die erste Zeile als Überschrift verwenden
-            const headers = data[0];  // Erste Zeile (Index 0) wird als Überschrift genommen
-
-            // Nur die Spalten A (0), B (1), C (2) und D (3) extrahieren, ab der zweiten Zeile
-            const filteredData = data.slice(1).map(row => [
-                row[0],  // Spalte A
-                row[1],  // Spalte B
-                row[2],  // Spalte C
-                row[3]   // Spalte D Datum
+            const headers = data[0];  // Spaltenüberschriften
+            let filteredData = data.slice(1).map(row => [
+                row[0],   // Spalte A
+                row[1],   // Spalte B
+                parseFloat(row[2]) || 0,   // Spalte C
+                parseFloat(row[3]) || 0,  // Spalte D (Wert umwandeln in Float)
+                row[4],   // Spalte E
+                row[5],   // Spalte F
+                row[6]   // Spalte G
             ]);
 
-            // Spaltenüberschriften in die Tabelle einfügen
-            
-            // Gefilterte Daten in die Tabelle einfügen
+            // 0 Deposit entfernen
+            filteredData = filteredData.filter(row => row[2] !== 0);
+
+            // Gesamtbetrag berechnen
+            let totalAmmount = filteredData.reduce((sum, row) => sum + row[3], 0);
+            console.log("Gesamtbetrag:", totalAmmount);
+
+            // Sortieren nach Spalte D (größter Wert zuerst)
+            filteredData.sort((a, b) => b[3] - a[3]);
+
+            // Platzierungen vergeben
+            filteredData = filteredData.map((row, index) => [...row, index + 1]);
+
+            console.log("Sortierte Daten mit Platzierungen:", filteredData);
+
+            // Platzierungen vergeben & Bonus berechnen
+            const bonusDistribution = [0.5, 0.2, 0.15, 0.06, 0.06, 0.03]; // Bonus für die Plätze 1-6
+            filteredData = filteredData.map((row, index) => {
+                let bonus = 0;
+                if (index < bonusDistribution.length) {
+                    bonus = totalAmmount * bonusDistribution[index]; // Prozentualer Anteil berechnen
+                }
+                return [...row, index + 1, bonus.toFixed(2)]; // Platzierung & Bonus als neue Spalten
+            });
+            console.log("Gefilterte und sortierte Daten mit Platzierungen & Boni:", filteredData);
+            // Top 3 anzeigen
             displayTopThreeInBoxes(filteredData.slice(0, 3));
-            displayAllParticipants(filteredData.slice(3))
-            // Hier den Countdown mit dem Enddatum starten
-            if (filteredData.length > 0 && filteredData[0][3]) {
-                console.log("Gefundenes Enddatum:", filteredData[0][3]); // Debugging
-                startCountdown(filteredData[0][3]);  // Das Enddatum von Platz 1 verwenden
-            } else {
-                console.error("Kein gültiges Enddatum gefunden.");
-            }
-        } else {
+            displayAllParticipants(filteredData.slice(3));
+            
+            // Enddatum für Countdown aus Blatt ziehen
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: spreadsheetIdDate,
+                range: rangeDate
+            }).then((response) => {
+                const dateData = response.result.values;
+                let date = null; // Variable außerhalb der Funktion definieren
+            
+                if (dateData.length > 0) {
+                    date = dateData[0][0];  // Korrekte Schreibweise
+                } else {
+                    console.error('Kein Enddatum gefunden.');
+                }
+            
+                // Countdown starten (muss hier im Callback sein!)
+                if (filteredData.length > 0 && date) {
+                    console.log("Gefundenes Enddatum:", date); 
+                    startCountdown(date);  
+                } else {
+                    console.error("Kein gültiges Enddatum gefunden.");
+                }
+            }).catch(error => {
+                console.error('Fehler beim Abrufen des Enddatums:', error);
+            });} else {
             console.log('Keine Daten gefunden.');
         }
     }, (error) => {
@@ -64,10 +105,12 @@ function displayTopThreeInBoxes(topThree) {
 
         // HTML-Inhalt für die Box erstellen
         box.innerHTML = `
-            <h3>#${row[1]}</h3>
+            <h3>#${row[8]}</h3>
             <img src="/images/CSGOROLL_Logo.png" alt="ProfilePic" style="width: auto; height: 50px">
-            <p class="participant-name"><strong>${row[0]}</strong></p>
-            <p>Tickets:</p>
+            <p class="participant-name"><strong>${row[1]}</strong></p>
+            <p>Price:</p>
+            <p><img src="/images/Rollcoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[9]}</strong> </p>
+            <p>Deposit</p>
             <p><strong>${row[2]}</strong> </p>
         `;
 
@@ -92,15 +135,17 @@ function displayAllParticipants(participants) {
 
         // Eine Zeile mit den jeweiligen Daten
         tr.innerHTML = `
+            <td>${row[8]}</td> 
             <td>${row[1]}</td> 
-            <td>${row[0]}</td> 
-            <td>Tickets: <strong>${row[2]}</strong></td>
+            <td>Deposit: <strong>${row[2]}</strong></td>
+            <td>Price:<img src="/images/Rollcoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[9]}</strong></td>
             `//<td><img src="${row[4]}" alt="Avatar" class="participant-avatar" style="width: 50px; height: 50px; border-radius: 50%;"></td> <!-- Avatar -->
         ;
 
         tbody.appendChild(tr);
     });
 }
+
 // API laden und initialisieren
 function loadApi() {
     gapi.load('client', initApi);
@@ -134,3 +179,25 @@ function startCountdown(targetDate) {
     updateCountdown();
     const interval = setInterval(updateCountdown, 100);
 }
+// Bonusverteilung
+const bonusDistribution = [
+    { platz: "1. Place", prozent: "50%" },
+    { platz: "2. Place", prozent: "20%" },
+    { platz: "3. Place", prozent: "15%" },
+    { platz: "4. Place", prozent: "6%" },
+    { platz: "5. Place", prozent: "6%" },
+    { platz: "6. Place", prozent: "3%" }
+];
+
+// Tabelle füllen
+function createBonusTable() {
+    const tableBody = document.querySelector("#bonusTable tbody");
+    bonusDistribution.forEach(entry => {
+        let row = document.createElement("tr");
+        row.innerHTML = `<td>${entry.platz}</td><td>${entry.prozent}</td>`;
+        tableBody.appendChild(row);
+    });
+}
+
+// Wenn das DOM geladen ist, Tabelle erstellen
+document.addEventListener("DOMContentLoaded", createBonusTable);

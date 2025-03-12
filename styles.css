@@ -403,7 +403,18 @@ tbody tr:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 #countdown:hover {
-    box-shadow: 0 0 15px rgba(0, 183, 255, 0.8);
+    box-shadow: 0 0 15px rgba(43, 230, 255, 0.411);
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
+}
+.small-table {
+    width: 30%; /* Kleinere Breite */
+    font-size: 14px; /* Kleinere Schrift */
+    margin: 10px auto; /* Zentriert */
+}
+
+.small-table th, 
+.small-table td {
+    padding: 8px; /* Kleinere Zellengröße */
+    background-color: #ff324300;
 }
