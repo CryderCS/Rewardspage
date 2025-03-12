@@ -4,6 +4,11 @@ const range = 'NewLeaderboard!A1:G100';  // Bereich
 //Endatum übergeben
 const spreadsheetIdDate = '1Jn95fuSVCESmd2riDKIGofFoqYCmd3KdQd-BYSn28-A';  // Deine Spreadsheet-ID
 const rangeDate = 'EndDate!A1:A1';  // Bereich
+
+let totalAmmount = 0;  // Gesamtbetrag
+
+
+
 // Google API initialisieren
 function initApi() {
     gapi.client.init({
@@ -39,6 +44,10 @@ function getSheetData() {
             // Gesamtbetrag berechnen
             let totalAmmount = filteredData.reduce((sum, row) => sum + row[3], 0);
             console.log("Gesamtbetrag:", totalAmmount);
+            
+            // Total Amount anzeigen
+            document.getElementById("totalAmountDisplay").innerText = 
+            `Total Ammount: ${totalAmmount.toLocaleString()}`;
 
             // Sortieren nach Spalte D (größter Wert zuerst)
             filteredData.sort((a, b) => b[3] - a[3]);
@@ -91,6 +100,8 @@ function getSheetData() {
     }, (error) => {
         console.error('Fehler beim Abrufen der Daten:', error);
     });
+    
+
 }
 
 // Spaltenüberschriften in die HTML-Tabelle einfügen
@@ -199,5 +210,9 @@ function createBonusTable() {
     });
 }
 
+
 // Wenn das DOM geladen ist, Tabelle erstellen
 document.addEventListener("DOMContentLoaded", createBonusTable);
+
+
+
