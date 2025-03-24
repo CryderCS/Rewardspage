@@ -71,12 +71,15 @@ function getSheetData() {
                 }
             }).catch(error => {
                 console.error('Fehler beim Abrufen des Enddatums:', error);
+                
             });
         } else {
             console.log('Keine Daten gefunden.');
+            
         }
     }, (error) => {
         console.error('Fehler beim Abrufen der Daten:', error);
+       
     });
 }
 
@@ -104,6 +107,8 @@ function displayTopThreeInBoxes(topThree) {
 
         container.appendChild(box);
     });
+    
+    
 }
 
 // Alle Teilnehmer in Tabelle anzeigen
@@ -123,6 +128,7 @@ function displayAllParticipants(participants) {
 
         tbody.appendChild(tr);
     });
+    
 }
 
 // API laden und initialisieren
