@@ -19,8 +19,25 @@ function initApi() {
     });
 }
 
+// Funktion zum Anpingen des Sheets
+function pingSheetBeforeFetching() {
+    // Anpingen des Sheets, um sicherzustellen, dass es bereit ist
+    gapi.client.sheets.spreadsheets.get({
+        spreadsheetId: spreadsheetId
+    }).then(() => {
+        // Wartezeit einfügen, um sicherzustellen, dass das Sheet bereit ist
+        setTimeout(() => {
+            // Daten abrufen, nachdem das Sheet bereit ist
+            getSheetData();
+        }, 1000); // 2000 Millisekunden (2 Sekunden) Wartezeit
+    }).catch((error) => {
+        console.error('Fehler beim Anpingen des Sheets:', error);
+    });
+}
+
 // Laden der Google Sheets-Daten
 function getSheetData() {
+    setTimeout(() => {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: spreadsheetId,
         range: range
@@ -81,6 +98,7 @@ function getSheetData() {
         console.error('Fehler beim Abrufen der Daten:', error);
        
     });
+}, 100); // 2000 Millisekunden (2 Sekunden) Wartezeit
 }
 
 // Die ersten drei Teilnehmer in Kacheln anzeigen
