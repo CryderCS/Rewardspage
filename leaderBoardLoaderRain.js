@@ -85,10 +85,8 @@ function displayTopThreeInBoxes(topThree) {
             <h3>#${row[1]}</h3>
             <img src="${row[4]}" alt="ProfilePic" class="participant-avatar">
             <p class="participant-name"><strong>${row[0]}</strong></p>
-            <p>Prize:</p>
-            <p><img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[2]}</strong> </p>
-            <p>Wagered:</p>
-            <p><strong>${row[3]}</strong> </p>
+            <p class="info-box">Wagered: <br> <strong>${row[3]}</strong> </p>
+            <p class="info-box">Prize: <br> <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[2]}</strong> </p>    
         `;
 
         // Boxen positionieren
@@ -114,7 +112,7 @@ function displayAllParticipants(participants) {
         tr.innerHTML = `
         <td>${row[1]}</td> <!-- Position (ab 1. Platz) -->
         <td>
-            <img src="${row[4]}" alt="Avatar" style="width: 19px; height: 19px; border-radius: 50%; margin-right: 5px;">
+            <img src="${row[4]}" alt="Avatar" style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;">
             ${row[0]}
         </td> <!-- Username -->
         <td>${row[3]}</td> <!-- Prize -->

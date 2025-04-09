@@ -160,17 +160,17 @@ h1, p {
 }
 
 .box img {
-    width: 100%;
+    width: 80%;
     height: auto;
     margin-top: 0px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
 }
 
 .box span {
     display: flex;
     justify-content:center; /* Zentriert den Text horizontal */
     align-items:end;     /* Zentriert den Text vertikal */
-    color: #000000;
+    color: #e6e6e6cc;
     font-size: 24px;
     font-weight: bold;
     width: 100%;              /* Stellt sicher, dass das <span> die gesamte Breite der Box einnimmt */
@@ -188,66 +188,88 @@ h1, p {
 #table-container {
     margin-top: 20px;
     padding: 10px;
-    background-color: #040a3bcc;
-    border-radius: 5px;
+    background-color: #91919167;
+    border-radius: 15px;
     justify-self: center;
 }
-  
+
 /* Stil für die Tabelle */
 table {
     width: 80%;
     margin: 0 auto;
-    border-collapse: collapse;
-    font-family: "Oswald", sans-serif;  /* Optional: Schriftart auf die Tabelle anwenden */
-    font-size: 16px; /* Standard-Schriftgröße für die gesamte Tabelle */
-    color: #ffffff; /* Schriftfarbe für den gesamten Text in der Tabelle */
-    
+    border-spacing: 0 10px; /* Abstand NUR zwischen den Zeilen */
+    border-collapse: separate; /* Wichtig: erlaubt spacing! */
+    font-family: "Oswald", sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
 }
-  
+
 /* Stil für Tabellenkopf (th) */
 th {
     padding: 8px;
-    text-align: center;    /* Zentriert den Text im Tabellenkopf */
-    vertical-align: middle; /* Vertikale Zentrierung im Tabellenkopf */
+    text-align: center;
+    vertical-align: middle;
     border: 1px solid #ddd;
     background-color: #3d5872c4;
-    color: #b4b4b4; /* Schriftfarbe für die Kopfzeile */
-    font-size: 18px; /* Schriftgröße für den Tabellenkopf */
+    color: #b4b4b4;
+    font-size: 18px;
 }
-  
+
 /* Stil für Tabellenzellen (td) */
 td {
     padding: 8px;
-    text-align: center;    /* Zentriert den Text im Tabellenkopf */
-    vertical-align: middle; /* Vertikale Zentrierung im Tabellenkopf */
-    border: 1px solid #ddd;
-    color: #ffffff; /* Schriftfarbe für die Zellen */
-    font-size: 16px; /* Schriftgröße für die Zellen */
-    
-}
-tr {
-    transition: transform 0.3s ease; /* Fügt eine Übergangsanimation hinzu */
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #fdfdfd65;
+    color: #ffffff;
+    font-size: 18px;
+    background-color: #ffffff0e; /* Hintergrundfarbe der Zellen */
 }
 
-/* Stil für die Tabellenzeilen beim Hover */
-tbody tr:hover {
-    background-color: #3d587291;/* Hintergrundfarbe beim Hover */
-    cursor: pointer;  /* Zeigt den Mauszeiger als Hand an */
-    transform: scale(1.05);  /* Vergrößert die Zeile um 5% */
-    
+/* Zeilen-Stil mit Animation */
+tr {
+    transition: transform 0.3s ease;
 }
+
+/* Hover-Effekt für Zeilen */
+/*tbody tr:hover td {
+    background-color: #c5c5c5b4;
+    cursor: pointer;
+    transform: scale(1.02);
+}*/
+
+/* Tabelle allgemein */
 #sheet-table {
     max-width: 80%;
-    min-width: auto;
-    border-collapse: collapse;
-    margin-top: 50px; /* Abstand nach oben (zwischen Kacheln und Tabelle) */
-
+    margin-top: 50px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
 }
 
+/* Optional: Header-Überschriften neutraler */
 #sheet-table th {
-    background-color: #f4f4f4;
+    background-color: #3d587200;
+}
+/* Runde nur die erste und letzte Zelle einer Zeile ab */
+tr td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
+tr td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+/* Hover-Effekt für komplette Tabellenzeile */
+tbody tr:hover td {
+    background-color: #94949491; /* leicht transparenter Highlight */
+    transform: scale(1.01); /* leichtes Vergrößern */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sanfter Schatten */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
 
 .footer-container {
     max-width: 100%;
@@ -299,7 +321,7 @@ tbody tr:hover {
     padding: 20px;
     background: linear-gradient(#00b7ffde, #010e13);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);
     width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
     max-width: 250px; /* Maximale Breite der Box */
     min-width: 150px; /* Minimale Breite der Box */
@@ -312,7 +334,7 @@ tbody tr:hover {
     padding: 20px;
     background: linear-gradient(#ff3c01,#420404cc) ;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);
     width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
     max-width: 250px; /* Maximale Breite der Box */
     min-width: 150px; /* Minimale Breite der Box */
@@ -325,7 +347,7 @@ tbody tr:hover {
     padding: 20px;
     background: linear-gradient(#48ff00d3,#042b00c9) ;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);
     width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
     max-width: 250px; /* Maximale Breite der Box */
     min-width: 150px; /* Minimale Breite der Box */
@@ -339,7 +361,7 @@ tbody tr:hover {
     padding: 20px;
     background: linear-gradient(#030233d3,#1f5d75c9) ;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);
     width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
     max-width: 250px; /* Maximale Breite der Box */
     min-width: 150px; /* Minimale Breite der Box */
@@ -358,10 +380,10 @@ tbody tr:hover {
     color: #ffffff;
     background-color:#ff3c017a ;
 }
-.participant-box-skinrave:hover {
+.participant-box-csgobig:hover {
     transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
     color: #ffffff;
-    background-color:#58ff61b6 ;
+    background-color:#4964ffad ;
 }
 
 .participant-avatar {
@@ -370,7 +392,8 @@ tbody tr:hover {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 10px;
-    border: 5px solid #010e13;
+    border: 5px solid #aaaaaa6b;
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;
 }
 
 /* Platzierung des ersten Platzes (oben in der Mitte) */
@@ -393,6 +416,15 @@ tbody tr:hover {
     grid-row: 1; /* Erste Reihe */
     margin-top: 60px; /* Verschieben nach unten */
 }
+
+.info-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 22px;
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;
+  }
 
 .participant-name {
     color: #ffffff;
@@ -429,15 +461,15 @@ tbody tr:hover {
     font-size: clamp(1.5rem, 5vw, 3rem); /* Passt die Größe an den Bildschirm an */
     font-weight: bold;
     color: white;
-    background: linear-gradient(180deg, #161616de, #818181);
+    background: linear-gradient(180deg, #1616162d, #818181);
     padding: 10px 20px;
     border-radius: 8px;
     display: inline-block;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2);
 }
 #countdown:hover {
-    box-shadow: 0 0 15px rgba(43, 230, 255, 0.411);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.411);
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
 }
@@ -463,9 +495,4 @@ tbody tr:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
