@@ -7,7 +7,7 @@ const spreadsheetIdDate = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
 const rangeDate = 'Enddate!A1:A1';
 
 // Preisliste nach Platzierung
-const prizeDistribution = [250, 100, 75, 30, 25, 10, 10];
+const prizeDistribution = [125, 50, 35, 20, 10, 10]; // Preise für die Plätze 1-7 (Platz 8 und höher = 0)
 
 // Google API initialisieren
 function initApi() {
