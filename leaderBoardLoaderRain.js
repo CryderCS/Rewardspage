@@ -1,5 +1,5 @@
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI'; // Dein API-Schlüssel
-const spreadsheetId = '1R9R6QH6A_mrwbR2RnpaOTSnjLKOzaMiPaVXiHxU_Z70'; // Dein Spreadsheet-ID (ersetze dies)
+const spreadsheetId = '1kuB0dSv0yobxIxjq3laApPlqB1WN7cAsGxceLmWN7So'; // Dein Spreadsheet-ID (ersetze dies)
 const range = 'Sheet1!A1:J100'; // Bereich in deinem Google Sheet
 
 // Google API initialisieren
