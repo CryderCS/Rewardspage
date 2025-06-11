@@ -31,7 +31,7 @@ function getSheetData() {
             let filteredData = data.slice(1).map(row => [
                 row[0],   // Spalte A
                 row[1],   // Spalte B
-                parseFloat(row[2]) || 0,   // Spalte C
+                Math.round((parseFloat(row[2]) || 0) * 100) / 100,   // Spalte C
                 parseFloat(row[3]) || 0,  // Spalte D (Wert umwandeln in Float)
                 row[4],   // Spalte E
                 row[5],   // Spalte F
@@ -119,10 +119,9 @@ function displayTopThreeInBoxes(topThree) {
             <h3>#${row[8]}</h3>
             <img src="/images/CSGOROLL_Logo.png" alt="ProfilePic" style="width: auto; height: 50px">
             <p class="participant-name"><strong>${row[1]}</strong></p>
-            <p>Price:</p>
-            <p><img src="/images/Rollcoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[9]}</strong> </p>
-            <p>Deposit</p>
-            <p><strong>${row[2]}</strong> </p>
+            <p class="info-box">Deposited: <br> <strong>${row[2]}</strong> </p>
+            <p class="info-box">Prize: <br> <img src="/images/Rollcoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[9]}</strong> </p>
+            
         `;
 
         // Boxen positionieren

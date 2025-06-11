@@ -341,6 +341,7 @@ tbody tr:hover td {
     height: auto;  /* Höhe passt sich dem Inhalt an */
     overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
     transition: all 0.3s ease;
+    
 }
 .participant-box-skinrave {
     text-align: center;
