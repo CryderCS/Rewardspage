@@ -200,8 +200,8 @@ h1, p {
 
 .box span {
     display: flex;
-    justify-content:center; /* Zentriert den Text horizontal */
-    align-items:end;     /* Zentriert den Text vertikal */
+    justify-content:center;
+    align-items: center;     /* Zentriert den Text vertikal */
     color: #e6e6e6;
     font-size: 24px;
     font-weight: bold;
@@ -472,6 +472,7 @@ tbody tr:hover td {
     margin-bottom: 10px;
     font-size: 22px;
     text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
     /* box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;*/
     /* From https://css.glass */
     background: rgba(255, 255, 255, 0.19);
