@@ -10,6 +10,7 @@
     <script src="leaderBoardLoaderCSGOROLL.js"></script>
 </head>
 <body class="body-roll">
+    <div class="finisher-header"></div>
     <nav>
         <ul>
             <li><a href="/index.html"><img src="images/home.png" alt="Home" class="nav-icon">Home</a></li>
@@ -39,6 +40,44 @@
     <tbody></tbody>
 </table>
 </main>    
+<script src="backgroundskript.js" type="text/javascript"></script>
+<script type="text/javascript">
+new FinisherHeader({
+  "count": 80,
+  "size": {
+    "min": 2,
+    "max": 23,
+    "pulse": 0.1
+  },
+  "speed": {
+    "x": {
+      "min": 0,
+      "max": 1
+    },
+    "y": {
+      "min": 0,
+      "max": 0.6
+    }
+  },
+  "colors": {
+    "background": "transparent",
+    "particles": [
+      "#9a1e00",
+      "#fe2100",
+      "#bd0000"
+    ]
+  },
+  "blending": "lighten",
+  "opacity": {
+    "center": 1,
+    "edge": 0
+  },
+  "skew": 0,
+  "shapes": [
+    "c"
+  ]
+});
+</script>
 <footer>
     <div class="footer-container">
         <ul class="social-links">

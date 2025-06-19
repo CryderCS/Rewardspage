@@ -10,7 +10,7 @@
     <script src="leaderBoardLoaderRain.js"></script>
 </head>
 <body>
-
+    <div class="finisher-header"></div>
     <nav>
         <ul>
             <li><a href="/index.html"><img src="images/home.png" alt="Home" class="nav-icon">Home</a></li>
@@ -32,6 +32,44 @@
             <tbody></tbody>
         </table>
     </main>
+    <script src="backgroundskript.js" type="text/javascript"></script>
+<script type="text/javascript">
+new FinisherHeader({
+  "count": 80,
+  "size": {
+    "min": 2,
+    "max": 23,
+    "pulse": 0.1
+  },
+  "speed": {
+    "x": {
+      "min": 0,
+      "max": 1
+    },
+    "y": {
+      "min": 0,
+      "max": 0.6
+    }
+  },
+  "colors": {
+    "background": "transparent",
+    "particles": [
+      "#4cf4ff",
+      "#d7f3fe",
+      "#0008ae"
+    ]
+  },
+  "blending": "lighten",
+  "opacity": {
+    "center": 1,
+    "edge": 0
+  },
+  "skew": 0,
+  "shapes": [
+    "c"
+  ]
+});
+</script>
     <footer>
         <div class="footer-container">
             <ul class="social-links">
