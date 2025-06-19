@@ -1,6 +1,6 @@
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI'; // Dein API-Schlüssel
 const spreadsheetId = '1kuB0dSv0yobxIxjq3laApPlqB1WN7cAsGxceLmWN7So'; // Dein Spreadsheet-ID (ersetze dies)
-const range = 'Sheet1!A1:J100'; // Bereich in deinem Google Sheet
+const range = 'Sheet1!A1:K100'; // Bereich in deinem Google Sheet
 
 // Google API initialisieren
 function initApi() {
@@ -48,7 +48,8 @@ function getSheetData() {
                     formatNumber(row[5]),  // Spalte F mit Formatierung Price
                     row[6],   // Spalte G wagered
                     row[7],     //Avatar
-                    row[9]      //Enddatum
+                    row[9],      //Enddatum
+                    row[10] // Cashback
                 ]);
 
                 // Die ersten drei Ergebnisse in Kacheln anzeigen
@@ -85,8 +86,9 @@ function displayTopThreeInBoxes(topThree) {
             <h3>#${row[1]}</h3>
             <img src="${row[4]}" alt="ProfilePic" class="participant-avatar">
             <p class="participant-name"><strong>${row[0]}</strong></p>
-            <p class="info-box">Wagered: <br> <strong>${row[3]}</strong> </p>
-            <p class="info-box">Prize: <br> <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[2]}</strong> </p>    
+            <p class="info-box">Wagered: <br> <strong>${row[3]}</strong></p>
+            <p class="info-box">Prize: <br> <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[2]}</strong> </p>
+            <p class="info-box">Cashback: <br> <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[6]}</strong> </p> 
         `;
 
         // Boxen positionieren
@@ -102,28 +104,48 @@ function displayTopThreeInBoxes(topThree) {
     });
 }
 function displayAllParticipants(participants) {
-    const tbody = document.getElementById('sheet-table').getElementsByTagName('tbody')[0];
+    const table = document.getElementById('sheet-table');
+
+    // Thead erzeugen oder leeren
+    let thead = table.getElementsByTagName('thead')[0];
+    if (!thead) {
+        thead = table.createTHead();
+    }
+    thead.innerHTML = `
+        <tr>
+            <th>Position</th>
+            <th>Username</th>
+            <th>Wagered</th>
+            <th>Price</th>
+            <th>Cashback</th>
+        </tr>
+    `;
+
+    // Tbody erzeugen oder leeren
+    let tbody = table.getElementsByTagName('tbody')[0];
+    if (!tbody) {
+        tbody = table.createTBody();
+    }
     tbody.innerHTML = ''; // Vorherige Inhalte löschen
 
     participants.forEach((row, index) => {
         const tr = document.createElement('tr');
 
-        // Eine Zeile mit den jeweiligen Daten
         tr.innerHTML = `
-        <td>${row[1]}</td> <!-- Position (ab 1. Platz) -->
-        <td>
-            <img src="${row[4]}" alt="Avatar" style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;">
-            ${row[0]}
-        </td> <!-- Username -->
-        <td>${row[3]}</td> <!-- Prize -->
-        <td>
-            <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px; margin-right: 5px;">
-            ${row[2]}
-        </td> <!-- Wagered -->
-`;
+            <td>${row[1]}</td> <!-- Position -->
+            <td>
+                <img src="${row[4]}" alt="Avatar" style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);">
+                ${row[0]}
+            </td>
+            <td>${row[3]}</td> <!-- Prize -->
+            <td>
+                <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px; margin-right: 5px;">
+                ${row[2]}
+            </td>
+            <td>${row[6]}</td> <!-- Cashback -->
+        `;
 
-tbody.appendChild(tr);
-
+        tbody.appendChild(tr);
     });
 }
 // Funktion zum Formatieren der Zahlen (z.B. 14000 zu 140.00)

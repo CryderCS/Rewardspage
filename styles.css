@@ -255,10 +255,10 @@ th {
     padding: 8px;
     text-align: center;
     vertical-align: middle;
-    border: 1px solid #ddd;
-    background-color: #3d5872c4;
-    color: #b4b4b4;
-    font-size: 18px;
+    border: 1px solid #fdfdfd65;
+    color: #ffffff;
+    font-size: 20px;
+    background-color: #ffffff0e; /* Hintergrundfarbe der Zellen */
 }
 
 /* Stil für Tabellenzellen (td) */
@@ -294,7 +294,9 @@ tr {
 
 /* Optional: Header-Überschriften neutraler */
 #sheet-table th {
-    background-color: #3d587200;
+    background-color: #ffffff38;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 /* Runde nur die erste und letzte Zelle einer Zeile ab */
 tr td:first-child {
@@ -308,7 +310,7 @@ tr td:last-child {
 }
 /* Hover-Effekt für komplette Tabellenzeile */
 tbody tr:hover td {
-    background-color: #94949491; /* leicht transparenter Highlight */
+    background-color: #ffffff91; /* leicht transparenter Highlight */
     transform: scale(1.01); /* leichtes Vergrößern */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sanfter Schatten */
     transition: all 0.3s ease;

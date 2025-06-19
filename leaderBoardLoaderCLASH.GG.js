@@ -1,6 +1,6 @@
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
 const spreadsheetId = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
-const range = 'ClashLB!A1:G100';
+const range = 'ClashLB!A1:H100';
 
 // Enddatum übergeben
 const spreadsheetIdDate = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
@@ -55,7 +55,8 @@ function getSheetData() {
                 row[3],  // Active
                 parseFloat(row[4]) || 0,  // Wagered (Wichtig für Platzierung)
                 parseFloat(row[5]) || 0,  // Deposited
-                parseFloat(row[6]) || 0   // Earned
+                parseFloat(row[6]) || 0,   // Earned
+                parseFloat(row[7]) || 0   // Cashback
             ]);
 
             // Spieler mit 0 Wagered entfernen
@@ -114,11 +115,12 @@ function displayTopThreeInBoxes(topThree) {
         box.classList.add('participant-box-roll');
 
         box.innerHTML = `
-            <h3>#${row[7]}</h3>
+            <h3>#${row[8]}</h3>
             <img src="${row[2]}" alt="Avatar" class="participant-avatar">
             <p class="participant-name"><strong>${row[1]}</strong></p>
             <p class="info-box">Wagered: <br> <strong>${row[4]}</strong></p>
-            <p class="info-box">Price:<br> <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[8]}</strong> </p>
+            <p class="info-box">Price:<br> <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[9]}</strong> </p>
+            <p class="info-box">Cashback: <br> <strong>${row[7]}</strong></p>
             
         `;
 
@@ -134,17 +136,38 @@ function displayTopThreeInBoxes(topThree) {
 
 // Alle Teilnehmer in Tabelle anzeigen
 function displayAllParticipants(participants) {
-    const tbody = document.getElementById('sheet-table').getElementsByTagName('tbody')[0];
-    tbody.innerHTML = '';
+    const table = document.getElementById('sheet-table');
 
+    // Thead erzeugen oder leeren
+    let thead = table.getElementsByTagName('thead')[0];
+    if (!thead) {
+        thead = table.createTHead();
+    }
+    thead.innerHTML = `
+        <tr>
+            <th>Position</th>
+            <th>Username</th>
+            <th>Wagered</th>
+            <th>Price</th>
+            <th>Cashback</th>
+        </tr>
+    `;
+
+    // Tbody erzeugen oder leeren
+    let tbody = table.getElementsByTagName('tbody')[0];
+    if (!tbody) {
+        tbody = table.createTBody();
+    }
+    tbody.innerHTML = ''; // Vorherige Inhalte löschen
     participants.forEach((row) => {
         const tr = document.createElement('tr');
 
         tr.innerHTML = `
-            <td>${row[7]}</td> 
+            <td>${row[8]}</td> 
             <td><img src="${row[2]}" alt="Avatar" style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;"> ${row[1]}</td> 
             <td>Wagered: <strong>${row[4]}</strong></td>
-            <td>Price: <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[8]}</strong></td>
+            <td>Price: <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[9]}</strong></td>
+            <td>Price: <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[7]}</strong></td>
         `;
 
         tbody.appendChild(tr);
