@@ -116,11 +116,11 @@ function displayTopThreeInBoxes(topThree) {
 
         box.innerHTML = `
             <h3>#${row[8]}</h3>
-            <img src="${row[2]}" alt="Avatar" class="participant-avatar">
+            <img src="${row[2]}" onerror="this.onerror=null; this.src='images/PivtureDummy.png';" class="participant-avatar">
             <p class="participant-name"><strong>${row[1]}</strong></p>
             <p class="info-box">Wagered: <br> <strong>${row[4]}</strong></p>
             <p class="info-box">Price:<br> <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[9]}</strong> </p>
-            <p class="info-box">Cashback: <br> <strong>${row[7]}</strong></p>
+            <p class="info-box">Cashback: <br> <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[7]}</strong></p>
             
         `;
 
@@ -164,10 +164,10 @@ function displayAllParticipants(participants) {
 
         tr.innerHTML = `
             <td>${row[8]}</td> 
-            <td><img src="${row[2]}" alt="Avatar" style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;"> ${row[1]}</td> 
+            <td><img src="${row[2]}" onerror="this.onerror=null; this.src='images/PivtureDummy.png';" style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;"> ${row[1]}</td> 
             <td>Wagered: <strong>${row[4]}</strong></td>
             <td>Price: <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[9]}</strong></td>
-            <td>Price: <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[7]}</strong></td>
+            <td>Cashback: <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[7]}</strong></td>
         `;
 
         tbody.appendChild(tr);

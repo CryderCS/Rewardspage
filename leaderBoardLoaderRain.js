@@ -134,7 +134,7 @@ function displayAllParticipants(participants) {
         tr.innerHTML = `
             <td>${row[1]}</td> <!-- Position -->
             <td>
-                <img src="${row[4]}" alt="Avatar" style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);">
+                <img src="${row[4]}" onerror="this.onerror=null; this.src='images/PivtureDummy.png';" style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);">
                 ${row[0]}
             </td>
             <td>${row[3]}</td> <!-- Prize -->
@@ -142,7 +142,7 @@ function displayAllParticipants(participants) {
                 <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px; margin-right: 5px;">
                 ${row[2]}
             </td>
-            <td>${row[6]}</td> <!-- Cashback -->
+            <td><img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px">${row[6]}</td> <!-- Cashback -->
         `;
 
         tbody.appendChild(tr);
