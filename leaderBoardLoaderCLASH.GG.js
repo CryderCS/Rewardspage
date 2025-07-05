@@ -120,7 +120,14 @@ function displayTopThreeInBoxes(topThree) {
             <p class="participant-name"><strong>${row[1]}</strong></p>
             <p class="info-box">Wagered: <br> <strong>${row[4]}</strong></p>
             <p class="info-box">Price:<br> <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[9]}</strong> </p>
-            <p class="info-box">Cashback: <br> <img src="/images/ClashGG-Gem.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[7]}</strong></p>
+            <p class="info-box">
+                <span class="tooltip">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tooltiptext">5.000 wagered: 0.5% <br> 10.000 wagered: 0.66% <br> 15.000 wagered: 1.00%</span>
+                </span>
+                Cashback:<br>
+                <strong>${row[7]}</strong>
+            </p>
             
         `;
 
