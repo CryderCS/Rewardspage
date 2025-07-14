@@ -119,7 +119,7 @@ function displayTopThreeInBoxes(topThree) {
             <h3>#${row[8]}</h3>
             <img src="/images/CSGOROLL_Logo.png" alt="ProfilePic" style="width: auto; height: 50px">
             <p class="participant-name"><strong>${row[1]}</strong></p>
-            <p class="info-box">Deposited: <br> <strong>${row[2]}</strong> </p>
+            <p class="info-box">Wagered: <br> <strong>${row[2]}</strong> </p>
             <p class="info-box">Prize: <br> <img src="/images/Rollcoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[9]}</strong> </p>
             
         `;
@@ -147,7 +147,7 @@ function displayAllParticipants(participants) {
         tr.innerHTML = `
             <td>${row[8]}</td> 
             <td>${row[1]}</td> 
-            <td>Deposit: <strong>${row[2]}</strong></td>
+            <td>Wagered: <strong>${row[2]}</strong></td>
             <td>Price:<img src="/images/Rollcoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[9]}</strong></td>
             `//<td><img src="${row[4]}" alt="Avatar" class="participant-avatar" style="width: 50px; height: 50px; border-radius: 50%;"></td> <!-- Avatar -->
         ;
