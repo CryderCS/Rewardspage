@@ -88,14 +88,6 @@ function displayTopThreeInBoxes(topThree) {
             <p class="participant-name"><strong>${row[0]}</strong></p>
             <p class="info-box">Wagered: <br> <strong>${row[3]}</strong></p>
             <p class="info-box">Prize: <br> <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px"><strong>${row[2]}</strong> </p>
-            <p class="info-box">
-            <span class="tooltip">
-                    <i class="fas fa-info-circle"></i>
-                    <span class="tooltiptext">5.000 wagered: 0.5% <br> 10.000 wagered: 0.66% <br> 15.000 wagered: 1.00%</span>
-                </span>
-                Cashback:<br>
-                <strong>${row[6]}</strong>
-            </p>
         `;
 
         // Boxen positionieren
@@ -124,7 +116,6 @@ function displayAllParticipants(participants) {
             <th>Username</th>
             <th>Wagered</th>
             <th>Price</th>
-            <th>Cashback</th>
         </tr>
     `;
 
@@ -149,7 +140,6 @@ function displayAllParticipants(participants) {
                 <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px; margin-right: 5px;">
                 ${row[2]}
             </td>
-            <td><img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px">${row[6]}</td> <!-- Cashback -->
         `;
 
         tbody.appendChild(tr);
