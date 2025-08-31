@@ -115,7 +115,9 @@ function displayTopThreeInBoxes(topThree) {
 
         box.innerHTML = `
             <h3>#${row[7]}</h3>
-            <img src="${row[2]}" alt="Avatar" class="participant-avatar">
+            <img src="${row[2]}" 
+            onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
+            alt="Alternative image" class="participant-avatar">
             <p class="participant-name"><strong>${row[1]}</strong></p>
             <p class="info-box">Wagered: <br> <strong>${row[4]}</strong></p>
             <p class="info-box">Price: <br> <img src="/images/BigCoin.png" alt="Rollcoin" class="rollcoin-icon" style="width: 22px; height: 22px"><strong>${row[8]}</strong></p>
@@ -161,7 +163,8 @@ function displayAllParticipants(participants) {
         tr.innerHTML = `
 
             <td>${row[7]}</td> 
-            <td><img src="${row[2]}" alt="Avatar" style="width: 25px; height: 24px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;"> ${row[1]}</td> 
+            <td><img src="${row[2]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
+            alt="Alternative image" style="width: 25px; height: 24px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;"> ${row[1]}</td> 
             <td>Wagered: <strong>${row[4]}</strong></td>
             <td>Price: <img src="/images/BigCoin.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[8]}</strong></td>
         `;
