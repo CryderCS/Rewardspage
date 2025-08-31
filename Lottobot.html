@@ -18,7 +18,11 @@
 </head>
 <body>
 
-<h1>🎉 Case Opening 🎉</h1>
+<h1>🎉 Cryder LottoBot 🎉</h1>
+<label for="keywordInput">Keyword:</label>
+<input type="text" id="keywordInput" value="cryder" style="padding:5px; margin:0 10px; font-size:16px;">
+<button id="updateKeywordBtn">Update Keyword</button>
+
 <div id="caseContainer">
   <div id="case"></div>
   <div id="yellowLine"></div>
@@ -33,7 +37,15 @@
 <ul id="winnersList"></ul>
 
 <script>
-const keyword = "cryder";
+let keyword = "cryder";
+
+document.getElementById("updateKeywordBtn").addEventListener("click", () => {
+  const input = document.getElementById("keywordInput").value.trim().toLowerCase();
+  if(input) {
+    keyword = input;
+    alert(`Keyword updated to "${keyword}"`);
+  }
+});
 let entries = [];
 let remainingEntries = [];
 let winners = [];
