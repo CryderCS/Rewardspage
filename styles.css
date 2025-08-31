@@ -93,7 +93,10 @@ body {
 .body-big {
     font-family: "Oswald", sans-serif; 
     font-optical-sizing: auto;
-    background-image: linear-gradient(to bottom, rgb(5, 9, 41) 40%, rgba(0, 92, 121, 0.801) 250%);
+    background: #041046;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2f337a, #2832f3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2f337a, #2832f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     background-position: top; 
     background-repeat: no-repeat; 
     color: #f5f5f5; 
@@ -457,16 +460,23 @@ tbody tr:hover td {
 
 .participant-box-csgobig {
     text-align: center;
+    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
     padding: 20px;
-    background: linear-gradient(#030233d3,#1f5d75c9) ;
+    /*background: linear-gradient(#ff3c01,#420404cc) ;*/
     border-radius: 8px;
-    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);
+    /*box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);*/
     width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
     max-width: 250px; /* Maximale Breite der Box */
     min-width: 150px; /* Minimale Breite der Box */
     height: auto;  /* Höhe passt sich dem Inhalt an */
     overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
     transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13.4px);
+    -webkit-backdrop-filter: blur(13.4px);
+    border: 1px solid rgba(255, 255, 255, 0.98);
 }
 
 .participant-box:hover {
@@ -482,7 +492,7 @@ tbody tr:hover td {
 .participant-box-csgobig:hover {
     transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
     color: #ffffff;
-    background-color:#4964ffad ;
+    background-color:#4964ff80 ;
 }
 .participant-box-gem:hover {
     transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */

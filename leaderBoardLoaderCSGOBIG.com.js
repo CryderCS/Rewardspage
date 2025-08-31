@@ -133,13 +133,33 @@ function displayTopThreeInBoxes(topThree) {
 
 // Alle Teilnehmer in Tabelle anzeigen
 function displayAllParticipants(participants) {
-    const tbody = document.getElementById('sheet-table').getElementsByTagName('tbody')[0];
-    tbody.innerHTML = '';
+    const table = document.getElementById('sheet-table');
 
+    // Thead erzeugen oder leeren
+    let thead = table.getElementsByTagName('thead')[0];
+    if (!thead) {
+        thead = table.createTHead();
+    }
+    thead.innerHTML = `
+        <tr>
+            <th>Position</th>
+            <th>Username</th>
+            <th>Wagered</th>
+            <th>Price</th>
+        </tr>
+    `;
+
+    // Tbody erzeugen oder leeren
+    let tbody = table.getElementsByTagName('tbody')[0];
+    if (!tbody) {
+        tbody = table.createTBody();
+    }
+    tbody.innerHTML = ''; // Vorherige Inhalte löschen
     participants.forEach((row) => {
         const tr = document.createElement('tr');
 
         tr.innerHTML = `
+
             <td>${row[7]}</td> 
             <td><img src="${row[2]}" alt="Avatar" style="width: 25px; height: 24px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;"> ${row[1]}</td> 
             <td>Wagered: <strong>${row[4]}</strong></td>

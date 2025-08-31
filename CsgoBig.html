@@ -2,14 +2,16 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>CryderCS CSGOBIG leaderboard</title>
+    <title>CryderCS Rain.gg Leaderboard</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" href="/images/Cryder_logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="leaderBoardLoaderCSGOBIG.com.js"></script>
 </head>
 <body class="body-big">
+    <div class="finisher-header"></div>
     <nav>
         <ul>
             <li><a href="/index.html"><img src="images/home.png" alt="Home" class="nav-icon">Home</a></li>
@@ -21,18 +23,55 @@
         </ul>
     </nav>
 <main>
-    <h1 class="responsive-heading">CSGOBIG Wager Leaderboard</h1>
-    <h2>Currently not available due to bad wagers...</h2>
-    <h2>If you still use code Cryder we might get a second chance!</h2>
-    <!-- <div id="top-three-container"></div>
+    <h1 class="responsive-heading">1000 Coins</h1>
+        <p>Weekly wager contest</p>
+    <div id="top-three-container"></div>
     <div id="countdown"></div>
 <table id="sheet-table">
     <thead></thead>
     <tbody></tbody>
     </table>
 </table>
--->
-</main>    
+
+</main> 
+<script src="backgroundskript.js" type="text/javascript"></script>
+<script type="text/javascript">
+new FinisherHeader({
+  "count": 80,
+  "size": {
+    "min": 2,
+    "max": 23,
+    "pulse": 0.1
+  },
+  "speed": {
+    "x": {
+      "min": 0,
+      "max": 1
+    },
+    "y": {
+      "min": 0,
+      "max": 0.6
+    }
+  },
+  "colors": {
+    "background": "transparent",
+    "particles": [
+      "#4cf4ff",
+      "#d7f3fe",
+      "#0008ae"
+    ]
+  },
+  "blending": "lighten",
+  "opacity": {
+    "center": 1,
+    "edge": 0
+  },
+  "skew": 0,
+  "shapes": [
+    "c"
+  ]
+});
+</script>
 <footer>
     <div class="footer-container">
         <ul class="social-links">
