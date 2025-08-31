@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CS2-Style Case Opening</title>
+<style>
+  body {
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 40px;
+  }
+  #caseContainer {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    height: 150px;
+    margin: 40px auto;
+    overflow: hidden;
+    border: 2px solid gold;
+    border-radius: 10px;
+    background: #222;
+  }
+  #case {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .tile {
+    min-width: 100px;
+    height: 100%;
+    margin: 0 5px;
+    background: #333;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  .tile.winner {
+    background: gold;
+    color: black;
+    font-size: 18px;
+  }
+  #yellowLine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: yellow;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  #spinBtn, #resetBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: gold;
+    color: black;
+    font-weight: bold;
+  }
+  #winnerDisplay {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: gold;
+  }
+  #entryList, #winnersList {
+    margin-top: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    color: white;
+    font-size: 16px;
+  }
+  #entryList li, #winnersList li {
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+<body>
+<h1>🎉 Case Opening 🎉</h1>
+<div id="caseContainer">
+  <div id="case"></div>
+  <div id="yellowLine"></div>
+</div>
+<button id="spinBtn">Open Case</button>
+<button id="resetBtn">Reset All</button>
+<div id="winnerDisplay"></div>
+
+<h3>All Entries:</h3>
+<ul id="entryList"></ul>
+
+<h3>Last Winners:</h3>
+<ul id="winnersList"></ul>
+
+<script>
+const keyword = "cryder";
+let entries = [];
+let remainingEntries = [];
+let winners = [];
+
+const caseDiv = document.getElementById("case");
+const winnerDisplay = document.getElementById("winnerDisplay");
+const entryList = document.getElementById("entryList");
+const winnersList = document.getElementById("winnersList");
+const resetBtn = document.getElementById("resetBtn");
+
+// --- Fake chat entries for demo purposes ---
+function addFakeEntry(name) {
+  if (!entries.find(e => e.username === name)) {
+    entries.push({ username: name });
+    remainingEntries.push({ username: name });
+    renderCaseTiles();
+    renderEntryList();
+  }
+}
+["Alice","Bob","Charlie","David","Eva","Frank","Grace","Hannah","Ivy","Jack"].forEach(addFakeEntry);
+
+// --- Render tiles ---
+function renderCaseTiles() {
+  caseDiv.innerHTML = "";
+  let allTiles = [...remainingEntries];
+
+  // Repeat tiles to reach at least 40
+  while (allTiles.length < 40) {
+    allTiles = allTiles.concat(remainingEntries.length ? remainingEntries : [{username: "Player"}]);
+  }
+  allTiles = allTiles.slice(0, 40);
+
+  for (const entry of allTiles) {
+    const tile = document.createElement("div");
+    tile.classList.add("tile");
+    tile.innerText = entry.username;
+    caseDiv.appendChild(tile);
+  }
+}
+
+// --- Render entries list ---
+function renderEntryList() {
+  entryList.innerHTML = "";
+  for (const e of entries) {
+    const li = document.createElement("li");
+    li.innerText = e.username;
+    entryList.appendChild(li);
+  }
+}
+
+// --- Render winners list ---
+function renderWinnersList() {
+  winnersList.innerHTML = "";
+  for (const w of winners) {
+    const li = document.createElement("li");
+    li.innerText = w.username;
+    winnersList.appendChild(li);
+  }
+}
+
+// --- Spin animation ---
+document.getElementById("spinBtn").addEventListener("click", () => {
+  if (remainingEntries.length === 0) {
+    winnerDisplay.innerText = "All entries have been picked!";
+    return;
+  }
+
+  winnerDisplay.innerText = "";
+  // Reset position
+  caseDiv.style.transition = "none";
+  caseDiv.style.transform = `translateX(0px)`;
+
+  setTimeout(() => {
+    // Pick winner from remainingEntries
+    const winnerIndex = Math.floor(Math.random() * remainingEntries.length);
+    const winner = remainingEntries[winnerIndex];
+
+    const tiles = document.querySelectorAll(".tile");
+    tiles.forEach(t => t.classList.remove("winner"));
+
+    // Pick a tile index in the 40 tiles
+    const possibleIndexes = [];
+    tiles.forEach((t,i) => { if(t.innerText === winner.username) possibleIndexes.push(i); });
+    const chosenTileIndex = possibleIndexes[Math.floor(Math.random() * possibleIndexes.length)];
+
+    const tileWidth = 110;
+    const containerWidth = caseDiv.parentElement.offsetWidth;
+    const centerPosition = containerWidth / 2;
+    const winnerOffset = chosenTileIndex * tileWidth + tileWidth / 2;
+    const targetShift = winnerOffset - centerPosition;
+
+    // Move left only
+    caseDiv.style.transition = "transform 3s cubic-bezier(0.25, 0.1, 0.25, 1)";
+    caseDiv.style.transform = `translateX(${-targetShift}px)`;
+
+    setTimeout(() => {
+      tiles[chosenTileIndex].classList.add("winner");
+      winnerDisplay.innerText = `🎊 Winner: ${winner.username} 🎊`;
+
+      // Move winner to winners list
+      winners.push(winner);
+      remainingEntries.splice(winnerIndex, 1);
+      renderCaseTiles();
+      renderWinnersList();
+    }, 3000);
+  }, 50);
+});
+
+// --- Reset All ---
+resetBtn.addEventListener("click", () => {
+  entries = [];
+  remainingEntries = [];
+  winners = [];
+  caseDiv.innerHTML = "";
+  winnerDisplay.innerText = "";
+  entryList.innerHTML = "";
+  winnersList.innerHTML = "";
+});
+</script>
+</body>
+</html>
