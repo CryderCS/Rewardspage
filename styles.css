@@ -1,696 +1,709 @@
-/* Bestehende Stile beibehalten */
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+  /* Reset and base styles */
 
-html, body {
-    height: auto;
-    min-height: 100vh;
-    margin: 0;
-    overflow-x: hidden;
-    padding-top: 0%;
-}
-.responsive-heading {
-    font-size: clamp(1rem, 10vw, 5rem); /* Mindestgröße: 1rem, wächst mit der Viewport-Breite, Maximalgröße: 2.5rem */
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
-}
-.responsive-heading-2 {
-    font-size: clamp(1rem, 8vw, 5rem); /* Mindestgröße: 1rem, wächst mit der Viewport-Breite, Maximalgröße: 2.5rem */
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
-}
-body { 
-    font-family: "Oswald", sans-serif; 
-    font-optical-sizing: auto;
-    /*background-image: linear-gradient(to bottom, rgb(0, 11, 32) 40%, rgb(0, 217, 255) 250%);*/
-    background: #000046;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-position: top; 
-    background-repeat: no-repeat; 
-    color: #f5f5f5; 
-    display: flex; 
-    flex-direction: column; 
-}
-.finisher-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
-#finisher-canvas {
-  background-color: transparent !important;
-}
-.body-roll {
-    font-family: "Oswald", sans-serif; 
-    font-optical-sizing: auto;
-    background: #333333;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #dd1818, #333333);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #dd1818, #333333); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    background-position: top; 
-    background-repeat: no-repeat; 
-    color: #f5f5f5; 
-    display: flex; 
-    flex-direction: column; 
-}
-.body-skinrave {
-    font-family: "Oswald", sans-serif; 
-    font-optical-sizing: auto;
-    background-image: linear-gradient(to bottom, rgb(1, 36, 0) 40%, rgb(77, 77, 77) 250%);
-    background-position: top; 
-    background-repeat: no-repeat; 
-    color: #f5f5f5; 
-    display: flex; 
-    flex-direction: column; 
-}
-.body-clash {
-    font-family: "Oswald", sans-serif; 
-    font-optical-sizing: auto;
-    background: #f12711;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    background-position: top; 
-    background-repeat: no-repeat; 
-    color: #f5f5f5; 
-    display: flex; 
-    flex-direction: column; 
-}
-.body-gem {
-    font-family: "Oswald", sans-serif; 
-    font-optical-sizing: auto;
-    background: #f12711;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #6200ff, #110038);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #6200ff, #110038); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    background-position: top; 
-    background-repeat: no-repeat; 
-    color: #f5f5f5; 
-    display: flex; 
-    flex-direction: column; 
+/* Transparent Header */
+/* Sticky Header */
+.site-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 15, 15, 0.3);
+  backdrop-filter: blur(6px);
+  z-index: 10000;
+  padding: 10px 20px;
 }
 
-.body-big {
-    font-family: "Oswald", sans-serif; 
-    font-optical-sizing: auto;
-    background: #041046;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2f337a, #2832f3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2f337a, #2832f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    background-position: top; 
-    background-repeat: no-repeat; 
-    color: #f5f5f5; 
-    display: flex; 
-    flex-direction: column; 
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;  /* Vertikale Zentrierung des Inhalts */
-    align-items: center;      /* Horizontale Zentrierung des Inhalts */
-    padding: 1%;
-    width: 100%;
-    overflow-x: hidden;
-    padding-top: 1%;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
 }
 
-footer {
-    width: 100%;
-    background-color: transparent;
-    padding: 20px;
-    text-align: center;
+.logo img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
 }
 
-
-nav {
-    margin-top: 40px; /* Verschiebt die NavBar um 40px nach unten */
+.header-nav {
+  display: flex;
+  gap: 15px;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-
-     flex-wrap: wrap;
+.header-btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: #eee;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
 }
 
-nav ul li {
-    margin: 0 15px;
-    display: flex;
-    align-items: center; /* Vertikale Ausrichtung von Text und Bild */
+.header-btn:hover {
+  border: 1px solid #00d9ff;
+  background: rgba(0, 217, 255, 0.15);
+  color: #fff;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+  background-color: #030b1d;
+  color: #ddd;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
-
-
-nav ul li a .nav-icon {
-    width: auto;  /* Setzt die Breite des Bildes */
-    height: 24px; /* Setzt die Höhe des Bildes */
-    margin-right: 8px;  /* Abstand zwischen Bild und Text */
 }
 
-nav ul li a:hover {
+/* Umfassender Wrapper für die gesamte Seite */
+body > .page-wrapper {
+  transform: scale(1.1);       /* 1.1 = 10% größer, anpassen nach Wunsch */
+  transform-origin: top center; /* Skalierung von oben nach unten */
+  flex: 1;
+  padding-top: 80px;  /* Platz für Header */
+  padding-bottom: 80px; /* Platz für Footer */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+body.tab1::before,
+body.tab2::before,
+body.tab3::before,
+body.tab4::before {
+  content: '';
+  position: fixed;
+  top: 400px;    
+  left: 20px;    
+  width: 1px;   
+  height: 1px;  
+  border-radius: 50%; 
+  z-index: 9999;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  animation: pulse 5s infinite;
+}
+/* Keyframes: gleiche Farbe wie Box-Shadow verwenden, nicht currentColor */
+@keyframes pulse {
+  0%   { box-shadow: 0 0 600px 300px rgba(255, 255, 255, 0.1); }
+  50%  { box-shadow: 0 0 900px 400px rgba(255, 255, 255, 0.1); }
+  100% { box-shadow: 0 0 600px 300px rgba(255, 255, 255, 0.1); }
+}
+
+body.tab1 {
+  /*margin: 10rem;*/
+  background-color: #030b1d;
+  color: #ddd;
+  font-family: 'Rubik', sans-serif !important;
+  font-size: 14px;
+  text-align: center;
+}
+
+body.tab2 {
+  /*margin: 10rem;*/
+  background-color: #03010a;
+  color: #ddd;
+  font-family: 'Rubik', sans-serif !important;
+  font-size: 14px;
+  text-align: center;
+}
+
+body.tab3 {
+  /*margin: 10rem;*/
+  background-color: #180902;
+  color: #ddd;
+  font-family: 'Rubik', sans-serif !important;
+  font-size: 14px;
+  text-align: center;
+}
+
+body.tab4 {
+  /*margin: 10rem;*/
+  background-color: #1d0303;
+  color: #ddd;
+  font-family: 'Rubik', sans-serif !important;
+  font-size: 14px;
+  text-align: center;
+}
+
+/*  #tab2 .tile {
+    background: linear-gradient(145deg, #19112e, #0a0518);
+    border-radius: 8px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.616);
     color: #ffffff;
-    transform: scale(1.1); /* Leichter Anstieg beim Hover */
-}
-nav ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 300px;
-    box-sizing: border-box;
-    padding: 10px 20px;           /* Innenabstand */
-    /* background-color: #0066cc;    /* Hintergrund der Box */
-    border-radius: 12px;          /* Abgerundete Ecken */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Schatten */
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.19);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(13.4px);
-    -webkit-backdrop-filter: blur(13.4px);
-    border: 1px solid rgba(255, 255, 255, 0.98);
-}
-
-h1, p {
-    text-align: center;
-}
-
-.container {
-    display: flex;
-    gap: 40px;
-    margin-top: 10%; /* Positioniert die Boxen im oberen Viertel */
-    justify-content: center;
-    align-items: flex-start;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    position: relative;
-    padding-bottom: 60px;  /* Ein kleiner Abstand zum Footer */
-}
-
-.box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-decoration: none;
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
-    /*background: linear-gradient(#000d29ee,#0283fcb9) ;*/
-    padding: 80px;
-    /*border-radius: 15px;*/
-    /*box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);*/
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 300px; /* Feste Breite für beide Boxen */
-    height: 250px; /* Feste Höhe für beide Boxen */
-    overflow: hidden; /* Verhindert, dass Inhalte über die Box hinausragen */
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.19);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(13.4px);
-    -webkit-backdrop-filter: blur(13.4px);
-    border: 1px solid rgba(255, 255, 255, 0.98);
+    padding: 20px 10px;
+    font-family: 'Courier New', Courier, monospace;
+    justify-content: flex-end;
+} */
+
+.join-button {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #eee;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+  display: inline-block;
 }
 
-.box img {
-    width: 80%;
-    height: auto;
-    margin-top: 0px;
-    margin-bottom: 40px;
+/* Tab1 */
+body.tab1 #join-button {
+  background: #00869e93;
+  border: 1px solid #00d9ff;
+  color: #fff;
 }
 
-.box span {
+/* Tab2 */
+body.tab2 #join-button {
+  background: #ffe60093;
+  border: 1px solid #ffe600;
+  color: #fff;
+}
+
+/* Tab3 */
+body.tab3 #join-button {
+  background: #ff880093;
+  border: 1px solid #ff8800;
+  color: #fff;
+}
+
+/* Tab4 */
+body.tab4 #join-button {
+  background: #e2000093;
+  border: 1px solid #e20000;
+  color: #fff;
+}
+
+body.tab1 #join-button:hover {
+    border: 3px solid #00d9ff;
+    background: linear-gradient( #00d9ff13, #00d9ff69);
+    color: #fff;
+    transition: border-color 0.1s, background-color 0.8s;
+}
+body.tab2 #join-button:hover {
+    border: 3px solid #ffe600;
+    background: linear-gradient( #ffe60013, #ffe60069);
+    color: #fff;
+    transition: border-color 0.3s, background-color 0.3s;
+
+}
+body.tab3 #join-button:hover {
+    border: 3px solid #ff8800;
+    background: linear-gradient( #ff880013, #ff880069);
+    color: #fff;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+body.tab4 #join-button:hover {
+    border: 3px solid #e20000;
+    background: linear-gradient( #e2000013, #e2000069);
+    color: #fff;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+  .tabs {
     display: flex;
-    justify-content:center;
-    align-items: center;     /* Zentriert den Text vertikal */
-    color: #e6e6e6;
-    font-size: 24px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .tab-button {
+    background: linear-gradient( transparent, #1a1a1ab0);
+    border: none;
+    color: #eee;
+    padding: 10px 30px;
+    cursor: pointer;
     font-weight: bold;
-    width: 100%;              /* Stellt sicher, dass das <span> die gesamte Breite der Box einnimmt */
-    height: 100%;             /* Stellt sicher, dass das <span> die gesamte Höhe der Box einnimmt */
-    text-align: center;      /* Zentriert den Text horizontal */
-}
+    font-size: 1.1rem;
+    margin: 0 5px;
+    border-bottom: 3px solid #3d3d3d;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
 
-.box:hover {
-    background-color: #ffffff1f;
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-}
+  .tab-button:hover[data-tab="tab1"] {
+    border-bottom: 3px solid #00d9ff;
+    background: linear-gradient( #00d9ff13, #00d9ff69);
+    color: #fff;
+    transition: border-color 0.1s, background-color 0.8s;
+  }
 
-/* Stil für den Container */
-#table-container {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #91919167;
-    border-radius: 15px;
-    justify-self: center;
-}
+  .tab-button:hover[data-tab="tab2"] {
+    border-bottom: 3px solid #ffe600;
+    background: linear-gradient( #ffe60013, #ffe60069);
+    color: #fff;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  .tab-button:hover[data-tab="tab3"] {
+    border-bottom: 3px solid #ff8800;
+    background: linear-gradient( #ff880013, #ff880069);
+    color: #fff;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
 
-/* Stil für die Tabelle */
-table {
-    width: 80%;
+  .tab-button:hover[data-tab="tab4"] {
+    border-bottom: 3px solid #e20000;
+    background: linear-gradient( #e2000013, #e2000069);
+    color: #fff;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  /* Tab1 */
+  .tab-button.active[data-tab="tab1"] {
+      border-bottom: 3px solid #00d9ff;
+      background: linear-gradient( #00d9ff13, #00d9ff69);
+      color: #fff;
+  }
+
+  /* Tab2 */
+  .tab-button.active[data-tab="tab2"] {
+      border-bottom: 3px solid #ffe600;
+      background: linear-gradient( #ffe60013, #ffe60069);
+      color: #fff;
+  }
+
+  /* Tab3 */
+  .tab-button.active[data-tab="tab3"] {
+      border-bottom: 3px solid #ff8800;
+      background: linear-gradient( #ff880013, #ff880069);
+      color: #fff;
+  }
+
+  /* Tab4 */
+  .tab-button.active[data-tab="tab4"] {
+      border-bottom: 3px solid #e20000;
+      background: linear-gradient( #e2000013, #e2000069);
+      color: #fff;
+  }
+
+  .tab-content {
+    display: none;
+    max-width: 900px;
     margin: 0 auto;
-    border-spacing: 0 10px; /* Abstand NUR zwischen den Zeilen */
-    border-collapse: separate; /* Wichtig: erlaubt spacing! */
-    font-family: "Oswald", sans-serif;
-    font-size: 18px;
-    color: #ffffff;
-    text-align: center;
-    vertical-align: middle;
-}
+  }
 
-/* Stil für Tabellenkopf (th) */
-th {
-    padding: 8px;
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid #fdfdfd65;
-    color: #ffffff;
-    font-size: 20px;
-    background-color: #ffffff0e; /* Hintergrundfarbe der Zellen */
-}
+  .tab-content.active {
+    display: block;
+  }
+  
+  .tab-icon {
+  width: 100px; /* oder passende Größe */
+  height: auto;
+  display: block;
+  }
 
-/* Stil für Tabellenzellen (td) */
-td {
-    padding: 8px;
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid #fdfdfd65;
-    color: #ffffff;
-    font-size: 18px;
-    background-color: #ffffff0e; /* Hintergrundfarbe der Zellen */
-}
+  .container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
 
-/* Zeilen-Stil mit Animation */
-tr {
-    transition: transform 0.3s ease;
-}
-
-/* Hover-Effekt für Zeilen */
-/*tbody tr:hover td {
-    background-color: #c5c5c5b4;
-    cursor: pointer;
-    transform: scale(1.02);
-}*/
-
-/* Tabelle allgemein */
-#sheet-table {
-    max-width: 80%;
-    margin-top: 50px;
-    border-collapse: separate;
-    border-spacing: 0 10px;
-}
-
-/* Optional: Header-Überschriften neutraler */
-#sheet-table th {
-    background-color: #ffffff38;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-/* Runde nur die erste und letzte Zelle einer Zeile ab */
-tr td:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-tr td:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-/* Hover-Effekt für komplette Tabellenzeile */
-tbody tr:hover td {
-    background-color: #ffffff91; /* leicht transparenter Highlight */
-    transform: scale(1.01); /* leichtes Vergrößern */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sanfter Schatten */
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.footer-container {
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-.social-links {
-    list-style: none;
-    padding: 0;
+  /* Top 3 players tiles container */
+  .top-tiles {
     display: flex;
     justify-content: center;
     gap: 20px;
-}
-
-.social-links li {
-    display: inline;
-}
-
-.social-links a {
-    display: block;
-    width: 40px;
-    height: 40px;
-}
-
-.social-links img {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.3s;
-}
-
-.social-links img:hover {
-    transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
-}
-
-#top-three-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Drei gleich breite Spalten */
-    gap: 5px;  /* Abstand zwischen den Boxen */
-    justify-items: center; /* Zentriert die Boxen horizontal */
-    align-items: center; /* Zentriert die Boxen vertikal */
-    position: relative;
-    margin-top: 5%; /* Optionaler Abstand nach oben */
-    width: 80%;  /* Damit das Grid die volle Breite einnimmt */
-}
-
-/* Die Boxen selbst */
-.participant-box {
-    text-align: center;
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    /*background: linear-gradient(#00b7ffde, #010e13);*/
-    border-radius: 8px;
-    /*box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);*/
-    width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
-    max-width: 250px; /* Maximale Breite der Box */
-    min-width: 150px; /* Minimale Breite der Box */
-    height: auto;  /* Höhe passt sich dem Inhalt an */
-    overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.19);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(13.4px);
-    -webkit-backdrop-filter: blur(13.4px);
-    border: 1px solid rgba(255, 255, 255, 0.98);
-    
-}
-.participant-box-gem {
-    text-align: center;
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    /*background: linear-gradient(#00b7ffde, #010e13);*/
-    border-radius: 8px;
-    /*box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);*/
-    width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
-    max-width: 250px; /* Maximale Breite der Box */
-    min-width: 150px; /* Minimale Breite der Box */
-    height: auto;  /* Höhe passt sich dem Inhalt an */
-    overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.19);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(13.4px);
-    -webkit-backdrop-filter: blur(13.4px);
-    border: 1px solid rgba(255, 255, 255, 0.98);
-    
-}
-.participant-box-roll {
-    text-align: center;
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    /*background: linear-gradient(#ff3c01,#420404cc) ;*/
-    border-radius: 8px;
-    /*box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);*/
-    width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
-    max-width: 250px; /* Maximale Breite der Box */
-    min-width: 150px; /* Minimale Breite der Box */
-    height: auto;  /* Höhe passt sich dem Inhalt an */
-    overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.19);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(13.4px);
-    -webkit-backdrop-filter: blur(13.4px);
-    border: 1px solid rgba(255, 255, 255, 0.98);
-    
-}
-.participant-box-skinrave {
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(#48ff00d3,#042b00c9) ;
-    border-radius: 8px;
-    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);
-    width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
-    max-width: 250px; /* Maximale Breite der Box */
-    min-width: 150px; /* Minimale Breite der Box */
-    height: auto;  /* Höhe passt sich dem Inhalt an */
-    overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
-    transition: all 0.3s ease;
-}
-
-.participant-box-csgobig {
-    text-align: center;
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    /*background: linear-gradient(#ff3c01,#420404cc) ;*/
-    border-radius: 8px;
-    /*box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);*/
-    width: 100%;  /* Die Boxen nehmen die komplette Breite der Zelle ein */
-    max-width: 250px; /* Maximale Breite der Box */
-    min-width: 150px; /* Minimale Breite der Box */
-    height: auto;  /* Höhe passt sich dem Inhalt an */
-    overflow: hidden; /* Verhindert, dass der Inhalt überläuft */
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.19);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(13.4px);
-    -webkit-backdrop-filter: blur(13.4px);
-    border: 1px solid rgba(255, 255, 255, 0.98);
-}
-
-.participant-box:hover {
-    transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
-    color: #ffffff;
-    background-color:#00b7ff6b ;
-}
-.participant-box-roll:hover {
-    transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
-    color: #ffffff;
-    background-color:#ff3c017a ;
-}
-.participant-box-csgobig:hover {
-    transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
-    color: #ffffff;
-    background-color:#4964ff80 ;
-}
-.participant-box-gem:hover {
-    transform: scale(1.1); /* Vergrößert das Logo, wenn der Benutzer darüber fährt */
-    color: #ffffff;
-    background-color:#4c00ff3f ;
-}
-
-.participant-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border: 5px solid #aaaaaa6b;
-    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;
-}
-
-/* Platzierung des ersten Platzes (oben in der Mitte) */
-.top-box {
-    grid-column: 2;  /* Der erste Platz kommt in die mittlere Spalte */
-    grid-row: 1; /* Erste Reihe */
-    margin-bottom: 60px;
-}
-
-/* Platzierung des zweiten Platzes (links knapp unterhalb) */
-.left-box {
-    grid-column: 1; /* Der zweite Platz kommt in die erste Spalte */
-    grid-row: 1; /* Erste Reihe */
-    margin-top: 60px; /* Verschieben nach unten */
-}
-
-/* Platzierung des dritten Platzes (rechts knapp unterhalb) */
-.right-box {
-    grid-column: 3; /* Der dritte Platz kommt in die dritte Spalte */
-    grid-row: 1; /* Erste Reihe */
-    margin-top: 60px; /* Verschieben nach unten */
-}
-
-.info-box {
-    /* background-color: rgba(255, 255, 255, 0.05); */
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 22px;
-    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    /* box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;*/
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.19);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(13.4px);
-    -webkit-backdrop-filter: blur(13.4px);
-    border: 1px solid rgba(255, 255, 255, 0.98);
+    margin-bottom: 80px;
+    margin-top: 100px;
+    align-items: flex-end;
+    transform: scale(1.25);
   }
 
-.participant-name {
-    color: #ffffff;
-    font-size: 24px;
-    text-align: center;
-
-}
-@media (max-width: 768px) {
-    #top-three-container {
-        grid-template-columns: repeat(2, 1fr); /* Zwei Spalten für kleinere Bildschirme */
-    }
-
-    .participant-box {
-        width: 90%; /* Boxen nehmen 90% der Spaltenbreite ein */
-        max-width: 220px; /* Maximale Breite der Boxen */
-        min-width: 130px; /* Minimale Breite */
-    }
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-/* Media Query für sehr kleine Bildschirme (Handy im Hochformat) */
-@media (max-width: 480px) {
-    #top-three-container {
-        grid-template-columns: 1fr; /* Eine Spalte auf kleinen Bildschirmen */
-    }
-
-    .participant-box {
-        width: 80%; /* Boxen nehmen 80% der Bildschirmbreite */
-        max-width: 200px; /* Maximale Breite */
-        min-width: 120px; /* Minimale Breite */
-    }
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-#countdown {
-    font-size: clamp(1.5rem, 5vw, 3rem); /* Passt die Größe an den Bildschirm an */
-    font-weight: bold;
-    color: white;
-    /*background: linear-gradient(180deg, #1616162d, #818181);*/
-    padding: 10px 20px;
+  /* Each tile */
+  .tile {
+    background: linear-gradient(145deg, #4949499f, #22222283);
     border-radius: 8px;
-    display: inline-block;
-    text-align: center;
-    /*box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2);*/
-    background: rgba(255, 255, 255, 0.19);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(13.4px);
-    -webkit-backdrop-filter: blur(13.4px);
-    border: 1px solid rgba(255, 255, 255, 0.98);
-    
-}
-#countdown:hover {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.637);
-    transform: scale(1.1);
-    transition: all 0.3s ease-in-out;
-}
-.small-table {
-    width: 30%; /* Kleinere Breite */
-    font-size: 14px; /* Kleinere Schrift */
-    margin: 10px auto; /* Zentriert */
-}
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.445);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    font-family: 'Rubik', Courier, monospace;
+    justify-content: flex-end;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .tile:hover {
+    transform: translateY(4px); /* nach unten "gedrückt" */
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6); /* etwas flacherer Schatten */
+  }
 
-.small-table th, 
-.small-table td {
-    padding: 8px; /* Kleinere Zellengröße */
-    background-color: #ff324300;
-}
-#loader {
-    border: 8px solid #f3f3f3; /* Light grey */
-    border-top: 8px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.image-row {
+  /* Highlight the middle tile with gold border */
+  .tile.first {
+    background: linear-gradient(145deg, #4949499f, #22222283);
+    border-bottom: 2px solid #ffd900;
+    width: 180px;
+    height: 220px;
+    order: 2;
+  }
+
+  /* Player image */
+  .first img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-bottom: 2px solid #ffd900;
+    border-radius: 6px;
+    margin-bottom: 5%;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.616);
+  }
+
+  .tile.second {
+    background: linear-gradient(145deg, #4949499f, #22222283);
+    border-bottom: 2px solid #818181;
+    width: 160px;
+    height: 200px;
+    order: 1;
+  }
+
+  /* Player image */
+  .second img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-bottom: 2px solid #818181;
+    border-radius: 6px;
+    margin-bottom: 5%;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.616);
+  }
+
+  .tile.third {
+    background: linear-gradient(145deg, #4949499f, #22222283);
+    border-bottom: 2px solid #ad7100;
+    width: 160px;
+    height: 200px;
+    order: 3;
+  }
+
+  /* Player image */
+  .third img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-bottom: 2px solid #ad7100;
+    border-radius: 6px;
+    margin-bottom: 5%;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.616);
+  }
+
+
+  /* Player name */
+  .player-name {
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  /* Wagered and prize info */
+  .info-label {
+    width: 180px;
+    font-size: 10px;
+    color: #aaa;
+    margin-bottom: 4px;
+  }
+
+  .info-value {
+    font-size: 14px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
-    gap: 60px;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .info-value img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .prize {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+    .prize img {
+        width: 20px;
+        height: 20px;
+    }
+  
+    .raincoin-icon-small {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1px; /* Abstand zwischen Icon und Zahl */
+      width: 14px;       /* Breite des Icons */
+      height: 14px;      /* Höhe des Icons */
+      background-image: url('/images/Raincoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .raincoin-icon-big {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 2px; /* Abstand zwischen Icon und Zahl */
+      width: 20px;       /* Breite des Icons */
+      height: 20px;      /* Höhe des Icons */
+      background-image: url('/images/Raincoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .bigcoin-icon-small {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1px; /* Abstand zwischen Icon und Zahl */
+      width: 14px;       /* Breite des Icons */
+      height: 14px;      /* Höhe des Icons */
+      background-image: url('/images/bigcoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .bigcoin-icon-big {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 2px; /* Abstand zwischen Icon und Zahl */
+      width: 20px;       /* Breite des Icons */
+      height: 20px;      /* Höhe des Icons */
+      background-image: url('/images/bigcoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .clashcoin-icon-small {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1px; /* Abstand zwischen Icon und Zahl */
+      width: 14px;       /* Breite des Icons */
+      height: 14px;      /* Höhe des Icons */
+      background-image: url('/images/Clashcoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .clashcoin-icon-big {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 2px; /* Abstand zwischen Icon und Zahl */
+      width: 20px;       /* Breite des Icons */
+      height: 20px;      /* Höhe des Icons */
+      background-image: url('/images/Clashcoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .csgorollcoin-icon-small {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1px; /* Abstand zwischen Icon und Zahl */
+      width: 14px;       /* Breite des Icons */
+      height: 14px;      /* Höhe des Icons */
+      background-image: url('/images/csgorollcoin.webp'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .csgorollcoin-icon-big {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 2px; /* Abstand zwischen Icon und Zahl */
+      width: 20px;       /* Breite des Icons */
+      height: 20px;      /* Höhe des Icons */
+      background-image: url('/images/csgorollcoin.webp'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  /* Coin icon for prize and wagered (using emoji for demo, replace with your coin icon if needed) */
+  .coin-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+    .coin-icon img {
+        width: 16px;
+        height: 16px;
+    }
+
+  /* Timer section */
+  .timer {
+    font-family: 'Rubik', Courier, monospace;
+    color: #eee;
+    margin-bottom: 40px;
+  }
+
+  .timer small {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #666;
+  }
+
+  /* Table styles */
+  table {
     width: 100%;
-    margin: 40px 0;
-}
+    border-collapse: collapse;
+    color: #ddd;
+    font-family: 'Rubik', Courier, monospace;
+  }
 
-.image-row img {
-    width: 50%;
-    height: auto;
+  thead {
+    background-color: #0f0f0f83;
+    border-bottom: 2px solid #000000;
+  }
+
+
+  th, td {
+    text-align: left;
+    padding: 12px 15px;
+  }
+
+  th {
+    color: #999;
+    font-weight: normal;
+    font-size: 12px;
+  }
+
+  tbody tr {
+    background: #22222283;
+    border-bottom: 1px solid #000000;
+  }
+
+  tbody tr:nth-child(even) {
+    background: #47474783;
+  }
+
+  /* Avatar in table */
+  .table-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     object-fit: cover;
-    border-radius: 5%;
-    box-shadow: #010e13;
-}
-/* style.css Particels*/
+    vertical-align: middle;
+    margin-right: 10px;
+  }
 
-#tsparticles {
-  position: absolute;
+  /* Position number */
+  .position {
+    width: 30px;
+    font-weight: bold;
+  }
+
+  /* Prize and wagered cells with coin icon */
+  .coin-cell-wagered{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+    }
+
+    .coin{
+    width: 14px;
+    height: 14px;
+    vertical-align: middle; /* <--- sorgt für mittige Ausrichtung */
+    display: inline-block;
+    }
+
+    .coin-cell-price{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+    }
+
+  /* Pagination placeholder */
+  .pagination {
+    margin-top: 30px;
+    color: #666;
+    font-size: 14px;
+  }
+
+  /*Leaderboard Loader*/
+  .loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
+  color: #eee;
+  height: 200px; /* Höhe anpassen */
+  padding-bottom: 500px;
+}
+
+.spinner {
+  border: 4px solid rgba(255,255,255,0.2);
+  border-top: 4px solid #00d9ff; /* Farbe des Spinners */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 40px;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Footer sticky */
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.content {
-  position: relative;
-  z-index: 1;
-  color: white;
+  background: linear-gradient(135deg, #11111171, #3b3b3b7c);
+  padding: 20px 0;
+  color: #aaa;
+  font-family: 'Rubik', sans-serif;
   text-align: center;
-  padding-top: 20%;
-}
-.tooltip {
-  position: relative;
-  display: inline-block;
-  margin-right: 5px;
-  color: #ffffff;
-  cursor: pointer;
 }
 
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 200px;
-  background-color: #b8b8b8;
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #00d9ff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
   color: #fff;
-  text-align: center;
-  border-radius: 5px;
-  padding: 8px;
-  position: absolute;
-  z-index: 1;
-  bottom: 140%; /* weiter nach oben setzen */
-  left: 60%;
-  transform: translateX(-30%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
 }

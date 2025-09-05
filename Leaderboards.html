@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="/images/CryderCircle.png" type="image/x-icon"/>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<script src="https://apis.google.com/js/api.js"></script>
+
+<title>CryderCS Leaderboards</title>
+
+</head>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-container">
+    <div class="logo">
+      <img src="/images/CryderCircle.png" alt="CryderCS" />
+      <span>CryderCS</span>
+    </div>
+    <nav class="header-nav">
+      <a href="index.html" class="header-btn">Rewards</a>
+      <a href="#" class="header-btn">Leaderboards</a>
+    </nav>
+  </div>
+</header>
+
+<body>
+<div class="page-wrapper">
+<h1 style="text-align:center; margin-bottom:10px;">CryderCS Leaderboards</h1>
+<p style="text-align:center; margin-bottom:40px;">Switch between 4 leaderboards hosted by Cryder</p>
+
+<div style="text-align:center; margin: 20px auto;">
+  <a id="join-button" href="#" target="_blank" class="join-button">Join Leaderboard</a>
+</div>
+
+<div class="tabs">
+  <button class="tab-button active" data-tab="tab1"><img src="images/rain-gg-original (1).png" alt="Rain.gg" class="tab-icon" /></button>
+  <button class="tab-button" data-tab="tab2"><img src="images/CSGOBIG_Logo.png" alt="Csgobig.com" class="tab-icon" /></button>
+  <button class="tab-button" data-tab="tab3"><img src="images/Clash_High_Quality_Logo.png" alt="Clash.gg" class="tab-icon" /></button>
+  <button class="tab-button" data-tab="tab4"><img src="images/CSGOROLL_Logo.png" alt="Csgoroll" class="tab-icon" /></button>
+</div>
+
+<!-- Tab Contents -->
+<div id="tab1" class="tab-content active">
+  <div class="container">
+    <!-- Ladeanimation -->
+      <div id="loader-rain" class="loader">
+        <div class="spinner"></div>
+        Loading Leaderboard...
+      </div>
+    <div id="top-tiles-rain" class="top-tiles"></div>
+    <div id="countdown-rain" class="timer"></div>
+    <table id="sheet-table-rain">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="tab2" class="tab-content">
+  <div class="container">
+    <div id="top-tiles-csgobig" class="top-tiles"></div>
+    <div id="countdown-csgobig" class="timer"></div>
+    <table id="sheet-table-csgobig">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="tab3" class="tab-content">
+  <div class="container">
+    <div id="top-tiles-clash" class="top-tiles"></div>
+    <div id="countdown-clash" class="timer"></div>
+    <table id="sheet-table-clash">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="tab4" class="tab-content">
+  <div class="container">
+    <h1 style="text-align:center; margin-bottom:10px;">Comission Based Leaderboard</h1>
+    <p id="totalAmountDisplay" style="text-align:center; margin-bottom:40px;"></p>
+    <div id="top-tiles-csgoroll" class="top-tiles"></div>
+    <div id="countdown-csgoroll" class="timer"></div>
+    <table id="sheet-table-csgoroll">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+  <footer class="site-footer">
+    <p>&copy; 2025 CryderCS. All Rights Reserved.</p>
+    <div class="footer-links">
+      <a href="https://youtube.com/@crydercs" target="_blank">YouTube</a>
+      <a href="https://kick.com/cryderyt" target="_blank">Kick</a>
+      <a href="https://discord.gg/rP7pkuacru" target="_blank">Discord</a>
+      <a href="https://x.com/CryderCS" target="_blank">X/Twitter</a>
+    </div>
+  </footer>
+  
+<script src="leaderBoardLoaderRainV2.js"></script>
+<script src="leaderBoardLoaderCSGOBIG.comV2.js"></script>
+<script src="leaderBoardLoaderClash.GGV2.js"></script>
+<script src="leaderBoardLoaderCSGOROLLV2.js"></script>
+
+<script>
+const tabButtons = document.querySelectorAll('.tab-button');
+const tabContents = document.querySelectorAll('.tab-content');
+const joinButton = document.getElementById('join-button');
+
+// Leaderboard-Skripte
+const scriptSrcs = {
+  tab1: null,
+  tab2: 'leaderBoardLoaderCSGOBIG.comV2.js',
+  tab3: 'leaderBoardLoaderClash.GGV2.js',
+  tab4: 'leaderBoardLoaderCSGOROLLV2.js'
+};
+
+// Join-Links pro Tab
+const joinLinks = {
+  tab1: 'https://rain.gg/r/cryder',
+  tab2: 'https://csgobig.com/r/cryder',
+  tab3: 'https://clash.gg/r/cryder',
+  tab4: 'https://csgoroll.com/r/cryder'
+};
+
+// Leaderboard-Skript dynamisch laden
+function loadLeaderboardScript(tab) {
+  const oldScript = document.getElementById('leaderboard-script');
+  if (oldScript) oldScript.remove();
+  const src = scriptSrcs[tab];
+  if (!src) return;
+  const script = document.createElement('script');
+  script.src = src;
+  script.id = 'leaderboard-script';
+  document.body.appendChild(script);
+}
+
+// Tab-Wechsel
+// Tab-Wechsel
+tabButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const target = button.getAttribute('data-tab');
+
+    // Active-Klassen setzen
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    tabContents.forEach(tc => tc.classList.remove('active'));
+
+    button.classList.add('active');
+    document.getElementById(target).classList.add('active');
+    document.body.className = target;
+
+    // Join-Link aktualisieren
+    joinButton.href = joinLinks[target];
+  });
+});
+
+// Standard-Tab beim Laden (Rain automatisch laden)
+document.addEventListener('DOMContentLoaded', () => {
+  const defaultTab = document.querySelector('.tab-button.active') || tabButtons[0];
+  const target = defaultTab.getAttribute('data-tab');
+  defaultTab.classList.add('active');
+  document.getElementById(target).classList.add('active');
+  document.body.classList.add(target);
+  joinButton.href = joinLinks[target];
+  loadLeaderboardScript(target); // 🔹 Rain-Skript automatisch beim Laden
+});
+</script>
+</body>
+</html>

@@ -1,13 +1,14 @@
+(() => {
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
-const spreadsheetId = '1zjhZKgVGLUwsNa6F5eJsUD79gV8Qts5l5JvKMHw5vSQ';
-const range = 'CSGOBIGLeaderboard!A1:I100';
+const spreadsheetId = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
+const range = 'ClashLB!A1:H100';
 
 // Enddatum übergeben
-const spreadsheetIdDate = '1zjhZKgVGLUwsNa6F5eJsUD79gV8Qts5l5JvKMHw5vSQ';
-const rangeDate = 'EndDate!A1:A1';
+const spreadsheetIdDate = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
+const rangeDate = 'Enddate!A1:A1';
 
 // Preisliste nach Platzierung
-const prizeDistribution = [450,225,150,75,50,25,25];
+const prizeDistribution = [250, 100, 75, 35, 20, 10, 10]; // Preise für die Plätze 1-7 (Platz 8 und höher = 0)
 
 // Google API initialisieren
 function initApi() {
@@ -52,10 +53,11 @@ function getSheetData() {
                 row[0],  // userId
                 row[1],  // Name
                 row[2],  // Avatar URL
-                row[3],  // Level
+                row[3],  // Active
                 parseFloat(row[4]) || 0,  // Wagered (Wichtig für Platzierung)
                 parseFloat(row[5]) || 0,  // Deposited
-                parseFloat(row[6]) || 0   // Earned
+                parseFloat(row[6]) || 0,   // Earned
+                parseFloat(row[7]) || 0   // Cashback
             ]);
 
             // Spieler mit 0 Wagered entfernen
@@ -106,36 +108,52 @@ function getSheetData() {
 
 // Die ersten drei Teilnehmer in Kacheln anzeigen
 function displayTopThreeInBoxes(topThree) {
-    const container = document.getElementById('top-three-container');
-    container.innerHTML = ''; 
+    const loader = document.getElementById('loader-clash');
+    const container = document.getElementById('top-tiles-clash');
 
-    topThree.forEach((row, index) => {
+    if(loader) loader.style.display = 'none';
+    if(container) container.style.display = 'flex';
+
+    if (!container) {
+        console.error('Container with id "top-tiles" not found.');
+        return;
+    }
+        console.log("Top Three Data:", topThree); // Debugging-Ausgabe
+    container.innerHTML = ''; // Vorherige Inhalte löschen
+
+    topThree.forEach((player, index) => {
         const box = document.createElement('div');
-        box.classList.add('participant-box-csgobig');
+        box.classList.add('tile');
+        // Positionierungsklassen hinzufügen
+        if (index === 1) box.classList.add('second');
+        else if (index === 0) box.classList.add('first');
+        else if (index === 2) box.classList.add('third');
+
+        // player Array Struktur (Beispiel): [Name, Rang, Preis, Wagered, BildURL]
+        // Entsprechend anpassen, falls anders
 
         box.innerHTML = `
-            <h3>#${row[7]}</h3>
-            <img src="${row[2]}" 
-            onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
-            alt="Alternative image" class="participant-avatar">
-            <p class="participant-name"><strong>${row[1]}</strong></p>
-            <p class="info-box">Wagered: <br> <strong>${row[4]}</strong></p>
-            <p class="info-box">Price: <br> <img src="/images/BigCoin.png" alt="Rollcoin" class="rollcoin-icon" style="width: 22px; height: 22px"><strong>${row[8]}</strong></p>
+            <img src="${player[2]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
+            alt="Alternative image"/>
+            <div class="player-name">${player[1]}</div>
+            <div class="info-label">WAGERED</div>
+            <div class="info-value">
+                <span class="clashcoin-icon-small"></span>
+                 ${player[4]}
+            </div>
+            <div class="info-label">PRIZE</div>
+            <div class="prize">
+                <span class="clashcoin-icon-big"></span> ${player[9]}
+            </div>
         `;
-
-        if (index === 0) box.classList.add('top-box');
-        else if (index === 1) box.classList.add('left-box');
-        else if (index === 2) box.classList.add('right-box');
 
         container.appendChild(box);
     });
-    
-    
 }
 
 // Alle Teilnehmer in Tabelle anzeigen
 function displayAllParticipants(participants) {
-    const table = document.getElementById('sheet-table');
+    const table = document.getElementById('sheet-table-clash');
 
     // Thead erzeugen oder leeren
     let thead = table.getElementsByTagName('thead')[0];
@@ -144,10 +162,10 @@ function displayAllParticipants(participants) {
     }
     thead.innerHTML = `
         <tr>
-            <th>Position</th>
-            <th>Username</th>
-            <th>Wagered</th>
-            <th>Price</th>
+            <th class="position">#</th>
+            <th>CONTESTANTS</th>
+            <th>WAGERED</th>
+            <th>PRIZE</th>
         </tr>
     `;
 
@@ -157,21 +175,22 @@ function displayAllParticipants(participants) {
         tbody = table.createTBody();
     }
     tbody.innerHTML = ''; // Vorherige Inhalte löschen
-    participants.forEach((row) => {
+
+    participants.forEach((row, index) => {
         const tr = document.createElement('tr');
 
         tr.innerHTML = `
-
-            <td>${row[7]}</td> 
-            <td><img src="${row[2]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
-            alt="Alternative image" style="width: 25px; height: 24px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39) ;"> ${row[1]}</td> 
-            <td>Wagered: <strong>${row[4]}</strong></td>
-            <td>Price: <img src="/images/BigCoin.png" alt="Rollcoin" class="rollcoin-icon" style="width: 21px; height: 21px"><strong>${row[8]}</strong></td>
+                <td class="position">${row[8]}</td>
+                <td><img class="table-avatar" src="${row[2]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
+            alt="Alternative image"/>${row[1]}</td>
+                <td><img class="coin" src="/images/Clashcoin.svg" /> ${row[4]}
+                </td>
+                <td><img class="coin" src="/images/Clashcoin.svg" /> ${row[9]}
+                </td>
         `;
 
         tbody.appendChild(tr);
     });
-    
 }
 
 // API laden und initialisieren
@@ -184,7 +203,7 @@ loadApi();
 
 // Timer für Countdown
 function startCountdown(targetDate) {
-    const countdownElement = document.getElementById("countdown");
+    const countdownElement = document.getElementById("countdown-clash");
 
     function updateCountdown() {
         const now = new Date().getTime();
@@ -202,9 +221,10 @@ function startCountdown(targetDate) {
         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        countdownElement.innerHTML = `Leaderboard Ends In:<br/ > <span style="font-size: 24px;">${String(days).padStart(2,"0")} : ${String(hours).padStart(2,"0")} : ${String(minutes).padStart(2,"0")} : ${String(seconds).padStart(2,"0")}</span>`;
     }
 
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 }
+})();

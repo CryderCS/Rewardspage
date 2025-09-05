@@ -1,101 +1,246 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CryderCS Rewards</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="/images/Cryder_logo.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CryderCS Rewards</title>
+  <link rel="icon" href="/images/CryderCircle.png" type="image/x-icon"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Grundstruktur */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      background-color: #030b1d;
+      color: #ddd;
+      font-family: 'Rubik', sans-serif;
+    }
+    .page-wrapper {
+      flex: 1; /* Inhalt füllt Platz zwischen Header und Footer */
+      max-width: 1100px;
+      margin: 120px auto 60px auto; /* Abstand wegen fixed Header */
+      padding: 0 20px;
+    }
+
+    /* Transparent Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(15, 15, 15, 0.3);
+      backdrop-filter: blur(6px);
+      z-index: 10000;
+      padding: 10px 20px;
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    .logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+    .header-nav {
+      display: flex;
+      gap: 15px;
+    }
+    .header-btn {
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: #eee;
+      background: rgba(255,255,255,0.08);
+      transition: all 0.3s ease;
+    }
+    .header-btn:hover {
+      border: 1px solid #00d9ff;
+      background: rgba(0, 217, 255, 0.15);
+      color: #fff;
+    }
+
+    /* Rewards Grid */
+    .rewards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 2fr);
+      gap: 25px;
+    }
+    .reward-tile {
+      background: linear-gradient(180deg, #222222c0, #49494900);
+      border-radius: 10px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.5);
+      padding: 20px;
+      text-align: center;
+      border-top: 2px solid #00d9ff;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .reward-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+    .reward-tile img {
+      width: 100%;
+      max-width: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .reward-tile h3 {
+      margin: 10px 0 6px;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    .reward-tile p {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+    .reward-btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      background: #00d9ff33;
+      border: 1px solid #00d9ff;
+      color: #fff;
+      transition: all 0.3s;
+    }
+    .reward-btn:hover {
+      background: #00d9ff66;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: linear-gradient(135deg, #11111171, #3b3b3b7c);
+      padding: 20px 0;
+      color: #aaa;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .footer-links a {
+      color: #00d9ff;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: #fff;
+    }
+    .empty-row {
+    height: 17px; /* gewünschte Höhe */
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    }
+  </style>
 </head>
 <body>
-    <div class="finisher-header"></div>
-    <nav>
-        <ul>
-            <li><a href="/index.html"><img src="images/home.png" alt="Home" class="nav-icon">Home</a></li>
-            <li><a href="/rewards.html"><img src="images/gift-box-with-a-bow.png" alt="Rewards" class="nav-icon">Rewards</a></li>
-            <li><a href="/rain.html" ><img src="images/rain-gg-original (1).png" alt="Rain.gg" class="nav-icon">Leaderboard</a></li>
-            <!-- <li><a href="/gem.html"><img src="images/CSGOGEMLOGO.png" alt="clash.gg.gg" class="nav-icon">Leaderboard</a></li> -->
-            <li><a href="/csgoroll.html"><img src="images/CSGOROLL_Logo.png" alt="CSGOROLL" class="nav-icon">Leaderboard</a></li>
-            <li><a href="/clash.html"><img src="images/Clash_High_Quality_Logo.png" alt="clash.gg.gg" class="nav-icon">Leaderboard</a></li>
-            <li><a href="/CsgoBig.html"><img src="images/CSGOBIG_Logo.png" alt="Csgobig.com" class="nav-icon">Leaderboard</a></li>
-        </ul>
-    </nav>
-    
-    <div class="flying-image"></div>
-    <div class="flying-image"></div>
-    <div class="flying-image"></div>
-    <h1 class="responsive-heading">CryderCS Rewards</h1>
-    <p style="font-size: 30px;">Check your leaderboard status</p>
-    <p style="font-size: 30px;">See my Promocodes on the "Rewards" Tab</p>
-    <div class="container">
-        <a href="rain.html" class="box">
-            <img src="images/rain-gg-original (1).png" alt="Rain Logo">
-            <span class="info-box">600 Coin Weekly Wager Race <br> 100 Coin Weekly Raffle <br> Cashback for Highrollers</span>
-        </a>
-        <a href="CSGOroll.html" class="box">
-            <img src="images/CSGOROLL_Logo.png" alt="CSGOroll Logo">
-            <span class="info-box">Deposit leaderboard</span>
-        </a>
-        <a href="clash.html" class="box">
-            <img src="images/Clash_High_Quality_Logo.png" alt="CSGOroll Logo">
-            <span class="info-box">500 Gem Weekly Wager Race <br> 100 Gem Weekly Raffle <br> Cashback for Highrollers</span>
-        </a>
-        <!--<a href="CsgoBig.html" class="box">
-            <img src="images/CSGOBIG_Logo.png" alt="CSGOroll Logo">
-            <span>2000 Coin Wagerleaderboard</span>
-        </a>-->
-        <!--<a href="skinrave.html" class="box">
-            <img src="images/Skinrave.gg_1.png" alt="Skinrave Logo">
-            <span>300 Coins 2-Weekly Wager Leaderboard</span>
-        </a> -->
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="/images/CryderCircle.png" alt="CryderCS" />
+        <span>CryderCS</span>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html" class="header-btn">Rewards</a>
+        <a href="Leaderboards.html" class="header-btn">Leaderboards</a>
+      </nav>
     </div>
-    <script src="backgroundskript.js" type="text/javascript"></script>
-<script type="text/javascript">
-new FinisherHeader({
-  "count": 80,
-  "size": {
-    "min": 2,
-    "max": 23,
-    "pulse": 0.1
-  },
-  "speed": {
-    "x": {
-      "min": 0,
-      "max": 1
-    },
-    "y": {
-      "min": 0,
-      "max": 0.6
-    }
-  },
-  "colors": {
-    "background": "transparent",
-    "particles": [
-      "#4cf4ff",
-      "#d7f3fe",
-      "#0008ae"
-    ]
-  },
-  "blending": "lighten",
-  "opacity": {
-    "center": 1,
-    "edge": 0
-  },
-  "skew": 0,
-  "shapes": [
-    "c"
-  ]
-});
-</script>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="page-wrapper">
+    <h1 style="text-align:center; margin-bottom:30px;">CryderCS Rewards</h1>
+    <div style="text-align:center; margin: 20px 0;">
+      <a href="leaderboards.html" class="join-button" style="font-size:1rem; padding:10px 20px;">
+        See Leaderboards
+     </a>
+    </div>
+    <div class="rewards-grid">
+      <div class="reward-tile">
+        <img src="images/rain-gg-original (1).png" alt="Reward 1">
+        <h3>1000 Weekly contest</h3>
+        <p>3 Free Cases for new Accounts</p>
+        <p>5% Deposit Bonus</p>
+        <p>100 Weekly raffle</p>
+        <a href="#" class="reward-btn">Claim Bonus</a>
+      </div>
+      <div class="reward-tile">
+        <img src="images/CSGOBIG_Logo.png" alt="Reward 2">
+        <h3>1000 Weekly contest</h3>
+        <p>3 Free Cases for new Accounts</p>
+        <p>5% Deposit Bonus</p>
+        <div class="empty-row"></div>
+        <a href="#" class="reward-btn">Claim Bonus</a>
+      </div>
+      <div class="reward-tile">
+        <img src="images/Clash_High_Quality_Logo.png" alt="Reward 3">
+        <h3>500 Weekly contest</h3>
+        <p>3 Free Cases for new Accounts</p>
+        <p>up to 50% Deposit Bonus</p>
+        <p>100 Weekly raffle</p>
+        <a href="#" class="reward-btn">Claim Bonus</a>
+      </div>
+      <div class="reward-tile">
+        <img src="images/CSGOROLL_Logo.png" alt="Reward 1">
+        <h3>Comission contest</h3>
+        <p>3 Free Cases for new Accounts</p>
+        <p>5% Deposit Bonus</p>
+        <div class="empty-row"></div>
+        <a href="#" class="reward-btn">Claim Bonus</a>
+      </div>
+      <div class="reward-tile">
+        <img src="images/CSGOGEMLOGO.png" alt="Reward 1">
+        <h3>No contest</h3>
+        <p>5% Deposit Bonus</p>
+        <div class="empty-row"></div>
+        <div class="empty-row"></div>
+        <a href="#" class="reward-btn">Claim Bonus</a>
+      </div>
+      <div class="reward-tile">
+        <img src="images/CSGOLUCK.Png" alt="Reward 1">
+        <h3>No Contest</h3>
+        <p>3 Free Cases for new Accounts</p>
+        <p>5% Deposit Bonus</p>
+        <div class="empty-row"></div>
+        <a href="#" class="reward-btn">Claim Bonus</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>&copy; 2025 CryderCS. All Rights Reserved.</p>
+    <div class="footer-links">
+      <a href="https://youtube.com/@crydercs" target="_blank">YouTube</a>
+      <a href="https://kick.com/cryderyt" target="_blank">Kick</a>
+      <a href="https://discord.gg/rP7pkuacru" target="_blank">Discord</a>
+      <a href="https://x.com/CryderCS" target="_blank">X/Twitter</a>
+    </div>
+  </footer>
 </body>
-<footer>
-    <div class="footer-container">
-        <ul class="social-links">
-            <li><a href="https://www.youtube.com/@CryderCS" target="_blank"><img src="images/youtube.png" alt="YouTube"></a></li>
-            <li><a href="https://discord.gg/S6AfTVXq7T" target="_blank"><img src="images/discord.png" alt="Discord"></a></li>
-        </ul>
-        <p>Gambling is 18+ | Follow the regulations of your Country</p>
-        <p>Created by CryderCS</p>
-    </div>
-</footer>
 </html>

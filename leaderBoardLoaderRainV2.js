@@ -1,6 +1,8 @@
-const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI'; // Dein API-Schlüssel
-const spreadsheetId = '1kuB0dSv0yobxIxjq3laApPlqB1WN7cAsGxceLmWN7So'; // Dein Spreadsheet-ID (ersetze dies)
-const range = 'Sheet1!A1:K100'; // Bereich in deinem Google Sheet
+// leaderBoardLoaderRainV2.js
+(() => {
+  const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI'; // Dein API-Schlüssel
+    const spreadsheetId = '1kuB0dSv0yobxIxjq3laApPlqB1WN7cAsGxceLmWN7So'; // Dein Spreadsheet-ID (ersetze dies)
+    const range = 'Sheet1!A1:K100'; // Bereich in deinem Google Sheet
 
 // Google API initialisieren
 function initApi() {
@@ -73,7 +75,12 @@ function getSheetData() {
 
 
 function displayTopThreeInBoxes(topThree) {
-    const container = document.getElementById('top-tiles');
+    const loader = document.getElementById('loader-rain');
+    const container = document.getElementById('top-tiles-rain');
+
+    if(loader) loader.style.display = 'none';
+    if(container) container.style.display = 'flex';
+
     if (!container) {
         console.error('Container with id "top-tiles" not found.');
         return;
@@ -109,7 +116,10 @@ function displayTopThreeInBoxes(topThree) {
     });
 }
 function displayAllParticipants(participants) {
-    const table = document.getElementById('sheet-table');
+    const table = document.getElementById('sheet-table-rain');
+
+    console.log("DEBUG var:", table);
+    console.log("Type:", typeof table);
 
     // Thead erzeugen oder leeren
     let thead = table.getElementsByTagName('thead')[0];
@@ -118,10 +128,10 @@ function displayAllParticipants(participants) {
     }
     thead.innerHTML = `
         <tr>
-            <th>Position</th>
-            <th>Username</th>
-            <th>Wagered</th>
-            <th>Price</th>
+            <th class="position">#</th>
+            <th>CONTESTANTS</th>
+            <th>WAGERED</th>
+            <th>PRIZE</th>
         </tr>
     `;
 
@@ -136,16 +146,13 @@ function displayAllParticipants(participants) {
         const tr = document.createElement('tr');
 
         tr.innerHTML = `
-            <td>${row[1]}</td> <!-- Position -->
-            <td>
-                <img src="${row[4]}" onerror="this.onerror=null; this.src='images/PivtureDummy.png';" style="width: 25px; height: 25px; border-radius: 50%; margin-right: 5px; border: 2px solid #aaaaaa6b; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.39);">
-                ${row[0]}
-            </td>
-            <td>${row[3]}</td> <!-- Prize -->
-            <td>
-                <img src="/images/RainCoin.png" alt="Rollcoin" style="width: 19px; height: 19px; margin-right: 5px;">
-                ${row[2]}
-            </td>
+                <td class="position">${row[1]}</td>
+                <td><img class="table-avatar" src="${row[4]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
+            alt="Alternative image"/>${row[0]}</td>
+                <td><img class="coin" src="/images/Raincoin.svg" /> ${row[3]}
+                </td>
+                <td><img class="coin" src="/images/Raincoin.svg" /> ${row[2]}
+                </td>
         `;
 
         tbody.appendChild(tr);
@@ -164,12 +171,12 @@ function loadApi() {
     gapi.load('client', initApi);
 }
 
-// Starte das Laden der API, wenn die Seite vollständig geladen ist
-document.addEventListener('DOMContentLoaded', loadApi);
+// STARTE API sofort, damit Rain beim Seitenladen geladen wird
+loadApi();
 
 //Timer 
 function startCountdown(targetDate) {
-    const countdownElement = document.getElementById("countdown");
+    const countdownElement = document.getElementById("countdown-rain");
 
     function updateCountdown() {
         const now = new Date().getTime();
@@ -177,7 +184,7 @@ function startCountdown(targetDate) {
         const timeRemaining = targetTime - now;
 
         if (timeRemaining <= 0) {
-            countdownElement.innerHTML = "Zeit abgelaufen!";
+            countdownElement.innerHTML = "Times up!";
             clearInterval(interval);
             return;
         }
@@ -187,9 +194,11 @@ function startCountdown(targetDate) {
         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        countdownElement.innerHTML = `Leaderboard Ends In:<br/ > <span style="font-size: 24px;">${String(days).padStart(2,"0")} : ${String(hours).padStart(2,"0")} : ${String(minutes).padStart(2,"0")} : ${String(seconds).padStart(2,"0")}</span>`;
     }
 
     updateCountdown();
     const interval = setInterval(updateCountdown, 100);
 }
+
+})();
