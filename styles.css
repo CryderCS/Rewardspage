@@ -328,6 +328,7 @@ body.tab4 #join-button:hover {
 
   /* Each tile */
   .tile {
+    position: relative;
     background: linear-gradient(145deg, #4949499f, #22222283);
     border-radius: 8px;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.445);
@@ -403,6 +404,31 @@ body.tab4 #join-button:hover {
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.616);
   }
 
+  /* Placement badge */
+.tile .placement {
+  position: absolute;
+  bottom: -6px;        /* hängt knapp unter dem Tile */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;  /* verhindert Zeilenumbruch */
+}
+
+/* Farbvarianten */
+.first .placement {
+  background: linear-gradient(180deg, #ffd90000,#ffd900, #ffd900);
+  color: #000;
+}
+.second .placement {
+  background: linear-gradient(180deg,#81818100, #818181, #818181);
+}
+.third .placement {
+  background: linear-gradient(180deg, #ad710000, #ad7100, #ad7100);
+}
 
   /* Player name */
   .player-name {

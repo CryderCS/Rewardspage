@@ -125,9 +125,16 @@ function displayTopThreeInBoxes(topThree) {
         const box = document.createElement('div');
         box.classList.add('tile');
         // Positionierungsklassen hinzufügen
-        if (index === 1) box.classList.add('second');
-        else if (index === 0) box.classList.add('first');
-        else if (index === 2) box.classList.add('third');
+        if (index === 1) {
+            box.classList.add('second');
+            placementText = "2nd";
+        }else if (index === 0){
+         box.classList.add('first');
+         placementText = "1st";
+        }else if (index === 2){
+            box.classList.add('third');
+            placementText = "3rd";
+        }
 
         // player Array Struktur (Beispiel): [Name, Rang, Preis, Wagered, BildURL]
         // Entsprechend anpassen, falls anders
@@ -145,6 +152,7 @@ function displayTopThreeInBoxes(topThree) {
             <div class="prize">
                 <span class="clashcoin-icon-big"></span> ${player[9]}
             </div>
+            <div class="placement">${placementText}</div>
         `;
 
         container.appendChild(box);
