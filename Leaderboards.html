@@ -36,7 +36,9 @@
 
 <div style="text-align:center; margin: 20px auto;">
   <a id="join-button" href="#" target="_blank" class="join-button">Join Leaderboard</a>
+  <a id="affiliate-button" href="#" class="join-button">Affiliate Bonus</a>
 </div>
+
 
 <div class="tabs">
   <button class="tab-button active" data-tab="tab1"><img src="images/rain-gg-original (1).png" alt="Rain.gg" class="tab-icon" /></button>
@@ -97,6 +99,58 @@
   </div>
 </div>
 
+<!-- Affiliate Bonus Popup -->
+<div class="popup-overlay" id="affiliate-popup">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h3>Affiliate Bonus</h3>
+      <button class="close-popup" id="closeAffiliate">&times;</button>
+    </div>
+        <p style="margin-bottom: 15px;">Every wagerrequirement earns you a price, the prices are Accumulated and can be claimed at the end of every week via discord ticket!</p>
+     <table>
+      <thead>
+        <tr>
+          <th>Wagered</th>
+          <th>Price</th>
+          <th>Price Accumulated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>5,000</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>7,500</td>
+          <td>25</td>
+          <td>35</td>
+        </tr>
+        <tr>
+          <td>12,500</td>
+          <td>50</td>
+          <td>85</td>
+        </tr>
+        <tr>
+          <td>20,000</td>
+          <td>100</td>
+          <td>185</td>
+        </tr>
+        <tr>
+          <td>30,000</td>
+          <td>150</td>
+          <td>335</td>
+        </tr>
+        <tr>
+          <td>50,000</td>
+          <td>350</td>
+          <td>685</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <!-- FOOTER -->
   <footer class="site-footer">
     <p>&copy; 2025 CryderCS. All Rights Reserved.</p>
@@ -133,6 +187,26 @@ const joinLinks = {
   tab3: 'https://clash.gg/r/cryder',
   tab4: 'https://csgoroll.com/r/cryder'
 };
+
+// Affiliate Bonus Popup
+const affiliateBtn = document.getElementById('affiliate-button');
+const affiliatePopup = document.getElementById('affiliate-popup');
+const closeAffiliate = document.getElementById('closeAffiliate');
+
+affiliateBtn.addEventListener('click', (e) => {
+  e.preventDefault(); // verhindert Sprung nach "#"
+  affiliatePopup.style.display = 'flex';
+});
+
+closeAffiliate.addEventListener('click', () => {
+  affiliatePopup.style.display = 'none';
+});
+
+affiliatePopup.addEventListener('click', (e) => {
+  if (e.target === affiliatePopup) {
+    affiliatePopup.style.display = 'none';
+  }
+});
 
 // Leaderboard-Skript dynamisch laden
 function loadLeaderboardScript(tab) {
