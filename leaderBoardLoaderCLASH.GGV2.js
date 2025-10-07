@@ -1,11 +1,11 @@
 (() => {
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
 const spreadsheetId = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
-const range = 'ClashLB!A1:H100';
+const range = 'ClashLB!A1:J100';
 
 // Enddatum übergeben
-const spreadsheetIdDate = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
-const rangeDate = 'Enddate!A1:A1';
+//const spreadsheetIdDate = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
+//const rangeDate = 'Enddate!A1:A1';
 
 // Preisliste nach Platzierung
 const prizeDistribution = [250, 100, 75, 35, 20, 10, 10]; // Preise für die Plätze 1-7 (Platz 8 und höher = 0)
@@ -57,7 +57,9 @@ function getSheetData() {
                 parseFloat(row[4]) || 0,  // Wagered (Wichtig für Platzierung)
                 parseFloat(row[5]) || 0,  // Deposited
                 parseFloat(row[6]) || 0,   // Earned
-                parseFloat(row[7]) || 0   // Cashback
+                parseFloat(row[7]) || 0,   // Cashback
+                row[8],  // Price
+                row[9]  // EndDate
             ]);
 
             // Spieler mit 0 Wagered entfernen
@@ -68,8 +70,8 @@ function getSheetData() {
 
             // Platzierungen vergeben + Preise zuweisen
             filteredData = filteredData.map((row, index) => {
-                let prize = prizeDistribution[index] || 0;  // Falls Platz > 7 → 0 als Preis setzen
-                return [...row, index + 1, prize]; // Platz & fixen Preis hinzufügen
+            //    let prize = prizeDistribution[index] || 0;  // Falls Platz > 7 → 0 als Preis setzen
+                return [...row, index + 1]; // Platz & fixen Preis hinzufügen
             });
 
             console.log("Sortierte Daten mit Platzierungen & Preisen:", filteredData);
@@ -78,32 +80,21 @@ function getSheetData() {
             displayTopThreeInBoxes(filteredData.slice(0, 3));
             displayAllParticipants(filteredData.slice(3));
 
-            // Enddatum aus dem Sheet ziehen
-            gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: spreadsheetIdDate,
-                range: rangeDate
-            }).then((response) => {
-                const dateData = response.result.values;
-                if (dateData.length > 0) {
-                    const date = dateData[0][0];  
-                    console.log("Gefundenes Enddatum:", date); 
-                    startCountdown(date);
-                } else {
-                    console.error('Kein Enddatum gefunden.');
-                }
-            }).catch(error => {
-                console.error('Fehler beim Abrufen des Enddatums:', error);
-                
-            });
-        } else {
-            console.log('Keine Daten gefunden.');
-            
-        }
-    }, (error) => {
-        console.error('Fehler beim Abrufen der Daten:', error);
-       
-    });
-}, 100); // 2000 Millisekunden (2 Sekunden) Wartezeit
+           // Hier den Countdown mit dem Enddatum starten
+           console.log("Gefundenes Enddatum Clash:", filteredData[1][9]);
+            if (filteredData.length > 0 && filteredData[1][9]) {
+                console.log("Gefundenes Enddatum Clash:", filteredData[1][9]); // Debugging
+                startCountdown(filteredData[1][9]);  // Das Enddatum von Platz 1 verwenden
+            } else {
+                console.error("Kein gültiges Enddatum gefunden.");
+            }
+            } else {
+                console.log('Keine Daten gefunden.');
+            }
+        }).catch((error) => {
+            console.error('Fehler beim Abrufen der Daten:', error);
+        });
+    }, 100); // 2000 Millisekunden (2 Sekunden) Wartezeit
 }
 
 // Die ersten drei Teilnehmer in Kacheln anzeigen
@@ -150,7 +141,7 @@ function displayTopThreeInBoxes(topThree) {
             </div>
             <div class="info-label">PRIZE</div>
             <div class="prize">
-                <span class="clashcoin-icon-big"></span> ${player[9]}
+                <span class="clashcoin-icon-big"></span> ${player[8]}
             </div>
             <div class="placement">${placementText}</div>
         `;
@@ -188,12 +179,12 @@ function displayAllParticipants(participants) {
         const tr = document.createElement('tr');
 
         tr.innerHTML = `
-                <td class="position">${row[8]}</td>
+                <td class="position">${row[10]}</td>
                 <td><img class="table-avatar" src="${row[2]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
             alt="Alternative image"/>${row[1]}</td>
                 <td><img class="coin" src="/images/Clashcoin.svg" /> ${row[4]}
                 </td>
-                <td><img class="coin" src="/images/Clashcoin.svg" /> ${row[9]}
+                <td><img class="coin" src="/images/Clashcoin.svg" /> ${row[8]}
                 </td>
         `;
 
