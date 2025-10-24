@@ -79,15 +79,15 @@ function getSheetData() {
             displayAllParticipants(filteredData.slice(3));
 
            // Hier den Countdown mit dem Enddatum starten
-           console.log("Gefundenes Enddatum Csbattle:", filteredData[0][8]);
-            if (filteredData.length > 0 && filteredData[0][8]) {
-                console.log("Gefundenes Enddatum csbattle:", filteredData[0][8]); // Debugging
-                startCountdown(filteredData[0][8]);  // Das Enddatum von Platz 1 verwenden
+           console.log("Gefundenes Enddatum csgowin:", filteredData[0][6]);
+            if (filteredData.length > 0 && filteredData[0][6]) {
+                console.log("Gefundenes Enddatum csgowin:", filteredData[0][6]); // Debugging
+                startCountdown(filteredData[0][6]);  // Das Enddatum von Platz 1 verwenden
             } else {
-                console.error("Kein gültiges Enddatum gefunden.");
+                console.error("Kein gültiges csgowin Enddatum gefunden.");
             }
             } else {
-                console.log('Keine Daten gefunden.');
+                console.log('Keine csgowin Daten gefunden.');
             }
         }).catch((error) => {
             console.error('Fehler beim Abrufen der Daten:', error);
