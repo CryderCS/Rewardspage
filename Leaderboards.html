@@ -42,9 +42,10 @@
 
 <div class="tabs">
   <button class="tab-button active" data-tab="tab1"><img src="images/rain-gg-original (1).png" alt="Rain.gg" class="tab-icon" /></button>
- <!-- <button class="tab-button" data-tab="tab2"><img src="images/CSGOBIG_Logo.png" alt="Csgobig.com" class="tab-icon" /></button> -->
-  <button class="tab-button" data-tab="tab3"><img src="images/Clash_High_Quality_Logo.png" alt="Clash.gg" class="tab-icon" /></button>
-  <button class="tab-button" data-tab="tab4"><img src="images/CSGOROLL_Logo.png" alt="Csgoroll" class="tab-icon" /></button>
+  <button class="tab-button" data-tab="tab2"><img src="images/icon_csgowin.png" alt="CSBattle.com" class="tab-icon" /></button>
+  <button class="tab-button" data-tab="tab3"><img src="images/csbattle_Logo.png" alt="CGOwin.com" class="tab-icon" /></button>
+  <button class="tab-button" data-tab="tab4"><img src="images/Clash_High_Quality_Logo.png" alt="Clash.gg" class="tab-icon" /></button>
+  <button class="tab-button" data-tab="tab5"><img src="images/CSGOROLL_Logo.png" alt="Csgoroll" class="tab-icon" /></button>
 </div>
 
 <!-- Tab Contents -->
@@ -66,9 +67,9 @@
 
 <div id="tab2" class="tab-content">
   <div class="container">
-    <div id="top-tiles-csgobig" class="top-tiles"></div>
-    <div id="countdown-csgobig" class="timer"></div>
-    <table id="sheet-table-csgobig">
+    <div id="top-tiles-csgowin" class="top-tiles"></div>
+    <div id="countdown-csgowin" class="timer"></div>
+    <table id="sheet-table-csbattle">
       <thead></thead>
       <tbody></tbody>
     </table>
@@ -77,10 +78,9 @@
 
 <div id="tab3" class="tab-content">
   <div class="container">
-    <div id="top-tiles-clash" class="top-tiles"></div>
-    <div id="countdown-clash" class="timer"></div>
-    <div>Contest ends on 10.10.2025 and will be paused for 2 weeks due to Vacation</div>
-    <table id="sheet-table-clash">
+    <div id="top-tiles-csbattle" class="top-tiles"></div>
+    <div id="countdown-csbattle" class="timer"></div>
+    <table id="sheet-table-csbattle">
       <thead></thead>
       <tbody></tbody>
     </table>
@@ -88,6 +88,17 @@
 </div>
 
 <div id="tab4" class="tab-content">
+  <div class="container">
+    <div id="top-tiles-clash" class="top-tiles"></div>
+    <div id="countdown-clash" class="timer"></div>
+    <table id="sheet-table-clash">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="tab5" class="tab-content">
   <div class="container">
     <h1 style="text-align:center; margin-bottom:10px;">Comission Based Leaderboard</h1>
     <p id="totalAmountDisplay" style="text-align:center; margin-bottom:40px;"></p>
@@ -164,9 +175,10 @@
   </footer>
   
 <script src="leaderBoardLoaderRainV2.js"></script>
-<script src="leaderBoardLoaderCSGOBIG.comV2.js"></script>
+<script src="leaderBoardLoaderCSBattleV2.js"></script>
 <script src="leaderBoardLoaderClash.GGV2.js"></script>
 <script src="leaderBoardLoaderCSGOROLLV2.js"></script>
+
 
 <script>
 const tabButtons = document.querySelectorAll('.tab-button');
@@ -184,9 +196,10 @@ const scriptSrcs = {
 // Join-Links pro Tab
 const joinLinks = {
   tab1: 'https://rain.gg/r/cryder',
-  tab2: 'https://csgobig.com/r/cryder',
-  tab3: 'https://clash.gg/r/cryder',
-  tab4: 'https://csgoroll.com/r/cryder'
+  tab2: 'https://csgowin.com/r/cryder',
+  tab3: 'https://csbattle.com/r/cryder',
+  tab4: 'https://clash.gg/r/cryder',
+  tab5: 'https://csgoroll.com/r/cryder'
 };
 
 // Affiliate Bonus Popup

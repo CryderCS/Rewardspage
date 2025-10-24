@@ -87,7 +87,8 @@ body > .page-wrapper {
 body.tab1::before,
 body.tab2::before,
 body.tab3::before,
-body.tab4::before {
+body.tab4::before,
+body.tab5::before {
   content: '';
   position: fixed;
   top: 400px;    
@@ -118,14 +119,22 @@ body.tab1 {
 
 body.tab2 {
   /*margin: 10rem;*/
-  background-color: #03010a;
+  background-color: #1b0d02;
+  color: #ddd;
+  font-family: 'Rubik', sans-serif !important;
+  font-size: 14px;
+  text-align: center;
+}
+body.tab3 {
+  /*margin: 10rem;*/
+  background-color: #1b0d02;
   color: #ddd;
   font-family: 'Rubik', sans-serif !important;
   font-size: 14px;
   text-align: center;
 }
 
-body.tab3 {
+body.tab4 {
   /*margin: 10rem;*/
   background-color: #180902;
   color: #ddd;
@@ -134,7 +143,7 @@ body.tab3 {
   text-align: center;
 }
 
-body.tab4 {
+body.tab5 {
   /*margin: 10rem;*/
   background-color: #1d0303;
   color: #ddd;
@@ -177,27 +186,35 @@ body.tab1 #affiliate-button {
 /* Tab2 */
 body.tab2 #join-button,
 body.tab2 #affiliate-button {
-  background: #ffe60093;
-  border: 1px solid #ffe600;
+  background: #ff7b0093;
+  border: 1px solid #ffac1193;
   color: #fff;
 }
 
 /* Tab3 */
 body.tab3 #join-button,
 body.tab3 #affiliate-button {
+  background: #ff7b0093;
+  border: 1px solid #ff932e93;
+  color: #fff;
+}
+
+/* Tab3 */
+body.tab4 #join-button,
+body.tab4 #affiliate-button {
   background: #ff880093;
   border: 1px solid #ff8800;
   color: #fff;
 }
 
-/* Tab4 */
-body.tab4 #join-button{
+/* Tab5 */
+body.tab5 #join-button{
   background: #e2000093;
   border: 1px solid #e20000;
   color: #fff;
 }
 /* Affiliate-Button nur in Tab4 verstecken */
-body.tab4 #affiliate-button {
+body.tab5 #affiliate-button {
   display: none;
 }
 
@@ -212,15 +229,15 @@ body.tab1 #affiliate-button:hover {
 
 body.tab2 #join-button:hover,
 body.tab2 #affiliate-button:hover {
-    border: 3px solid #ffe600;
-    background: linear-gradient(#ffe60013, #ffe60069);
+    border: 3px solid #ff7300;
+    background: linear-gradient(#ff880013, #ff880069);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
 }
 
 body.tab3 #join-button:hover,
 body.tab3 #affiliate-button:hover {
-    border: 3px solid #ff8800;
+    border: 3px solid #ff7300;
     background: linear-gradient(#ff880013, #ff880069);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
@@ -228,6 +245,14 @@ body.tab3 #affiliate-button:hover {
 
 body.tab4 #join-button:hover,
 body.tab4 #affiliate-button:hover {
+    border: 3px solid #ff8800;
+    background: linear-gradient(#ff880013, #ff880069);
+    color: #fff;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+body.tab5 #join-button:hover,
+body.tab5 #affiliate-button:hover {
     border: 3px solid #e20000;
     background: linear-gradient(#e2000013, #e2000069);
     color: #fff;
@@ -263,11 +288,12 @@ body.tab4 #affiliate-button:hover {
   }
 
   .tab-button:hover[data-tab="tab2"] {
-    border-bottom: 3px solid #ffe600;
-    background: linear-gradient( #ffe60013, #ffe60069);
+    border-bottom: 3px solid #ff8800;
+    background: linear-gradient( #ff880013, #ff880069);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
   }
+
   .tab-button:hover[data-tab="tab3"] {
     border-bottom: 3px solid #ff8800;
     background: linear-gradient( #ff880013, #ff880069);
@@ -276,6 +302,13 @@ body.tab4 #affiliate-button:hover {
   }
 
   .tab-button:hover[data-tab="tab4"] {
+    border-bottom: 3px solid #ff8800;
+    background: linear-gradient( #ff880013, #ff880069);
+    color: #fff;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+
+  .tab-button:hover[data-tab="tab5"] {
     border-bottom: 3px solid #e20000;
     background: linear-gradient( #e2000013, #e2000069);
     color: #fff;
@@ -290,11 +323,10 @@ body.tab4 #affiliate-button:hover {
 
   /* Tab2 */
   .tab-button.active[data-tab="tab2"] {
-      border-bottom: 3px solid #ffe600;
-      background: linear-gradient( #ffe60013, #ffe60069);
+      border-bottom: 3px solid #ff8800;
+      background: linear-gradient( #ff880013, #ff880069);
       color: #fff;
   }
-
   /* Tab3 */
   .tab-button.active[data-tab="tab3"] {
       border-bottom: 3px solid #ff8800;
@@ -302,8 +334,15 @@ body.tab4 #affiliate-button:hover {
       color: #fff;
   }
 
-  /* Tab4 */
+  /* Tab3 */
   .tab-button.active[data-tab="tab4"] {
+      border-bottom: 3px solid #ff8800;
+      background: linear-gradient( #ff880013, #ff880069);
+      color: #fff;
+  }
+
+  /* Tab4 */
+  .tab-button.active[data-tab="tab5"] {
       border-bottom: 3px solid #e20000;
       background: linear-gradient( #e2000013, #e2000069);
       color: #fff;
@@ -555,6 +594,54 @@ body.tab4 #affiliate-button:hover {
       width: 20px;       /* Breite des Icons */
       height: 20px;      /* Höhe des Icons */
       background-image: url('/images/Clashcoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    .csbattlecoin-icon-small {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1px; /* Abstand zwischen Icon und Zahl */
+      width: 14px;       /* Breite des Icons */
+      height: 14px;      /* Höhe des Icons */
+      background-image: url('/images/csbattleCoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .csbattlecoin-icon-big {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 2px; /* Abstand zwischen Icon und Zahl */
+      width: 20px;       /* Breite des Icons */
+      height: 20px;      /* Höhe des Icons */
+      background-image: url('/images/csbattleCoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .csgowincoin-icon-small {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1px; /* Abstand zwischen Icon und Zahl */
+      width: 14px;       /* Breite des Icons */
+      height: 14px;      /* Höhe des Icons */
+      background-image: url('/images/csgowincoin.webp'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .csgowincoin-icon-big {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 2px; /* Abstand zwischen Icon und Zahl */
+      width: 20px;       /* Breite des Icons */
+      height: 20px;      /* Höhe des Icons */
+      background-image: url('/images/csgowincoin.webp'); /* Pfad zum Coin-Icon */
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
