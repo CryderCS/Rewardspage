@@ -1,7 +1,7 @@
 (() => {
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
-const spreadsheetId = '1rHFrCjR92zW5dI06Ug7LbSxBmtbGXcsSpEvuOQeUrEY';
-const range = 'CsbattleLeaderboard!A1:J100';
+const spreadsheetId = '1zB2EZIDzN6YaJohAC-E0s0nMGYL-LBkhELyc8ytasZY';
+const range = 'CsgowinLeaderboard!A1:J100';
 
 // Enddatum übergeben
 //const spreadsheetIdDate = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
@@ -50,13 +50,13 @@ function getSheetData() {
         if (data.length > 0) {
             const headers = data[0];  
             let filteredData = data.slice(1).map(row => [
-                row[0],  // userRank
-                row[1],  // userID
-                row[2],  // UserName
-                row[3],  // Useravatar URL
+                row[0],  // userID
+                row[1],  // name
+                row[2],  // avatar URL
+                row[3],  // level
                 parseFloat(row[4]) || 0,  // Wagered (Wichtig für Platzierung)
-                parseFloat(row[5]) || 0,  // price
-                row[6]  // EndDate               
+                parseFloat(row[7]) || 0,  // price
+                row[8]  // EndDate               
             ]);
 
 
@@ -79,10 +79,10 @@ function getSheetData() {
             displayAllParticipants(filteredData.slice(3));
 
            // Hier den Countdown mit dem Enddatum starten
-           console.log("Gefundenes Enddatum Csbattle:", filteredData[0][6]);
-            if (filteredData.length > 0 && filteredData[0][6]) {
-                console.log("Gefundenes Enddatum csbattle:", filteredData[0][6]); // Debugging
-                startCountdown(filteredData[0][6]);  // Das Enddatum von Platz 1 verwenden
+           console.log("Gefundenes Enddatum Csbattle:", filteredData[0][8]);
+            if (filteredData.length > 0 && filteredData[0][8]) {
+                console.log("Gefundenes Enddatum csbattle:", filteredData[0][8]); // Debugging
+                startCountdown(filteredData[0][8]);  // Das Enddatum von Platz 1 verwenden
             } else {
                 console.error("Kein gültiges Enddatum gefunden.");
             }
@@ -97,8 +97,8 @@ function getSheetData() {
 
 // Die ersten drei Teilnehmer in Kacheln anzeigen
 function displayTopThreeInBoxes(topThree) {
-    const loader = document.getElementById('loader-csbattle');
-    const container = document.getElementById('top-tiles-csbattle');
+    const loader = document.getElementById('loader-csgowin');
+    const container = document.getElementById('top-tiles-csgowin');
 
     if(loader) loader.style.display = 'none';
     if(container) container.style.display = 'flex';
@@ -129,17 +129,17 @@ function displayTopThreeInBoxes(topThree) {
         // Entsprechend anpassen, falls anders
 
         box.innerHTML = `
-            <img src="${player[3]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
+            <img src="${player[2]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
             alt="Alternative image"/>
-            <div class="player-name">${player[2]}</div>
+            <div class="player-name">${player[1]}</div>
             <div class="info-label">WAGERED</div>
             <div class="info-value">
-                <span class="clashcoin-icon-small"></span>
+                <span class="csgowincoin-icon-small"></span>
                  ${player[4]}
             </div>
             <div class="info-label">PRIZE</div>
             <div class="prize">
-                <span class="clashcoin-icon-big"></span> ${player[5]}
+                <span class="csgowincoin-icon-big"></span> ${player[5]}
             </div>
             <div class="placement">${placementText}</div>
         `;
@@ -150,7 +150,7 @@ function displayTopThreeInBoxes(topThree) {
 
 // Alle Teilnehmer in Tabelle anzeigen
 function displayAllParticipants(participants) {
-    const table = document.getElementById('sheet-table-csbattle');
+    const table = document.getElementById('sheet-table-csgowin');
 
     // Thead erzeugen oder leeren
     let thead = table.getElementsByTagName('thead')[0];
@@ -178,11 +178,11 @@ function displayAllParticipants(participants) {
 
         tr.innerHTML = `
                 <td class="position">${row[7]}</td>
-                <td><img class="table-avatar" src="${row[3]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
-            alt="Alternative image"/>${row[2]}</td>
-                <td><img class="coin" src="/images/csbattleCoin.svg" /> ${row[4]}
+                <td><img class="table-avatar" src="${row[2]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
+            alt="Alternative image"/>${row[1]}</td>
+                <td><img class="coin" src="/images/csgowincoin.webp" /> ${row[4]}
                 </td>
-                <td><img class="coin" src="/images/csbattleCoin.svg" /> ${row[5]}
+                <td><img class="coin" src="/images/csgowincoin.webp" /> ${row[5]}
                 </td>
         `;
 
@@ -200,7 +200,7 @@ loadApi();
 
 // Timer für Countdown
 function startCountdown(targetDate) {
-    const countdownElement = document.getElementById("countdown-csbattle");
+    const countdownElement = document.getElementById("countdown-csgowin");
 
     function updateCountdown() {
         const now = new Date().getTime();
