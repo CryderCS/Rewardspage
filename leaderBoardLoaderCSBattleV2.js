@@ -134,12 +134,12 @@ function displayTopThreeInBoxes(topThree) {
             <div class="player-name">${player[2]}</div>
             <div class="info-label">WAGERED</div>
             <div class="info-value">
-                <span class="clashcoin-icon-small"></span>
+                <span class="csbattlecoin-icon-small"></span>
                  ${player[4]}
             </div>
             <div class="info-label">PRIZE</div>
             <div class="prize">
-                <span class="clashcoin-icon-big"></span> ${player[5]}
+                <span class="csbattlecoin-icon-big"></span> ${player[5]}
             </div>
             <div class="placement">${placementText}</div>
         `;
