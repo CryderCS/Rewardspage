@@ -81,10 +81,10 @@ function getSheetData() {
             displayAllParticipants(filteredData.slice(3));
 
            // Hier den Countdown mit dem Enddatum starten
-           console.log("Gefundenes Enddatum Clash:", filteredData[1][9]);
-            if (filteredData.length > 0 && filteredData[1][9]) {
-                console.log("Gefundenes Enddatum Clash:", filteredData[1][9]); // Debugging
-                startCountdown(filteredData[1][9]);  // Das Enddatum von Platz 1 verwenden
+           console.log("Gefundenes Enddatum Clash:", filteredData[0][9]);
+            if (filteredData.length > 0 && filteredData[0][9]) {
+                console.log("Gefundenes Enddatum Clash:", filteredData[0][9]); // Debugging
+                startCountdown(filteredData[0][9]);  // Das Enddatum von Platz 1 verwenden
             } else {
                 console.error("Kein gültiges Enddatum gefunden.");
             }
