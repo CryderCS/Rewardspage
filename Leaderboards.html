@@ -42,7 +42,7 @@
 
 <div class="tabs">
   <button class="tab-button active" data-tab="tab1"><img src="images/rain-gg-original (1).png" alt="Rain.gg" class="tab-icon" /></button>
-  <button class="tab-button" data-tab="tab2"><img src="images/icon_csgowin.png" alt="CSBattle.com" class="tab-icon" /></button>
+  <button class="tab-button" data-tab="tab2"><img src="images/acebet.svg" alt="CSBattle.com" class="tab-icon" /></button>
   <button class="tab-button" data-tab="tab3"><img src="images/csbattle_Logo.png" alt="CGOwin.com" class="tab-icon" /></button>
   <!--<button class="tab-button" data-tab="tab4"><img src="images/Clash_High_Quality_Logo.png" alt="Clash.gg" class="tab-icon" /></button>-->
   <button class="tab-button" data-tab="tab5"><img src="images/CSGOROLL_Logo.png" alt="Csgoroll" class="tab-icon" /></button>
@@ -67,9 +67,29 @@
 
 <div id="tab2" class="tab-content">
   <div class="container">
-    <div id="top-tiles-csgowin" class="top-tiles"></div>
-    <div id="countdown-csgowin" class="timer"></div>
-    <table id="sheet-table-csgowin">
+    <div class="info-wrapper">
+  What are Points? ⓘ
+  <div class="info-tooltip">
+    Each game gives you a multiplier on your <br>
+    wagered amount that converts to points.
+    <br><br>
+    <table>
+      <tr><td>Blackjack</td><td>1.00x</td></tr>
+      <tr><td>Dice</td><td>1.00x</td></tr>
+      <tr><td>Craps</td><td>1.40x</td></tr>
+      <tr><td>Baccarat</td><td>1.50x</td></tr>
+      <tr><td>Roulette</td><td>2.70x</td></tr>
+      <tr><td>Keno</td><td>4.00x</td></tr>
+      <tr><td>Mines</td><td>4.00x</td></tr>
+      <tr><td>Plinko</td><td>4.00x</td></tr>
+      <tr><td>Sports</td><td>4.00x</td></tr>
+      <tr><td>Slots (Average)</td><td>4.25x</td></tr>
+    </table>
+  </div>
+</div>
+    <div id="top-tiles-clash" class="top-tiles"></div>
+    <div id="countdown-clash" class="timer"></div>
+    <table id="sheet-table-clash">
       <thead></thead>
       <tbody></tbody>
     </table>
@@ -191,7 +211,7 @@ const scriptSrcs = {
   tab1: null,
   tab2: 'leaderBoardLoaderCSGOWINV2.js',
   tab3: 'leaderBoardLoaderCSBattleV2.js',
-  tab4: 'leaderBoardLoaderClash.GGV2.js',
+  //tab4: 'leaderBoardLoaderClash.GGV2.js',
   tab5: 'leaderBoardLoaderCSGOROLLV2.js'
 };
 
@@ -200,7 +220,7 @@ const joinLinks = {
   tab1: 'https://rain.gg/r/cryder',
   tab2: 'https://csgowin.com/r/cryder',
   tab3: 'https://csbattle.com/r/cryder',
-  tab4: 'https://clash.gg/r/cryder',
+  //tab4: 'https://clash.gg/r/cryder',
   tab5: 'https://csgoroll.com/r/cryder'
 };
 

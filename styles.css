@@ -119,7 +119,7 @@ body.tab1 {
 
 body.tab2 {
   /*margin: 10rem;*/
-  background-color: #1b0d02;
+  background-color: #010f08;
   color: #ddd;
   font-family: 'Rubik', sans-serif !important;
   font-size: 14px;
@@ -186,8 +186,8 @@ body.tab1 #affiliate-button {
 /* Tab2 */
 body.tab2 #join-button,
 body.tab2 #affiliate-button {
-  background: #ff7b0093;
-  border: 1px solid #ffac1193;
+  background: #00ff5593;
+  border: 1px solid #00ff5593;
   color: #fff;
 }
 
@@ -217,6 +217,11 @@ body.tab5 #join-button{
 body.tab5 #affiliate-button {
   display: none;
 }
+/* Affiliate-Button nur in Tab2 verstecken */
+body.tab2 #affiliate-button {
+  display: none;
+}
+
 
 /* Hover-Effekte */
 body.tab1 #join-button:hover,
@@ -229,8 +234,8 @@ body.tab1 #affiliate-button:hover {
 
 body.tab2 #join-button:hover,
 body.tab2 #affiliate-button:hover {
-    border: 3px solid #ff7300;
-    background: linear-gradient(#ff880013, #ff880069);
+    border: 3px solid #00ff55;
+    background: linear-gradient(#00ff5513, #00ff5569);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
 }
@@ -288,8 +293,8 @@ body.tab5 #affiliate-button:hover {
   }
 
   .tab-button:hover[data-tab="tab2"] {
-    border-bottom: 3px solid #ff8800;
-    background: linear-gradient( #ff880013, #ff880069);
+    border-bottom: 3px solid #00ff55;
+    background: linear-gradient( #00ff5513, #00ff5569);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
   }
@@ -323,8 +328,8 @@ body.tab5 #affiliate-button:hover {
 
   /* Tab2 */
   .tab-button.active[data-tab="tab2"] {
-      border-bottom: 3px solid #ff8800;
-      background: linear-gradient( #ff880013, #ff880069);
+      border-bottom: 3px solid #00ff55;
+      background: linear-gradient( #00ff5513, #00ff5569);
       color: #fff;
   }
   /* Tab3 */
@@ -369,6 +374,44 @@ body.tab5 #affiliate-button:hover {
     margin: 30px auto;
     padding: 0 15px;
   }
+
+  .info-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.info-tooltip {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: #1c1c1c;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 50;
+  white-space: nowrap;
+}
+
+.info-wrapper:hover .info-tooltip {
+  display: block;
+}
+
+.info-tooltip table {
+  border-collapse: collapse;
+}
+
+.info-tooltip td {
+  padding: 4px 10px;
+}
+
+.info-tooltip tr td:last-child {
+  text-align: right;
+}
 
   /* Top 3 players tiles container */
   .top-tiles {
