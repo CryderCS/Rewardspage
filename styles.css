@@ -119,7 +119,7 @@ body.tab1 {
 
 body.tab2 {
   /*margin: 10rem;*/
-  background-color: #010f08;
+  background-color: #202201;
   color: #ddd;
   font-family: 'Rubik', sans-serif !important;
   font-size: 14px;
@@ -127,7 +127,7 @@ body.tab2 {
 }
 body.tab3 {
   /*margin: 10rem;*/
-  background-color: #1b0d02;
+  background-color: #021b04;
   color: #ddd;
   font-family: 'Rubik', sans-serif !important;
   font-size: 14px;
@@ -186,24 +186,24 @@ body.tab1 #affiliate-button {
 /* Tab2 */
 body.tab2 #join-button,
 body.tab2 #affiliate-button {
-  background: #00ff5593;
-  border: 1px solid #00ff5593;
+  background: #eeff0093;
+  border: 1px solid #eeff0093;
   color: #fff;
 }
 
 /* Tab3 */
 body.tab3 #join-button,
 body.tab3 #affiliate-button {
-  background: #ff7b0093;
-  border: 1px solid #ff932e93;
+  background: #66ff0093;
+  border: 1px solid #66ff0093;
   color: #fff;
 }
 
 /* Tab3 */
 body.tab4 #join-button,
 body.tab4 #affiliate-button {
-  background: #ff880093;
-  border: 1px solid #ff8800;
+  background: #66ff0093;
+  border: 1px solid #66ff00;
   color: #fff;
 }
 
@@ -221,6 +221,11 @@ body.tab5 #affiliate-button {
 body.tab2 #affiliate-button {
   display: none;
 }
+/* Affiliate-Button nur in Tab3 verstecken */
+body.tab3 #affiliate-button {
+  display: none;
+}
+
 
 
 /* Hover-Effekte */
@@ -234,16 +239,16 @@ body.tab1 #affiliate-button:hover {
 
 body.tab2 #join-button:hover,
 body.tab2 #affiliate-button:hover {
-    border: 3px solid #00ff55;
-    background: linear-gradient(#00ff5513, #00ff5569);
+    border: 3px solid #eeff00;
+    background: linear-gradient(#eeff0013, #eeff0069);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
 }
 
 body.tab3 #join-button:hover,
 body.tab3 #affiliate-button:hover {
-    border: 3px solid #ff7300;
-    background: linear-gradient(#ff880013, #ff880069);
+    border: 3px solid #66ff00;
+    background: linear-gradient(#66ff0013, #66ff0069);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
 }
@@ -293,15 +298,15 @@ body.tab5 #affiliate-button:hover {
   }
 
   .tab-button:hover[data-tab="tab2"] {
-    border-bottom: 3px solid #00ff55;
-    background: linear-gradient( #00ff5513, #00ff5569);
+    border-bottom: 3px solid #eeff00;
+    background: linear-gradient( #eeff0013, #eeff0069);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
   }
 
   .tab-button:hover[data-tab="tab3"] {
-    border-bottom: 3px solid #ff8800;
-    background: linear-gradient( #ff880013, #ff880069);
+    border-bottom: 3px solid #66ff00;
+    background: linear-gradient( #66ff0013, #66ff0069);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
   }
@@ -328,14 +333,14 @@ body.tab5 #affiliate-button:hover {
 
   /* Tab2 */
   .tab-button.active[data-tab="tab2"] {
-      border-bottom: 3px solid #00ff55;
-      background: linear-gradient( #00ff5513, #00ff5569);
+      border-bottom: 3px solid #eeff00;
+      background: linear-gradient( #eeff0013, #eeff0069);
       color: #fff;
   }
   /* Tab3 */
   .tab-button.active[data-tab="tab3"] {
-      border-bottom: 3px solid #ff8800;
-      background: linear-gradient( #ff880013, #ff880069);
+      border-bottom: 3px solid #66ff00;
+      background: linear-gradient( #66ff0013, #66ff0069);
       color: #fff;
   }
 
@@ -613,6 +618,30 @@ body.tab5 #affiliate-button:hover {
       width: 20px;       /* Breite des Icons */
       height: 20px;      /* Höhe des Icons */
       background-image: url('/images/bigcoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .skinfans-icon-small {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1px; /* Abstand zwischen Icon und Zahl */
+      width: 14px;       /* Breite des Icons */
+      height: 14px;      /* Höhe des Icons */
+      background-image: url('/images/skinfanscoin.svg'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .skinfans-icon-big {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 2px; /* Abstand zwischen Icon und Zahl */
+      width: 20px;       /* Breite des Icons */
+      height: 20px;      /* Höhe des Icons */
+      background-image: url('/images/skinfanscoin.svg'); /* Pfad zum Coin-Icon */
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
