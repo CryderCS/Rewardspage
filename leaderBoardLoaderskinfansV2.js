@@ -43,7 +43,7 @@ function getSheetData() {
         if (data.length > 0) {
             const headers = data[0];  
             let filteredData = data.slice(1).map(row => [
-                row[0],  // Enddate (wird später für Countdown benötigt)
+                row[0]+'Z',  // Enddate (wird später für Countdown benötigt)
                 row[1],  // Position
                 row[2],  // Price
                 row[4],  // Name
@@ -70,7 +70,7 @@ function getSheetData() {
             displayAllParticipants(filteredData.slice(3));
 
             // Enddatum aus dem Sheet ziehen
-            startCountdown(filteredDat[0][0]); // Annahme: Enddatum ist in der ersten Spalte (A) der ersten Zeile (1)
+            startCountdown(filteredData[0][0]); // Annahme: Enddatum ist in der ersten Spalte (A) der ersten Zeile (1)
             gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: spreadsheetIdDate,
                 range: rangeDate
