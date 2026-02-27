@@ -599,6 +599,30 @@ body.tab5 #affiliate-button:hover {
       background-position: center;
     }
 
+    .csgoluck-icon-small {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1px; /* Abstand zwischen Icon und Zahl */
+      width: 14px;       /* Breite des Icons */
+      height: 14px;      /* Höhe des Icons */
+      background-image: url('/images/csgoluckcoin.png'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .csgoluck-icon-big {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 2px; /* Abstand zwischen Icon und Zahl */
+      width: 20px;       /* Breite des Icons */
+      height: 20px;      /* Höhe des Icons */
+      background-image: url('/images/csgoluckCoin.png'); /* Pfad zum Coin-Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
     .bigcoin-icon-small {
       display: inline-flex;
       align-items: center;
