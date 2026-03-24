@@ -1,7 +1,7 @@
 (() => {
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
-const spreadsheetId = '1g0hu6nylkjUAyBdcdn7yunuhifiSnsuxWVgCAE7x6zY';
-const range = 'Leaderboard!A1:H100';
+const spreadsheetId = '1zjhZKgVGLUwsNa6F5eJsUD79gV8Qts5l5JvKMHw5vSQ';
+const range = 'CSGOBIGLeaderboard!A1:K100';
 
 // Google API initialisieren
 function initApi() {
@@ -43,12 +43,11 @@ function getSheetData() {
         if (data.length > 0) {
             const headers = data[0];  
             let filteredData = data.slice(1).map(row => [
-                row[0]+'Z',  // Enddate (wird später für Countdown benötigt)
-                row[1],  // Position
-                row[2],  // Price
-                row[4],  // Name
-                parseFloat(row[5]) || 0,  // Wagered (Wichtig für Platzierung)
-                row[7],  // ImageURL
+                row[10],  // Enddate (wird später für Countdown benötigt)
+                row[9],  // Price
+                row[1],  // Name
+                parseFloat(row[4]) || 0,  // Wagered (Wichtig für Platzierung)
+                row[2],  // ImageURL
             ]);
 
             // Spieler mit 0 Wagered entfernen
@@ -58,18 +57,18 @@ function getSheetData() {
             filteredData.sort((a, b) => b[4] - a[4]);
 
             // Platzierungen vergeben + Preise zuweisen
-            /*filteredData = filteredData.map((row, index) => {
-                let prize = prizeDistribution[index] || 0;  // Falls Platz > 7 → 0 als Preis setzen
-                return [...row, index + 1, prize]; // Platz & fixen Preis hinzufügen
-            });*/
+            filteredData = filteredData.map((row, index) => {
+                return [...row, index + 1]; // Platz hinzufügen
+            });
 
-            console.log("Sortierte Daten mit Platzierungen & Preisen:", filteredData);
+            console.log("Sortierte Daten mit Platzierungen & Preisen csgobig:", filteredData);
 
             // Top 3 anzeigen
             displayTopThreeInBoxes(filteredData.slice(0, 3));
             displayAllParticipants(filteredData.slice(3));
 
             // Enddatum aus dem Sheet ziehen
+            console.log("Gefundenes Enddatum Csgobig:", filteredData[0][0]);
             startCountdown(filteredData[0][0]); // Annahme: Enddatum ist in der ersten Spalte (A) der ersten Zeile (1)
             gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: spreadsheetIdDate,
@@ -78,7 +77,7 @@ function getSheetData() {
                 const dateData = response.result.values;
                 if (dateData.length > 0) {
                     const date = dateData[0][0];  
-                    console.log("Gefundenes Enddatum:", date); 
+                    console.log("Gefundenes Enddatum Csgobig:", date); 
                     
                 } else {
                     console.error('Kein Enddatum gefunden.');
@@ -100,8 +99,8 @@ function getSheetData() {
 
 // Die ersten drei Teilnehmer in Kacheln anzeigen
 function displayTopThreeInBoxes(topThree) {
-    const loader = document.getElementById('loader-skinfans');
-    const container = document.getElementById('top-tiles-skinfans');
+    const loader = document.getElementById('loader-csgobig');
+    const container = document.getElementById('top-tiles-csgobig');
 
     if(loader) loader.style.display = 'none';
     if(container) container.style.display = 'flex';
@@ -131,17 +130,17 @@ function displayTopThreeInBoxes(topThree) {
         // Entsprechend anpassen, falls anders
 
         box.innerHTML = `
-            <img src="${player[5]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
+            <img src="${player[4]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
             alt="Alternative image"" />
-            <div class="player-name">${player[3]}</div>
+            <div class="player-name">${player[2]}</div>
             <div class="info-label">WAGERED</div>
             <div class="info-value">
-                <span class="skinfans-icon-small"></span>
-                 ${player[4]}
+                <span class="bigcoin-icon-small"></span>
+                 ${player[3]}
             </div>
             <div class="info-label">PRIZE</div>
             <div class="prize">
-                <span class="skinfans-icon-big"></span> ${player[2]}
+                <span class="bigcoin-icon-big"></span> ${player[1]}
             </div>
             <div class="placement">${placementText}</div>
         `;
@@ -152,7 +151,7 @@ function displayTopThreeInBoxes(topThree) {
 
 // Alle Teilnehmer in Tabelle anzeigen
 function displayAllParticipants(participants) {
-    const table = document.getElementById('sheet-table-skinfans');
+    const table = document.getElementById('sheet-table-csgobig');
 
     // Thead erzeugen oder leeren
     let thead = table.getElementsByTagName('thead')[0];
@@ -179,12 +178,12 @@ function displayAllParticipants(participants) {
         const tr = document.createElement('tr');
 
         tr.innerHTML = `
-                <td class="position">${row[1]}</td>
-                <td><img class="table-avatar" src="${row[5]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
-            alt="Alternative image"/>${row[3]}</td>
-                <td><img class="coin" src="/images/skinfanscoin.svg" /> ${row[4]}
+                <td class="position">${row[5]}</td>
+                <td><img class="table-avatar" src="${row[4]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
+            alt="Alternative image"/>${row[2]}</td>
+                <td><img class="coin" src="/images/bigcoin.svg" /> ${row[3]}
                 </td>
-                <td><img class="coin" src="/images/skinfanscoin.svg" /> ${row[2]}
+                <td><img class="coin" src="/images/bigcoin.svg" /> ${row[1]}
                 </td>
         `;
 
@@ -202,7 +201,7 @@ loadApi();
 
 // Timer für Countdown
 function startCountdown(targetDate) {
-    const countdownElement = document.getElementById("countdown-skinfans");
+    const countdownElement = document.getElementById("countdown-csgobig");
 
     function updateCountdown() {
         const now = new Date().getTime();
