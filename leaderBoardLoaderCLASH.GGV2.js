@@ -1,7 +1,7 @@
 (() => {
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
-const spreadsheetId = '1gb4ruaIpAtO7BvOCrCqTKpRkq8gTDqOm8nPJjC2eIdo';
-const range = 'acebet!A1:J100';
+const spreadsheetId = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
+const range = 'ClashLB';
 
 // Enddatum übergeben
 //const spreadsheetIdDate = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
@@ -136,11 +136,13 @@ function displayTopThreeInBoxes(topThree) {
             <div class="player-name">${player[1]}</div>
             <div class="info-label">WAGERED</div>
             <div class="info-value">
-                 ${player[4]} Points
+            <span class="clashcoin-icon-small"></span>
+                 ${player[4]}
             </div>
             <div class="info-label">PRIZE</div>
             <div class="prize">
-                 $${player[8]}
+            <span class="clashcoin-icon-big"></span>
+                 ${player[8]}
             </div>
             <div class="placement">${placementText}</div>
         `;
@@ -181,9 +183,11 @@ function displayAllParticipants(participants) {
                 <td class="position">${row[10]}</td>
                 <td><img class="table-avatar" src="${row[2]}" onerror="this.onerror=null; this.src='images/CryderLogoSpin.gif';" 
             alt="Alternative image"/>${row[1]}</td>
-                <td> ${row[4]} Points
+                <td><img class="coin" src="/images/clashcoin.svg" />
+                ${row[4]}
                 </td>
-                <td> $${row[8]}
+                <td><img class="coin" src="/images/clashcoin.svg" />
+                ${row[8]}
                 </td>
         `;
 
