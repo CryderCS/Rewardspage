@@ -42,7 +42,7 @@
 
 <div class="tabs">
   <button class="tab-button active" data-tab="tab1"><img src="images/rain-gg-original (1).png" alt="Rain.gg" class="tab-icon" /></button>
-  <!-- <button class="tab-button" data-tab="tab2"><img src="images/Skinrave.gg_1.png" alt="csgobig" class="tab-icon" /></button> -->
+  <button class="tab-button" data-tab="tab2"><img src="images/chickenLogo.png" alt="chicken" class="tab-icon" /></button> 
   <!--<button class="tab-button" data-tab="tab3"><img src="images/CSGOLUCK.Png" alt="CSgoluck.com" class="tab-icon" /></button>-->
   <!--<button class="tab-button" data-tab="tab3"><img src="images/csbattle_Logo.png" alt="csbattle.com" class="tab-icon" /></button>-->
   <!-- <button class="tab-button" data-tab="tab3"><img src="images/Clash_High_Quality_Logo.png" alt="Clash.gg" class="tab-icon" /></button> -->
@@ -69,34 +69,10 @@
 <div id="tab2" class="tab-content">
   <div class="container">
     Wager abuse will result in a ban from the leaderboard and loss of rewards!
-    <div id="top-tiles-skinrave" class="top-tiles"></div>
-    <div id="countdown-skinrave" class="timer"></div>
-    <table id="sheet-table-skinrave">
-      <thead></thead>
-      <tbody></tbody>
-    </table>
-  </div>
-</div>
-
-<div id="tab3" class="tab-content">
-  <div class="container">
-    Wagers displayed in Points!
-    <div id="top-tiles-clash" class="top-tiles"></div>
-    <div id="countdown-clash" class="timer"></div>
-    <table id="sheet-table-clash">
-      <thead></thead>
-      <tbody></tbody>
-    </table>
-  </div>
-</div>
-
-<div id="tab5" class="tab-content">
-  <div class="container">
-    <h1 style="text-align:center; margin-bottom:10px;">Comission Based Leaderboard</h1>
-    <p id="totalAmountDisplay" style="text-align:center; margin-bottom:40px;"></p>
-    <div id="top-tiles-csgoroll" class="top-tiles"></div>
-    <div id="countdown-csgoroll" class="timer"></div>
-    <table id="sheet-table-csgoroll">
+    1 Token wagered = 1.5XP on any gamemode, Double counts 1 Token = 1XP
+    <div id="top-tiles-chicken" class="top-tiles"></div>
+    <div id="countdown-chicken" class="timer"></div>
+    <table id="sheet-table-chicken">
       <thead></thead>
       <tbody></tbody>
     </table>
@@ -167,13 +143,14 @@
   </footer>
   
 <script src="leaderBoardLoaderRainV2.js"></script>
-<script src="leaderBoardLoaderSkinRaveV2.js"></script>
+<script src="leaderBoardLoaderChickenV2.js"></script>
+<!-- <script src="leaderBoardLoaderSkinRaveV2.js"></script> -->
 <script src="leaderBoardLoadercsgobigV2.js"></script>
 <script src="leaderBoardLoaderCSBattleV2.js"></script>
 <script src="leaderBoardLoaderCSGOWINV2.js"></script>
 <script src="leaderBoardLoaderClash.GGV2.js"></script>
 <script src="leaderBoardLoadercsgoluckV2.js"></script>
-
+<script src="leaderBoardLoaderChickenV2.js"></script>
 
 <script>
 const tabButtons = document.querySelectorAll('.tab-button');
@@ -183,7 +160,7 @@ const joinButton = document.getElementById('join-button');
 // Leaderboard-Skripte
 const scriptSrcs = {
   tab1: null,
-  tab2: 'leaderBoardLoaderskinRaveV2.js',
+  tab2: 'leaderBoardLoaderChickenV2.js',
   tab3: 'leaderBoardLoaderClash.GGV2.js',
   //tab4: 'leaderBoardLoaderClash.GGV2.js',
   tab5: 'leaderBoardLoaderCSGOROLLV2.js'
@@ -192,7 +169,7 @@ const scriptSrcs = {
 // Join-Links pro Tab
 const joinLinks = {
   tab1: 'https://rain.gg/r/cryder',
-  tab2: 'https://skinrave.gg/r/cryder',
+  tab2: 'https://chicken.gg/r/Cryder',
   tab3: 'https://clash.gg/r/cryder',
   //tab4: 'https://clash.gg/r/cryder',
   tab5: 'https://csgoroll.com/r/cryder'
