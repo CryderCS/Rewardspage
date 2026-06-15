@@ -53,7 +53,7 @@ function getSheetData() {
                 row[0],  // Placement
                 row[1],  // Price
                 row[2],  // Name
-                parseFloat(row[7]) || 0,  // Wagered (Wichtig für Platzierung)
+                parseFloat(row[9]) || 0,  // Wagered (Wichtig für Platzierung)
                 parseFloat(row[8]) || 0,  // Deposited
                 row[4],  // Avatar URL
                 row[6],  // Enddate
