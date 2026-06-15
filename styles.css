@@ -816,7 +816,7 @@ body.tab5 #affiliate-button:hover {
       margin-right: 1px; /* Abstand zwischen Icon und Zahl */
       width: 14px;       /* Breite des Icons */
       height: 14px;      /* Höhe des Icons */
-      background-image: url('/images/csgogemcoin.avif'); /* Pfad zum Coin-Icon */
+      background-image: url('/images/gemcoin.avif'); /* Pfad zum Coin-Icon */
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -828,7 +828,7 @@ body.tab5 #affiliate-button:hover {
       margin-right: 2px; /* Abstand zwischen Icon und Zahl */
       width: 20px;       /* Breite des Icons */
       height: 20px;      /* Höhe des Icons */
-      background-image: url('/images/csgogemcoin.avif'); /* Pfad zum Coin-Icon */
+      background-image: url('/images/gemcoin.avif'); /* Pfad zum Coin-Icon */
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
