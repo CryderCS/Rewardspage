@@ -1,4 +1,4 @@
-(() => {
+/*(() => {
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
 const spreadsheetId = '1qNAA5yFck9552b7Z1Fo_pN_OcfMee3XSIOh-VGkdd4g';
 const range = 'Leaderboard';
@@ -225,4 +225,4 @@ function startCountdown(targetDate) {
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 }
-})();
+})();*/

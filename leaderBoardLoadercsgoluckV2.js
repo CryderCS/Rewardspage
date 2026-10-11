@@ -1,4 +1,4 @@
-(() => {
+/*(() => {
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
 const spreadsheetId = '1iqA0_kdkjt_DQhFcDF_MWwY6mLTmxkfMX8HJKC9-S80';
 const range = 'Leaderboard!A1:G100';
@@ -60,7 +60,7 @@ function getSheetData() {
             /*filteredData = filteredData.map((row, index) => {
                 let prize = prizeDistribution[index] || 0;  // Falls Platz > 7 → 0 als Preis setzen
                 return [...row, index + 1, prize]; // Platz & fixen Preis hinzufügen
-            });*/
+            });
 
             console.log("Sortierte Daten mit Platzierungen & Preisen:", filteredData);
 
@@ -226,4 +226,4 @@ function startCountdown(targetDate) {
     const interval = setInterval(updateCountdown, 1000);
 }
 
-})();
+})();*/

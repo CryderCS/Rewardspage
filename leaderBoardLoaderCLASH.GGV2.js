@@ -1,4 +1,4 @@
-(() => {
+/*(() => {
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
 const spreadsheetId = '1mTFOskVbQb1oHVRPdfgqhHju7zfKa5ld4C6BSdSXlv4';
 const range = 'ClashLB';
@@ -229,4 +229,4 @@ function startCountdown(targetDate) {
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 }
-})();
+})();*/

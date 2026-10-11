@@ -1,4 +1,4 @@
-(() => {    
+/*(() => {    
 
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';  // Dein API-Schlüssel
 const spreadsheetId = '1Jn95fuSVCESmd2riDKIGofFoqYCmd3KdQd-BYSn28-A';  // Deine Spreadsheet-ID
@@ -257,6 +257,6 @@ function createBonusTable() {
 
 // Wenn das DOM geladen ist, Tabelle erstellen
 document.addEventListener("DOMContentLoaded", createBonusTable);
-*/
 
-})();
+
+})();*/

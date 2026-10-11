@@ -833,6 +833,33 @@ body.tab5 #affiliate-button:hover {
       background-repeat: no-repeat;
       background-position: center;
     }
+
+    .dollar-icon-small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1px;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.dollar-icon-small::before {
+    content: "💲";
+}
+
+.dollar-icon-big {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2px;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.dollar-icon-big::before {
+    content: "💲";
+}
+
   /* Coin icon for prize and wagered (using emoji for demo, replace with your coin icon if needed) */
   .coin-icon {
     display: flex;

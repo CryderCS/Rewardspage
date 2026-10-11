@@ -1,4 +1,4 @@
-(() => {
+/*(() => {
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
 const spreadsheetId = '1zB2EZIDzN6YaJohAC-E0s0nMGYL-LBkhELyc8ytasZY';
 const range = 'CsgowinLeaderboard!A1:J100';
@@ -224,4 +224,4 @@ function startCountdown(targetDate) {
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 }
-})();
+})();*/

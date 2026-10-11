@@ -42,8 +42,8 @@
 
 <div class="tabs">
   <button class="tab-button active" data-tab="tab1"><img src="images/rain-gg-original (1).png" alt="Rain.gg" class="tab-icon" /></button>
-  <button class="tab-button" data-tab="tab2"><img src="images/CSGOBIG_Logo.png" alt="chicken" class="tab-icon" /></button>
-  <!--<button class="tab-button" data-tab="tab3"><img src="images/csgogemLogo New.png" alt="CSgogem" class="tab-icon" /></button>-->
+  <button class="tab-button" data-tab="tab2"><img src="images/CSGOBIG_Logo.png" alt="csgobig" class="tab-icon" /></button>
+  <button class="tab-button" data-tab="tab3"><img src="images/logo_unbox_gg.png" alt="UNBOX" class="tab-icon" /></button>
   <!--<button class="tab-button" data-tab="tab3"><img src="images/csbattle_Logo.png" alt="csbattle.com" class="tab-icon" /></button>-->
   <!-- <button class="tab-button" data-tab="tab3"><img src="images/Clash_High_Quality_Logo.png" alt="Clash.gg" class="tab-icon" /></button> -->
   <!--<button class="tab-button" data-tab="tab5"><img src="images/CSGOROLL_Logo.png" alt="Csgoroll" class="tab-icon" /></button>-->
@@ -79,17 +79,17 @@
   </div>
 </div>
 
-<!--<div id="tab3" class="tab-content">
+<div id="tab3" class="tab-content">
   <div class="container">
     Wager abuse will result in a ban from the leaderboard and loss of rewards!
-    <div id="top-tiles-csgogem" class="top-tiles"></div>
-    <div id="countdown-csgogem" class="timer"></div>
-    <table id="sheet-table-csgogem">
+    <div id="top-tiles-unbox" class="top-tiles"></div>
+    <div id="countdown-unbox" class="timer"></div>
+    <table id="sheet-table-unbox">
       <thead></thead>
       <tbody></tbody>
     </table>
   </div>
-</div> -->
+</div>
 
 <!-- Affiliate Bonus Popup -->
 <!--<div class="popup-overlay" id="affiliate-popup">
@@ -156,13 +156,13 @@
   
 <script src="leaderBoardLoaderRainV2.js"></script>
 <script src="leaderBoardLoaderChickenV2.js"></script>
-<!-- <script src="leaderBoardLoaderSkinRaveV2.js"></script> -->
-<script src="leaderBoardLoadercsgobigV2.js"></script>
+<script src="leaderBoardLoaderSkinRaveV2.js"></script>
 <script src="leaderBoardLoaderGemV2.js"></script>
 <script src="leaderBoardLoaderCSGOWINV2.js"></script>
 <script src="leaderBoardLoaderClash.GGV2.js"></script>
 <script src="leaderBoardLoadercsgoluckV2.js"></script>
 <script src="leaderBoardLoaderChickenV2.js"></script>
+<script src="leaderBoardLoaderUNBOX.js"></script>
 
 <script>
 const tabButtons = document.querySelectorAll('.tab-button');
@@ -172,17 +172,15 @@ const joinButton = document.getElementById('join-button');
 // Leaderboard-Skripte
 const scriptSrcs = {
   tab1: null,
-  tab2: 'leaderBoardLoaderChickenV2.js',
-  tab3: 'leaderBoardLoaderGemV2.js',
-  //tab4: 'leaderBoardLoaderClash.GGV2.js',
-  tab5: 'leaderBoardLoaderCSGOROLLV2.js'
+  tab2: 'leaderBoardLoadercsgobigV2.js',
+  tab3: 'leaderBoardLoaderunbox.js',
 };
 
 // Join-Links pro Tab
 const joinLinks = {
   tab1: 'https://rain.gg/r/cryder',
-  tab2: 'https://chicken.gg/r/Cryder',
-  tab3: 'https://csgogem.com/r/cryder',
+  tab2: 'https://csgobig.com/r/Cryder',
+  tab3: 'https://unbox.gg/r/Cryder',
   //tab4: 'https://clash.gg/r/cryder',
   tab5: 'https://csgoroll.com/r/cryder'
 };
