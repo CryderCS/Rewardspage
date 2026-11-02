@@ -1,6 +1,6 @@
 (() => {
 const apiKey = 'AIzaSyCdMprYvMXK3ZyuHgXMW9KyzmUcBudzyjI';
-const spreadsheetId = '1PHUsTCe6ulT4D8LYgeuVvw4Fptx2KIZM7Colianz07M';
+const spreadsheetId = '15SWAUPeY0RU5MgrYnTlWQPxVazP7RGTxXCxIPWjKmt4';
 const range = 'Sheet1';
 
 // Google API initialisieren

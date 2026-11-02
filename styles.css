@@ -127,7 +127,7 @@ body.tab2 {
 }
 body.tab3 {
   /*margin: 10rem;*/
-  background-color: #0f002c;
+  background-color: #00292c;
   color: #ddd;
   font-family: 'Rubik', sans-serif !important;
   font-size: 14px;
@@ -194,8 +194,8 @@ body.tab2 #affiliate-button {
 /* Tab3 */
 body.tab3 #join-button,
 body.tab3 #affiliate-button {
-  background: #4c00ff93;
-  border: 1px solid #4c00ff93;
+  background: #00fff293;
+  border: 1px solid #00fff293;
   color: #fff;
 }
 
@@ -247,8 +247,8 @@ body.tab2 #affiliate-button:hover {
 
 body.tab3 #join-button:hover,
 body.tab3 #affiliate-button:hover {
-    border: 3px solid #8400ff;
-    background: linear-gradient(#8400ff13, #8400ff69);
+    border: 3px solid #00fff2;
+    background: linear-gradient(#00fff213, #00fff269);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
 }
@@ -305,8 +305,8 @@ body.tab5 #affiliate-button:hover {
   }
 
   .tab-button:hover[data-tab="tab3"] {
-    border-bottom: 3px solid #8400ff;
-    background: linear-gradient( #8400ff13, #8400ff69);
+    border-bottom: 3px solid #00fff2;
+    background: linear-gradient( #00fff213, #00fff269);
     color: #fff;
     transition: border-color 0.3s, background-color 0.3s;
   }
@@ -339,8 +339,8 @@ body.tab5 #affiliate-button:hover {
   }
   /* Tab3 */
   .tab-button.active[data-tab="tab3"] {
-      border-bottom: 3px solid #8400ff;
-      background: linear-gradient( #8400ff13, #8400ff69);
+      border-bottom: 3px solid #00fff2;
+      background: linear-gradient( #00fff213, #00fff269);
       color: #fff;
   }
 
